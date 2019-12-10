@@ -1,0 +1,12 @@
+body {
+	background-image:url(../img/background.jpg);
+  	font-family: "Poppins", sans-serif;
+}
+
+.jumbotron{
+	opacity: 0.9;
+}
+
+header{
+	margin:1% 1% 1% 1%;
+}
