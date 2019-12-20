@@ -17,21 +17,27 @@
 </head>
 
 <body>
-<div class="jumbotron">
-	<header>
-		<h1>ALLENATI AL VAR</h1>
-  		<p>Il sito per gli arbitri</p>
-	</header>
-</div>
+	<div class="jumbotron" >
+		<header>
+			<h1>ALLENATI AL VAR</h1>
+  			<p>Il sito per gli arbitri</p>
+		</header>
+	</div>
 <!-- BARRA DI NAVIGAZIONE -->
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <ul class="navbar-nav row">
     <li class="nav-item active col-sm-3">
       <a class="nav-link" href="#">Home</a>
     </li>
-    <li class="nav-item col-sm-3">
-      <a class="nav-link" href="#">Profilo</a>
-    </li>
+   <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Profilo<span class="caret"></span></a>
+				<div class="dropdown-menu">
+					<a  class="dropdown-item" href="#">Impostazioni</a>
+					<a  class="dropdown-item" href="#">Preferiti</a>		
+					<div class="dropdown-divider"></div>		
+					<a class="dropdown-item" href="#" onclick="clickOnLogout()">Logout</a>				
+				</div>
+			</li>
     <li class="nav-item col-sm-3">
       <a class="nav-link" href="#">Sessione</a>
     </li>
