@@ -19,6 +19,6 @@
   <servlet-mapping>
   	<servlet-name>IscrizioneUtente</servlet-name>
   	<url-pattern>/inviaDatiUtente</url-pattern>
-  </servlet-mapping>   
+  </servlet-mapping>
 
 </web-app>

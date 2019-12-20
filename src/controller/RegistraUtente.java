@@ -28,7 +28,7 @@ public class RegistraUtente extends HttpServlet{
 		
 		DBManager.getInstance().inserisciUtente(ut);
 		
-		req.getSession().setAttribute("utenteRegistrato", ut);
+		req.setAttribute("utenteRegistrato", ut);
 		
 		RequestDispatcher rd = req.getRequestDispatcher("/ottieniUtenti");
 		rd.forward(req, resp);
