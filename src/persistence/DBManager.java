@@ -24,4 +24,14 @@ public class DBManager {
 	public void inserisciUtente(Utente u) {
 		utenti.add(u);
 	}
+
+	public Utente login(String email, String password) {
+		if (email.equals("kristian@reale.it") && password.equals("kristian")) {
+			Utente u = new Utente();
+			u.setEmail("kristian@reale.it");
+			u.setPassword("kristian");
+			return u;
+		}
+		return null;
+	}
 }
