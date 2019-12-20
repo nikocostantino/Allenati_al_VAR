@@ -16,13 +16,13 @@ public class Login extends HttpServlet{
 	
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			System.out.println("sono qui");
+			System.out.println("sono qui GET");
 
 			Object utente = req.getSession().getAttribute("utente");
 			String isLogout = req.getParameter("logout");
 			if (isLogout != null && isLogout.equals("true")) {
 				req.getSession().removeAttribute("utente");
-				RequestDispatcher rd = req.getRequestDispatcher("");
+				RequestDispatcher rd = req.getRequestDispatcher("/home");
 				rd.forward(req, resp);
 			}else {
 				if (utente == null) {
@@ -41,7 +41,11 @@ public class Login extends HttpServlet{
 			if (utente != null) {
 				req.getSession().setAttribute("utente", utente);
 //				resp.sendRedirect(".");
-				
+				/*
+				ServletContext context = getServletContext().getContext("package name of other servlet");
+		        RequestDispatcher rd = context.getRequestDispatcher("/name of servlet");
+		        rd.forward(request, response);
+		        */
 				RequestDispatcher rd = req.getRequestDispatcher("");
 				rd.forward(req, resp);
 			}else {

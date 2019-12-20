@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 public class Home extends HttpServlet {
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			RequestDispatcher rd = req.getRequestDispatcher("home.html");
+			System.out.println("sono nella do get di home");
+			RequestDispatcher rd = req.getRequestDispatcher("home2.html");
 			rd.forward(req, resp);
 		}
 		
