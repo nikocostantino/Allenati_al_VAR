@@ -18,9 +18,16 @@
   	<servlet-class>controller.Home</servlet-class>
  </servlet>
   
+<<<<<<< HEAD
  <servlet-mapping>
  	<servlet-name>Home</servlet-name>
  	<url-pattern></url-pattern>
  </servlet-mapping>
+=======
+  <servlet-mapping>
+  	<servlet-name>home</servlet-name>
+  	<url-pattern></url-pattern>
+  </servlet-mapping>
+>>>>>>> branch 'master' of https://github.com/nikocostantino/Allenati_al_VAR
 
 </web-app>
