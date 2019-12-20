@@ -3,24 +3,24 @@
   
 
 
-	<servlet>
+<servlet>
   	<servlet-name>Login</servlet-name>
   	<servlet-class>controller.Login</servlet-class>
-  </servlet>
+ </servlet>
   
-  <servlet-mapping>
+ <servlet-mapping>
   	<servlet-name>Login</servlet-name>
   	<url-pattern>/html/login</url-pattern>
-  </servlet-mapping>
+ </servlet-mapping>
   
-    <servlet>
-  	<servlet-name>home</servlet-name>
+ <servlet>
+  	<servlet-name>Home</servlet-name>
   	<servlet-class>controller.Home</servlet-class>
-  </servlet>
+ </servlet>
   
-  <servlet-mapping>
-  	<servlet-name>home</servlet-name>
-  	<url-pattern>.</url-pattern>
-  </servlet-mapping>
+ <servlet-mapping>
+ 	<servlet-name>Home</servlet-name>
+ 	<url-pattern></url-pattern>
+ </servlet-mapping>
 
 </web-app>
