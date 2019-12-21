@@ -20,43 +20,7 @@
 </head>
 
 <body>
-	<div class="jumbotron" >
-		<header>
-			<h1>ALLENATI AL VAR</h1>
-  			<p>Il sito per gli arbitri</p>
-		</header>
-	</div>
-<!-- BARRA DI NAVIGAZIONE -->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <ul class="navbar-nav row">
-    <li class="nav-item active col-sm-3">
-      <a class="nav-link" href="#">Home</a>
-    </li>
-   <li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Profilo<span class="caret"></span></a>
-				<div class="dropdown-menu">
-					<a  class="dropdown-item" href="#">Impostazioni</a>
-					<a  class="dropdown-item" href="#">Preferiti</a>		
-					<div class="dropdown-divider"></div>		
-					<a class="dropdown-item" href="login">Logout</a>				
-				</div>
-			</li>
-    <li class="nav-item col-sm-3">
-      <a class="nav-link" href="#">Sessione</a>
-    </li>
-    <li class="nav-item col-sm-3">
-      <a class="nav-link disabled" href="#">Info</a>
-    </li>
-    <li class="col-sm-1" id="textCerca">
-    	<input class="form-control" type="text" placeholder="Cerca un video...">
-    </li>
-    <li class="col-sm-1" id="buttonCerca">
-    	<!-- <button class="btn btn-success" type="submit" href="risultatoRicerca">Cerca</button> -->
-    	<a class="dropdown-item" href="risultatoRicerca">Cerca</a>
-    </li>
-  </ul>
-</nav>
-<!-- FINE BARRA DI NAVIGAZIONE -->
+<%@include file="header_default.html" %>
 
 <!-- CATEGORIA I PIU' VISTI -->
 <div class="jumbotron">
