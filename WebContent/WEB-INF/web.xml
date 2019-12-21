@@ -30,15 +30,29 @@
  	<servlet-name>Home</servlet-name>
  	<url-pattern>/home</url-pattern>
  </servlet-mapping>
+
+ 
+ <servlet>
+  	<servlet-name>Ricerca</servlet-name>
+  	<servlet-class>controller.Ricerca</servlet-class>
+ </servlet>
+  
+ <servlet-mapping>
+  	<servlet-name>Ricerca</servlet-name>
+  	<url-pattern>/html/risultatoRicerca</url-pattern>
+ </servlet-mapping>
+
+
 <servlet>
   	<servlet-name>Index</servlet-name>
   	<servlet-class>controller.Index</servlet-class>
- </servlet>
+</servlet>
   
  <servlet-mapping>
  	<servlet-name>Index</servlet-name>
  	<url-pattern>/index</url-pattern>
  </servlet-mapping>
+
 
 
 </web-app>
