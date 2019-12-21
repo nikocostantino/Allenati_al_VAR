@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Utente;
+import model.Video;
 import persistence.DBManager;
 
 
@@ -40,14 +42,13 @@ public class Login extends HttpServlet{
 			Utente utente = DBManager.getInstance().login(email, password);
 			if (utente != null) {
 				req.getSession().setAttribute("utente", utente);
+				System.out.println("sono nell'if");
 //				resp.sendRedirect(".");
-				/*
-				ServletContext context = getServletContext().getContext("package name of other servlet");
-		        RequestDispatcher rd = context.getRequestDispatcher("/name of servlet");
-		        rd.forward(request, response);
-		        */
-				RequestDispatcher rd = req.getRequestDispatcher("");
+				List<Video> video = DBManager.getInstance().getVideo();
+				req.getSession().setAttribute("video", video);
+				RequestDispatcher rd = req.getRequestDispatcher("/html/home.jsp");
 				rd.forward(req, resp);
+				System.out.println("finito");
 			}else {
 				RequestDispatcher rd = req.getRequestDispatcher("/html/error_page.html");
 				rd.forward(req, resp);

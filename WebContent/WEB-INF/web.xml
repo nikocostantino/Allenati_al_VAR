@@ -18,16 +18,20 @@
   	<servlet-class>controller.Home</servlet-class>
  </servlet>
   
-<<<<<<< HEAD
  <servlet-mapping>
- 	<servlet-name>Home</servlet-name>
- 	<url-pattern></url-pattern>
+  	<servlet-name>Home</servlet-name>
+  	<url-pattern>/html/home</url-pattern>
  </servlet-mapping>
-=======
-  <servlet-mapping>
-  	<servlet-name>home</servlet-name>
-  	<url-pattern></url-pattern>
-  </servlet-mapping>
->>>>>>> branch 'master' of https://github.com/nikocostantino/Allenati_al_VAR
+ 
+ <servlet>
+  	<servlet-name>Ricerca</servlet-name>
+  	<servlet-class>controller.Ricerca</servlet-class>
+ </servlet>
+  
+ <servlet-mapping>
+  	<servlet-name>Ricerca</servlet-name>
+  	<url-pattern>/html/risultatoRicerca</url-pattern>
+ </servlet-mapping>
+
 
 </web-app>
