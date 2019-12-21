@@ -19,9 +19,15 @@
  </servlet>
   
  <servlet-mapping>
+<<<<<<< HEAD
   	<servlet-name>Home</servlet-name>
   	<url-pattern>/html/home</url-pattern>
+=======
+ 	<servlet-name>Home</servlet-name>
+ 	<url-pattern>/home</url-pattern>
+>>>>>>> branch 'master' of https://github.com/nikocostantino/Allenati_al_VAR
  </servlet-mapping>
+<<<<<<< HEAD
  
  <servlet>
   	<servlet-name>Ricerca</servlet-name>
@@ -33,5 +39,17 @@
   	<url-pattern>/html/risultatoRicerca</url-pattern>
  </servlet-mapping>
 
+=======
+<servlet>
+  	<servlet-name>Index</servlet-name>
+  	<servlet-class>controller.Index</servlet-class>
+ </servlet>
+  
+ <servlet-mapping>
+ 	<servlet-name>Index</servlet-name>
+ 	<url-pattern>/index</url-pattern>
+ </servlet-mapping>
+
+>>>>>>> branch 'master' of https://github.com/nikocostantino/Allenati_al_VAR
 
 </web-app>
