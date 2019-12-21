@@ -38,7 +38,7 @@
 					<a  class="dropdown-item" href="#">Impostazioni</a>
 					<a  class="dropdown-item" href="#">Preferiti</a>		
 					<div class="dropdown-divider"></div>		
-					<a class="dropdown-item" href="#" onclick="clickOnLogout()">Logout</a>				
+					<a class="dropdown-item" href="login">Logout</a>				
 				</div>
 			</li>
     <li class="nav-item col-sm-3">
@@ -52,7 +52,7 @@
     </li>
     <li class="col-sm-1" id="buttonCerca">
     	<!-- <button class="btn btn-success" type="submit" href="risultatoRicerca">Cerca</button> -->
-    	<a class="dropdown-item" href="risultatoRicerca?dati=">Login</a>
+    	<a class="dropdown-item" href="risultatoRicerca">Cerca</a>
     </li>
   </ul>
 </nav>

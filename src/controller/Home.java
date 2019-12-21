@@ -15,13 +15,8 @@ import persistence.DBManager;
 public class Home extends HttpServlet {
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-<<<<<<< HEAD
-			RequestDispatcher rd = req.getRequestDispatcher("");
-=======
 
-			System.out.println("ciaoooooo");
-			RequestDispatcher rd = req.getRequestDispatcher("html/home.html");
->>>>>>> branch 'master' of https://github.com/nikocostantino/Allenati_al_VAR
+			RequestDispatcher rd = req.getRequestDispatcher("html/home.jsp");
 			rd.forward(req, resp);
 		}
 		
