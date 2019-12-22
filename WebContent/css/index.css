@@ -6,12 +6,6 @@ body {
   	overflow: hidden;
 }
 
-a {
-  	color: #92badd;
-  	display:inline-block;
-  	font-weight: 400;
-  	font-size: 22px;
-}
 
 .wrapper{
 	position:relative;
@@ -34,7 +28,7 @@ a {
   	
   	padding: 30px;
   	width: 90%;
-  	max-width: 450px;
+  	max-width: 500px;
   	position: relative;
   	padding: 0px;
   	text-align: center;
@@ -84,4 +78,13 @@ input[type=text] {
 	margin:10px;
 	width:20%;
 	height:20%;
+}
+
+.links{
+color: blue;
+}
+
+.links a{
+margin-left: 10px;
+margin-top: -1%
 }
