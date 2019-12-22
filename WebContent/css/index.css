@@ -48,8 +48,6 @@ a {
   	border-radius: 0 0 10px 10px;
 }
 
-
-
 button[type=button]{
 	background-color: #56baed;
   	border: none;
@@ -62,6 +60,8 @@ button[type=button]{
   	font-size: 13px;
   	border-radius: 5px 5px 5px 5px;
   	margin: 25px 20px 40px 20px;
+}
+
 }
 
 input[type=text] {
