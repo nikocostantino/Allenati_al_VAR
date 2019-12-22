@@ -20,8 +20,6 @@ public class Login extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("sono qui GET");
-
 			RequestDispatcher rd = req.getRequestDispatcher("/index");
 			rd.forward(req, resp);
 	}
@@ -38,9 +36,8 @@ public class Login extends HttpServlet{
 			List<Video> video = DBManager.getInstance().getVideo();
 			req.getSession().setAttribute("video", video);
 
-			RequestDispatcher rd = req.getRequestDispatcher("/home");
+			RequestDispatcher rd = req.getRequestDispatcher("/html/home");
 			rd.forward(req, resp);
-			System.out.println("finito");
 		}else {
 			RequestDispatcher rd = req.getRequestDispatcher("/html/error_page.html");
 			rd.forward(req, resp);

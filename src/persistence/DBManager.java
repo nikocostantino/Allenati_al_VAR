@@ -3,6 +3,7 @@ package persistence;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Categoria;
 import model.Utente;
 import model.Video;
 
@@ -10,7 +11,7 @@ public class DBManager {
 	private static DBManager instance = null;
 	
 	List<Utente> utenti;
-	List<Video> video;
+	ArrayList<Video> video;
 	
 	public static DBManager getInstance() {
 		if (instance == null) {
@@ -22,9 +23,12 @@ public class DBManager {
 	private DBManager() {
 		utenti = new ArrayList<Utente>();
 		video = new ArrayList<Video>();
-		aggiungiVideo(new Video("https://www.youtube.com/embed/6hgVihWjK2c?rel=0","v1"));
-		aggiungiVideo(new Video("https://www.youtube.com/embed/6hgVihWjK2c?rel=0","v1"));
-		aggiungiVideo(new Video("https://www.youtube.com/embed/6hgVihWjK2c?rel=0","v1"));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/ODmuRSPTipI","dogso","","",new Categoria("recenti"),null));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/5TKseKToQ6c","spa","","",new Categoria("recenti"),null));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/9H4ahHuTGbI","fallo di mani","","",new Categoria("recenti"),null));
+		aggiungiVideo(new Video("video/video1.mp4","fallo di mani","","",new Categoria("recenti"),null));
+		
+	
 	}
 	
 	public void inserisciUtente(Utente u) {
@@ -45,7 +49,7 @@ public class DBManager {
 		video.add(v);
 	}
 
-	public List getVideo() {
+	public ArrayList<Video> getVideo() {
 		return video;
 	}
 }
