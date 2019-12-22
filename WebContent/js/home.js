@@ -1,5 +1,5 @@
 //javascript file
 
 function clickOnLogout(){
-	window.location.href = "../html/index.html";
+	window.location.href = "../html/index.jsp";
 }

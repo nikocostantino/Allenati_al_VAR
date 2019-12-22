@@ -3,5 +3,5 @@ function clickOnRegistrati(){
 }
 
 function clickOnLogin(){
-	window.location.href = "../html/home.html";
+	window.location.href = "../html/home.jsp";
 }

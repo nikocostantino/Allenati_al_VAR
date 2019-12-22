@@ -1,4 +1,4 @@
 function clickOnRegistrati(){
 	alert("Registrazione eseguita correttamente");
-	window.location.href = "../html/index.html";
+	window.location.href = "../html/index.jsp";
 }
