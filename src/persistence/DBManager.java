@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Categoria;
+import model.OpzioniRisposte;
 import model.Utente;
 import model.Video;
 
@@ -24,9 +25,9 @@ public class DBManager {
 		utenti = new ArrayList<Utente>();
 		video = new ArrayList<Video>();
 		aggiungiVideo(new Video("https://www.youtube.com/embed/ODmuRSPTipI","dogso","","",new Categoria("recenti"),null));
-		aggiungiVideo(new Video("https://www.youtube.com/embed/5TKseKToQ6c","spa","","",new Categoria("recenti"),null));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/5TKseKToQ6c","spa","Questa è la descrizione","DIFFICILE",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata")));
 		aggiungiVideo(new Video("https://www.youtube.com/embed/9H4ahHuTGbI","fallo di mani","","",new Categoria("recenti"),null));
-		aggiungiVideo(new Video("video/video1.mp4","fallo di mani","","",new Categoria("recenti"),null));
+		aggiungiVideo(new Video("../video/video1.mp4","fallo di mani","","",new Categoria("recenti"),null));
 		
 	
 	}

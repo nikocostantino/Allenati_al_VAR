@@ -16,5 +16,8 @@ public class Categoria {
 		video.add(v);
 	}
 	
+	public String getNome() {
+		return nome;
+	}
 	
 }

@@ -11,4 +11,11 @@ public class OpzioniRisposte {
 		this.opzioneErrata = opzioneErrata;
 	}
 
+	public String getCorretta() {
+		return opzioneCorretta;
+	}
+	
+	public String getErrata() {
+		return opzioneErrata;
+	}
 }

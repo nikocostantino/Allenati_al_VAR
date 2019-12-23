@@ -1,0 +1,41 @@
+iframe{
+	width: 900px;
+	height: 500px;
+
+}
+
+#categoria{
+	position: absolute;
+	bottom: 460px;
+	left: 150px;
+}
+
+#difficolta{
+	position: absolute;
+	bottom: 460px;
+	left: 850px;
+}
+
+#rispostaCorretta{
+	position: absolute;
+	top: 1100px;
+	left: 450px;
+}
+
+#rispostaErrata{
+	position: absolute;
+	top: 1100px;
+	left: 650px;
+}
+
+.column {
+  float: left;
+  margin-left: 100px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

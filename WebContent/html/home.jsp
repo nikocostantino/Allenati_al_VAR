@@ -10,7 +10,7 @@
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	
-	<LINK rel="stylesheet" href="../css/home.css" type="text/css">
+	<link rel="stylesheet" href="../css/home.css" type="text/css">
 	<script type="text/javascript" src="../js/home.js"></script>
 	
 
@@ -38,11 +38,15 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <div>
+                            
                             <c:forEach items="${video}" var="v">
+                            	
+                            	
+                            	<a id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
 								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
+								
 							</c:forEach>
-                            </div>
+                            
                         </div>
  
                     </div>

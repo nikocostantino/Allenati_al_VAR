@@ -9,4 +9,12 @@ public class Commenti {
 	public Commenti() {
 		lista_commenti = new ArrayList<String>();
 	}
+	
+	public ArrayList<String> getLista_commenti() {
+		return lista_commenti;
+	}
+	
+	public void aggiungiCommento(String testo) {
+		lista_commenti.add(testo);
+	}
 }

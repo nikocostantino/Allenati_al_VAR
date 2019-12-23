@@ -10,6 +10,7 @@ public class Video {
 	private Categoria categoria;
 	private Commenti commenti;
 	private OpzioniRisposte risposte;
+
 	
 	public Video(String url, String nome, String descrizione, String difficolta, Categoria categoria, OpzioniRisposte risposte) {
 		this.url = url;

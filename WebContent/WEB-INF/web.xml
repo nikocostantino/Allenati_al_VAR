@@ -52,6 +52,19 @@
  	<servlet-name>Index</servlet-name>
  	<url-pattern>/index</url-pattern>
  </servlet-mapping>
+ 
+<servlet>
+  	<servlet-name>MostraVideo</servlet-name>
+  	<servlet-class>controller.MostraVideo</servlet-class>
+</servlet>
+  
+ <servlet-mapping>
+ 	<servlet-name>MostraVideo</servlet-name>
+ 	<url-pattern>/html/pagina_video</url-pattern>
+ </servlet-mapping>
+ 
+ 
+ 
 
 
 
