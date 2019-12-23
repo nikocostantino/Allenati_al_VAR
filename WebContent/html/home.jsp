@@ -41,9 +41,8 @@
                             
                             <c:forEach items="${video}" var="v">
                             	
-                            	
+                            	<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
                             	<a id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
-								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
 								
 							</c:forEach>
                             
