@@ -23,4 +23,28 @@ header{
 	
 }
 
+#textNomeVideo{
+	position: absolute;
+	top: 80%;
+	margin-left: 7%;
+	font-size: x-large;
+	text-align: center;
+	color: black;
+	
+}
+
+.column {
+  float: left;
+  width: 1%;
+  margin-top: 10%;
+}
+
+.content {
+  float: left;
+  width: 98%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+
 

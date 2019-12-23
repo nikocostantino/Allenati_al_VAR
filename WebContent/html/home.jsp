@@ -36,26 +36,27 @@
                         <li data-target="#carousel-visti" data-slide-to="1"></li>
                         <li data-target="#carousel-visti" data-slide-to="2"></li>
                     </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            
-                            <c:forEach items="${video}" var="v">
-                            	
-                            	
-                            	<a id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
-								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
-								
-							</c:forEach>
-                            
-                        </div>
- 
-                    </div>
                     
-                    <a class="carousel-control-prev" href="#carousel-visti" role="button" data-slide="prev">
+                    <a class="column" href="#carousel-visti" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#carousel-visti" role="button" data-slide="next">
+                    <div class="content">
+                    	<div class="carousel-inner">
+	                        <div class="carousel-item active">
+	                            
+	                            <c:forEach items="${video}" var="v">
+	                            	
+	                            	
+	                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
+									<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
+								</c:forEach>
+	                            
+	                        </div>
+ 
+                   		</div>
+                    </div>
+                    <a class="column" href="#carousel-visti" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
