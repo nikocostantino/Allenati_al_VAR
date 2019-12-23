@@ -19,14 +19,19 @@
 	      		<img src="../img/referee.png" id="icon" alt="User Icon" />
 	    	</div>
 
-	    	<form method="POST" action="inviaDatiUtente">
+	    	<form method="POST" action="registraUtente">
 	      		<input type="text" id="nome" class="fadeIn second" name="nome" placeholder="nome">
 	      		<input type="text" id="cognome" class="fadeIn third" name="cognome" placeholder="cognome">
-	      		<input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
-	      		<input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
-	      		<input type="text" id="conferma_password" class="fadeIn third" name="conferma_password" placeholder="conferma password">
-	      		<button type="button" class="btn btn-light" onclick="clickOnRegistrati()">Registrati</button>
+	      		<input type="text" id="username" class="fadeIn second" name="email" placeholder="email">
+	      		<input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+	      		<input type="password" id="conferma_password" class="fadeIn third" name="conferma_password" placeholder="conferma password">
+	      		<button class="btn btn-primary" id="loginBTN" type="submit">Registrati</button>
 	      		
+	      		<div id="formFooter">
+					<div class="d-flex justify-content-center links">
+						Torna al login<a class="btn btn-secondary" type="submit" href="login">Login</a>
+					</div>
+				</div>
 	    	</form>
 	
 	

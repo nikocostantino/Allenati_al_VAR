@@ -23,6 +23,11 @@ public class DBManager {
 	
 	private DBManager() {
 		utenti = new ArrayList<Utente>();
+		utenti.add(new Utente());
+		utenti.get(0).setNome("kristian");
+		utenti.get(0).setCognome("reale");
+		utenti.get(0).setEmail("kristian@reale.it");
+		utenti.get(0).setPassword("kristian");
 		video = new ArrayList<Video>();
 		aggiungiVideo(new Video("https://www.youtube.com/embed/ODmuRSPTipI","dogso","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata")));
 		aggiungiVideo(new Video("https://www.youtube.com/embed/5TKseKToQ6c","spa","Questa è la descrizione","DIFFICILE",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata")));
@@ -37,11 +42,14 @@ public class DBManager {
 	}
 
 	public Utente login(String email, String password) {
-		if (email.equals("kristian@reale.it") && password.equals("kristian")) {
-			Utente u = new Utente();
-			u.setEmail("kristian@reale.it");
-			u.setPassword("kristian");
-			return u;
+		for(int i=0; i<utenti.size(); i++)
+		{	
+			if (email.equals(utenti.get(i).getEmail()) && password.equals(utenti.get(i).getPassword())) {
+				Utente u = new Utente();
+				u.setEmail(utenti.get(i).getEmail());
+				u.setPassword(utenti.get(i).getPassword());
+				return u;
+			}
 		}
 		return null;
 	}
