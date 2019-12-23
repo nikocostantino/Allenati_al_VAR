@@ -22,6 +22,9 @@ header{
 	left: 90%;
 	
 }
+#textNomeVideo{
+	border-left-width: 20px;
+}
 
 #textNomeVideo{
 	position: absolute;

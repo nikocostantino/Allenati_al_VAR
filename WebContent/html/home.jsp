@@ -36,6 +36,7 @@
                         <li data-target="#carousel-visti" data-slide-to="1"></li>
                         <li data-target="#carousel-visti" data-slide-to="2"></li>
                     </ol>
+
                     
                     <a class="column" href="#carousel-visti" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
