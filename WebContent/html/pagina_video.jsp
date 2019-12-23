@@ -25,8 +25,8 @@
 					<p> ${descrizione} </p>
 					<p id="categoria"> ${categoria} </p>
 					<p id="difficolta"> ${difficolta} </p>
-					<p id="rispostaCorretta"> ${rispostaCorretta} </p>
-					<p id="rispostaErrata"> ${rispostaErrata} </p>
+					<p class="btn btn-light" id="rispostaCorretta"> ${rispostaCorretta} </p>
+					<p class="btn btn-light" id="rispostaErrata"> ${rispostaErrata} </p>
 				</div>
 			</div>
 		
