@@ -3,6 +3,17 @@
 
 
 <servlet>
+  	<servlet-name>aggiungiVideo</servlet-name>
+  	<servlet-class>controller.AggiungiVideo</servlet-class>
+ </servlet>
+  
+ <servlet-mapping>
+  	<servlet-name>aggiungiVideo</servlet-name>
+  	<url-pattern>/html/aggiungiVideo</url-pattern>
+ </servlet-mapping>
+
+
+<servlet>
   	<servlet-name>RegistraUtente</servlet-name>
   	<servlet-class>controller.RegistraUtente</servlet-class>
  </servlet>
