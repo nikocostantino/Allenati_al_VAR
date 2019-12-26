@@ -18,31 +18,31 @@
 	<%@include file="header_default.html" %>
 	 <div class="jumbotron">
 	 	<div class="row">
-	 	<div class="column">
-			<iframe class="embed-responsive-item" src="${url}"></iframe>
-			<div id="dati_video">
-				<h1> ${nome} </h1>
-				<p> ${descrizione} </p>
-				<p id="categoria"> ${categoria} </p>
-				<p id="difficolta"> ${difficolta} </p>
-				<p id="rispostaCorretta"> ${rispostaCorretta} </p>
-				<p id="rispostaErrata"> ${rispostaErrata} </p>
+		 	<div class="column">
+				<iframe class="embed-responsive-item" src="${url}"></iframe>
+				<div id="dati_video">
+					<h1> ${nome} </h1>
+					<p> ${descrizione} </p>
+					<p id="categoria"> ${categoria} </p>
+					<p id="difficolta"> ${difficolta} </p>
+					<p class="btn btn-light" id="rispostaCorretta"> ${rispostaCorretta} </p>
+					<p class="btn btn-light" id="rispostaErrata"> ${rispostaErrata} </p>
+				</div>
 			</div>
-		</div>
 		
-		<div class="column" id="lista_commenti">
-			<c:forEach items="${lista_commenti}" var="c">
-	                            	                            	
-				<p> ${c} </p>
-				
-			</c:forEach>
-		
-			<form action="pagina_video?url=${url}" method="GET" class="form-group">
-				<textarea class="form-control" id="textCommento" type="text " name="commento" placeholder="Scrivi un commento..."></textarea>
-				<input class="form-control" type="submit" value="Invia"/></form>
-			</form>
+			<div class="column" id="lista_commenti">
+				<c:forEach items="${lista_commenti}" var="c">
+		                            	                            	
+					<p> ${c} </p>
+					
+				</c:forEach>
 			
-		</div>
+				<form action="pagina_video?url=${url}" method="GET" class="form-group">
+					<textarea class="form-control" id="textCommento" type="text " name="commento" placeholder="Scrivi un commento..."></textarea>
+					<input class="form-control" type="submit" value="Invia"/></form>
+				</form>
+				
+			</div>
 				
 	</div>	
 	</div>
