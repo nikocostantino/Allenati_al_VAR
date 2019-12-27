@@ -10,9 +10,10 @@ public class Video {
 	private Categoria categoria;
 	private Commenti commenti;
 	private OpzioniRisposte risposte;
+	private Boolean locale;
 
-	
-	public Video(String url, String nome, String descrizione, String difficolta, Categoria categoria, OpzioniRisposte risposte) {
+
+	public Video(String url, String nome, String descrizione, String difficolta, Categoria categoria, OpzioniRisposte risposte, Boolean locale) {
 		this.url = url;
 		this.nome = nome;
 		this.descrizione = descrizione;
@@ -21,9 +22,8 @@ public class Video {
 		this.categoria = categoria;
 		this.commenti = new Commenti();
 		this.risposte = risposte;
-		
 		this.categoria.addVideo(this);
-		
+		this.locale = locale;
 	}
 	
 	public String getUrl() {
@@ -87,5 +87,11 @@ public class Video {
 		this.risposte = risposte;
 	}
 	
-	
+	public Boolean getLocale() {
+		return locale;
+	}
+
+	public void setLocale(Boolean locale) {
+		this.locale = locale;
+	}
 }

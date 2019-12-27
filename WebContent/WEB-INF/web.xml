@@ -86,6 +86,16 @@
  	<url-pattern>/html/pagina_video</url-pattern>
  </servlet-mapping>
  
+ <servlet>
+  	<servlet-name>GestorePagine</servlet-name>
+  	<servlet-class>controller.GestorePagine</servlet-class>
+</servlet>
+  
+ <servlet-mapping>
+ 	<servlet-name>GestorePagine</servlet-name>
+ 	<url-pattern>/html/preferiti</url-pattern>
+ </servlet-mapping>
+ 
  
  
 

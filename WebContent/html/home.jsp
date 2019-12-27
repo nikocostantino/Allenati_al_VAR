@@ -48,12 +48,35 @@
 	                            
 	                            <c:forEach items="${video}" var="v">
 	                            	
-	                            	
 	                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
-									<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
+	                            	<c:if test="${v.locale==false}">
+										<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
+									</c:if>
+									<c:if test="${v.locale==true}">
+										<video width="320" height="240" controls>
+	    									<source src="${v.url}" type="video/mp4">
+										</video>
+									</c:if>
+									
 								</c:forEach>
 	                            
 	                        </div>
+	                        
+	                        <div class="carousel-item">
+                            <c:forEach items="${video}" var="v">
+
+                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
+                            		<c:if test="${v.locale==false}">
+								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
+								</c:if>
+								<c:if test="${v.locale==true}">
+									<video width="320" height="240" controls>
+    									<source src="${v.url}" type="video/mp4">
+									</video>
+								</c:if>
+									
+							</c:forEach>
+                        </div>
  
                    		</div>
                     </div>
@@ -85,25 +108,49 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <div>
-                                <c:forEach items="${video}" var="v">
+                            <c:forEach items="${video}" var="v">
+
+                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
+                            		<c:if test="${v.locale==false}">
 								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
+								</c:if>
+								<c:if test="${v.locale==true}">
+									<video width="320" height="240" controls>
+    									<source src="${v.url}" type="video/mp4">
+									</video>
+								</c:if>
+									
 							</c:forEach>
-                            </div>
                         </div>
                         <div class="carousel-item">
-                            <div>
-                                <c:forEach items="${video}" var="v">
+                            <c:forEach items="${video}" var="v">
+
+                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
+                            		<c:if test="${v.locale==false}">
 								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
+								</c:if>
+								<c:if test="${v.locale==true}">
+									<video width="320" height="240" controls>
+    									<source src="${v.url}" type="video/mp4">
+									</video>
+								</c:if>
+									
 							</c:forEach>
-                            </div>
                         </div>
                         <div class="carousel-item">
-                            <div>
-                                <c:forEach items="${video}" var="v">
+                            <c:forEach items="${video}" var="v">
+
+                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
+                            		<c:if test="${v.locale==false}">
 								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
+								</c:if>
+								<c:if test="${v.locale==true}">
+									<video width="320" height="240" controls>
+    									<source src="${v.url}" type="video/mp4">
+									</video>
+								</c:if>
+									
 							</c:forEach>
-                            </div>
                         </div>
                     </div>
                     
@@ -139,25 +186,49 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <div>
-                                <c:forEach items="${video}" var="v">
+                            <c:forEach items="${video}" var="v">
+
+                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
+                            		<c:if test="${v.locale==false}">
 								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
+								</c:if>
+								<c:if test="${v.locale==true}">
+									<video width="320" height="240" controls>
+    									<source src="${v.url}" type="video/mp4">
+									</video>
+								</c:if>
+									
 							</c:forEach>
-                            </div>
                         </div>
                         <div class="carousel-item">
-                            <div>
-                                <c:forEach items="${video}" var="v">
+                            <c:forEach items="${video}" var="v">
+
+                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
+                            		<c:if test="${v.locale==false}">
 								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
+								</c:if>
+								<c:if test="${v.locale==true}">
+									<video width="320" height="240" controls>
+    									<source src="${v.url}" type="video/mp4">
+									</video>
+								</c:if>
+									
 							</c:forEach>
-                            </div>
                         </div>
                         <div class="carousel-item">
-                            <div>
-                               <c:forEach items="${video}" var="v">
+                            <c:forEach items="${video}" var="v">
+
+                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
+                            		<c:if test="${v.locale==false}">
 								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
+								</c:if>
+								<c:if test="${v.locale==true}">
+									<video width="320" height="240" controls>
+    									<source src="${v.url}" type="video/mp4">
+									</video>
+								</c:if>
+									
 							</c:forEach>
-                            </div>
                         </div>
                     </div>
                     
@@ -193,25 +264,49 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <div>
-                               <c:forEach items="${video}" var="v">
+                            <c:forEach items="${video}" var="v">
+
+                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
+                            		<c:if test="${v.locale==false}">
 								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
+								</c:if>
+								<c:if test="${v.locale==true}">
+									<video width="320" height="240" controls>
+    									<source src="${v.url}" type="video/mp4">
+									</video>
+								</c:if>
+									
 							</c:forEach>
-                            </div>
                         </div>
                         <div class="carousel-item">
-                            <div>
-                                <c:forEach items="${video}" var="v">
+                            <c:forEach items="${video}" var="v">
+
+                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
+                            		<c:if test="${v.locale==false}">
 								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
+								</c:if>
+								<c:if test="${v.locale==true}">
+									<video width="320" height="240" controls>
+    									<source src="${v.url}" type="video/mp4">
+									</video>
+								</c:if>
+									
 							</c:forEach>
-                            </div>
                         </div>
                         <div class="carousel-item">
-                            <div>
-                                <c:forEach items="${video}" var="v">
+                            <c:forEach items="${video}" var="v">
+
+                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
+                            		<c:if test="${v.locale==false}">
 								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
+								</c:if>
+								<c:if test="${v.locale==true}">
+									<video width="320" height="240" controls>
+    									<source src="${v.url}" type="video/mp4">
+									</video>
+								</c:if>
+									
 							</c:forEach>
-                            </div>
                         </div>
                     </div>
                     
