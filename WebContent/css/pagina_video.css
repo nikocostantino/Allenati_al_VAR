@@ -1,24 +1,11 @@
 #categoria{
-	position: absolute;
-	bottom: 100%;
-	
+	display:inline-block;
+		margin-right:400px;
 }
 
 #difficolta{
-	position: absolute;
-	left: 10%;
-}
-
-#rispostaCorretta{
-	position: absolute;
-	top: 100%;
-	left: 50%;
-}
-
-#rispostaErrata{
-	position: absolute;
-	top: 100%;
-	left: 70%;
+	display:inline-block;
+	
 }
 
 .row {
@@ -29,9 +16,25 @@
   flex: 50%;
 }
 
-
 .row:after {
   content: "";
   display: table;
   clear: both;
+}
+
+@media screen and (max-width: 1500px) {
+	iframe{
+		width: 600px;
+		height: 250px;
+		}
+	
+	#form_commenti{
+		width: 450px;
+		height: 250px;
+	}
+	
+	#lista_commenti{
+		width: 450px;
+		height: 250px;
+	}
 }
