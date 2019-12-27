@@ -96,6 +96,15 @@
  	<url-pattern>/html/preferiti</url-pattern>
  </servlet-mapping>
  
+  <servlet>
+  	<servlet-name>ProvaAutovalutazione</servlet-name>
+  	<servlet-class>controller.ProvaAutovalutazione</servlet-class>
+</servlet>
+  
+ <servlet-mapping>
+ 	<servlet-name>ProvaAutovalutazione</servlet-name>
+ 	<url-pattern>/html/prova_autovalutazione</url-pattern>
+ </servlet-mapping>
  
  
 

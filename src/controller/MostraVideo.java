@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.startup.AddPortOffsetRule;
+
 import model.Video;
 import persistence.DBManager;
 
@@ -30,12 +32,18 @@ public class MostraVideo extends HttpServlet{
 				if(v.getUrl().equals(url))
 					videoChiesto = v;			
 			}
+			videoChiesto.setVisualizzazioni(videoChiesto.getVisualizzazioni()+1); 
 			req.getSession().setAttribute("nome", videoChiesto.getNome());
 			req.getSession().setAttribute("descrizione", videoChiesto.getDescrizione());
 			req.getSession().setAttribute("categoria", videoChiesto.getCategoria().getNome());
 			req.getSession().setAttribute("difficolta", videoChiesto.getDifficolta());
+			req.getSession().setAttribute("visualizzazioni", videoChiesto.getVisualizzazioni());
 			req.getSession().setAttribute("rispostaCorretta", videoChiesto.getRisposte().getCorretta());
 			req.getSession().setAttribute("rispostaErrata", videoChiesto.getRisposte().getErrata());
+			
+		}
+		if(req.getParameter("addPreferiti") != null) {
+			DBManager.getInstance().getUtenti().get(0).aggiungiAiPreferiti(videoChiesto);
 			
 		}
 		

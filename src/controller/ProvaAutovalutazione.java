@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,18 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Video;
-import persistence.DBManager;
+public class ProvaAutovalutazione extends HttpServlet{
 
-public class GestorePagine extends HttpServlet {
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
-		ArrayList<Video> preferiti = DBManager.getInstance().getUtenti().get(0).getPreferiti();
-		req.getSession().setAttribute("video_preferiti",preferiti);
-		RequestDispatcher rd = req.getRequestDispatcher(req.getHttpServletMapping().getPattern().replace("/html/", "")+".jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("prova_autovalutazione.jsp");
 		rd.forward(req, resp);
 	}
-
 }

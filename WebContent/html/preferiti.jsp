@@ -24,34 +24,30 @@
   				
   				<div class="list-group">
     				
-    				<a class="list-group-item list-group-item-action">
+    				
     			    	
     			    	<div class="row">
-    			    	<c:forEach items="${video_preferiti}" var="v">
-	    			    	<div class="column left">
-	    			    		
-	             
-	                            	<c:if test="${v.locale==false}">
-										<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
-									</c:if>
-									<c:if test="${v.locale==true}">
-										<video width="320" height="240" controls>
-	    									<source src="${v.url}" type="video/mp4">
-										</video>
-									</c:if>
-							</div>
-							<div class="column right">
-	    			    		<p>${v.nome}</p>
-	    			    		<p>${v.categoria}</p>
-	    			    		<p>${v.difficolta}</p>
-							</div>
+	    			    	<c:forEach items="${video_preferiti}" var="v">
+	    			    		<a class="list-group-item list-group-item-action">
+		    			    	<div class="column left">
+		                            	<c:if test="${v.locale==false}">
+											<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
+										</c:if>
+										<c:if test="${v.locale==true}">
+											<video width="320" height="240" controls>
+		    									<source src="${v.url}" type="video/mp4">
+											</video>
+										</c:if>
+								</div>
+								<div class="column right">
+		    			    		<p>${v.nome}</p>
+		    			    		<p>${v.categoria.nome}</p>
+		    			    		<p>${v.difficolta}</p>
+								</div>
+								</a>
 							</c:forEach>
 						</div>
-						
-					</a>
-								
-   					<a href="#" class="list-group-item list-group-item-action">Second item</a>
-    				<a href="#" class="list-group-item list-group-item-action">Third item</a>
+
   				
   				</div>
 		</div>

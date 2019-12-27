@@ -33,6 +33,7 @@
                         <div class="carousel-item active">
                             <div>
                             <c:forEach items="${risultatoRicerca}" var="r">
+                            	<!-- PERCHE' NON FUNZIONA????  <a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${r.url}">${r.nome}</a> -->
 								<iframe class="embed-responsive-item" src="${r.url}" allowfullscreen></iframe>
 							</c:forEach>
                             </div>
