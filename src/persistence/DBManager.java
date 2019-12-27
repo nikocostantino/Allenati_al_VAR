@@ -35,12 +35,10 @@ public class DBManager {
 		utenti.get(0).setEmail("kristian@reale.it");
 		utenti.get(0).setPassword("kristian");
 		video = new ArrayList<Video>();
-
 		aggiungiVideo(new Video("https://www.youtube.com/embed/ODmuRSPTipI","dogso","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("https://www.youtube.com/embed/5TKseKToQ6c","Stopping Promise Attack","Questa è la descrizione","DIFFICILE",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/5TKseKToQ6c","spa","Questa è la descrizione","DIFFICILE",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
 		aggiungiVideo(new Video("https://www.youtube.com/embed/9H4ahHuTGbI","fallo di mani","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
 		aggiungiVideo(new Video("../video/video1.mp4","fallo di mani","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),true));
-
 		
 		video_preferiti.put(utenti.get(0), new ArrayList<Video>());
 		
