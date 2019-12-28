@@ -38,8 +38,8 @@ public class MostraVideo extends HttpServlet{
 			req.getSession().setAttribute("categoria", videoChiesto.getCategoria().getNome());
 			req.getSession().setAttribute("difficolta", videoChiesto.getDifficolta());
 			req.getSession().setAttribute("visualizzazioni", videoChiesto.getVisualizzazioni());
-			req.getSession().setAttribute("rispostaCorretta", videoChiesto.getRisposte().getCorretta());
-			req.getSession().setAttribute("rispostaErrata", videoChiesto.getRisposte().getErrata());
+			req.getSession().setAttribute("rispostaCorretta", videoChiesto.getRisposte().getOpzioneCorretta());
+			req.getSession().setAttribute("rispostaErrata", videoChiesto.getRisposte().getOpzioneErrata());
 			
 		}
 		if(req.getParameter("addPreferiti") != null) {

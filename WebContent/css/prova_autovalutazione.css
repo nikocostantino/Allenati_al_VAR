@@ -1,0 +1,66 @@
+body {
+	background-image:url(../img/background.jpg);
+  	font-family: "Poppins", sans-serif;
+}
+
+.jumbotron{
+	opacity: 0.9;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+  padding-left: 3%;
+}
+
+@media screen and (max-width: 1500px){
+	
+	iframe{
+		
+		width: 600px;
+		height: 250px;
+	}
+	
+	#rispostaCorretta{
+	
+		width: 200px;
+		height: 50px;
+		font-size: xx-large;
+	}
+	
+	#rispostaErrata{
+		
+		width: 200px;
+		height: 50px;
+		font-size: xx-large;
+	}
+	
+	
+	
+}
+
+@media screen and (max-width: 4000px){
+	
+	iframe{
+		
+		width: 800px;
+		height: 450px;
+	
+	}
+	#rispostaCorretta{
+	
+		width: 400px;
+		height: 100px;
+		font-size: xx-large;
+	}
+	
+	#rispostaErrata{
+		
+		width: 400px;
+		height: 100px;
+		font-size: xx-large;
+	}
+}

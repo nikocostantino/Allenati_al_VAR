@@ -23,6 +23,7 @@
 		 		<p id="categoria">Categoria: ${categoria} </p>
 				<p id="difficolta"> ${difficolta} </p>
 				<br>
+				
 				<iframe class="embed-responsive-item" src="${url}"></iframe>
 				<div id="dati_video">
 					<h1> ${nome} </h1>
