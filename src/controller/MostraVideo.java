@@ -17,7 +17,7 @@ import persistence.DBManager;
 public class MostraVideo extends HttpServlet{
 
 	
-	private Video videoChiesto = null;
+	Video videoChiesto = null;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

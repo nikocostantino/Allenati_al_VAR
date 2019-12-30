@@ -22,6 +22,11 @@
 		 	<div id="colonnaSx" class="column jumbotron">
 		 		<p id="categoria">Categoria: ${categoria} </p>
 				<p id="difficolta"> ${difficolta} </p>
+				
+				<div class="btn-group btn-group-toggle" data-toggle="buttons">
+				  <a class="btn btn-primary" type="submit" href="#">Modifica</a>
+				  <a class="btn btn-danger" type="submit" href="eliminaVideo?url=${url}">Elimina</a>
+				</div>
 				<br>
 				
 				<iframe class="embed-responsive-item" src="${url}"></iframe>

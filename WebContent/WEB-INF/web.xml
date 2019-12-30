@@ -3,13 +3,13 @@
 
 
 <servlet>
-  	<servlet-name>aggiungiVideo</servlet-name>
-  	<servlet-class>controller.AggiungiVideo</servlet-class>
+  	<servlet-name>eliminaVideo</servlet-name>
+  	<servlet-class>controller.EliminaVideo</servlet-class>
  </servlet>
   
  <servlet-mapping>
-  	<servlet-name>aggiungiVideo</servlet-name>
-  	<url-pattern>/html/aggiungiVideo</url-pattern>
+  	<servlet-name>eliminaVideo</servlet-name>
+  	<url-pattern>/html/eliminaVideo</url-pattern>
  </servlet-mapping>
 
 

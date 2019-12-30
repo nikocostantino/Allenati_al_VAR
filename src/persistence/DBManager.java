@@ -76,4 +76,15 @@ public class DBManager {
 	public List<Utente> getUtenti() {
 		return utenti;
 	}
+	public void eliminaVideo(String url)
+	{
+		for(int i=0; i<video.size(); i++)
+		{
+			if(video.get(i).getUrl()==url)
+			{
+				System.out.println("eliminioooo");
+				video.remove(i);
+			}
+		}
+	}
 }
