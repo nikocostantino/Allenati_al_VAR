@@ -17,9 +17,9 @@
 <body>
 	<%@include file="header_default.html" %>
 	
-	 <div class="jumbotron">
-	 	<div class="row">
-		 	<div class="column">
+	<div id="cornice" class="jumbotron">
+	 	<div  class="row">
+		 	<div id="colonnaSx" class="column jumbotron">
 		 		<p id="categoria">Categoria: ${categoria} </p>
 				<p id="difficolta"> ${difficolta} </p>
 				<br>
@@ -29,30 +29,47 @@
 					<h1> ${nome} </h1>
 					<p> ${descrizione}</p>
 					<p> ${visualizzazioni}</p>
-					<a class="badge badge-secondary" id="addPreferiti" href="pagina_video?url=${url}&&addPreferiti=${azione}" onclick="changeText()">Preferiti</a>
+					
+					<c:set var = "isPreferito" scope = "session" value = "${isPreferito}"/>
+					<c:if test="${isPreferito == false}">
+						<a class="badge badge-secondary" id="addPreferiti" href="pagina_video?url=${url}&&addPreferiti=${azione}">Preferiti</a>
+					</c:if>	
+					<c:if test="${isPreferito == true}">
+						<a class="badge badge-secondary" id="addPreferiti" href="pagina_video?url=${url}&&addPreferiti=${azione}">Rimuovi</a>
+					</c:if>	
 								
 				</div>
 			</div>
 		
-			<div class="column" id="lista_commenti" align="center">
+			<div align="center" id="colonnaDx" class="column jumbotron">
+			
+			<div id="lista_commenti" class="up" >
 				<c:forEach items="${lista_commenti}" var="c">
 		                            	                            	
 					<p> ${c} </p>
 					
 				</c:forEach>
-			
-				<form id="form_commenti" action="pagina_video?url=${url}" method="GET" class="form-group">
-					<textarea class="form-control" id="textCommento" type="text " name="commento" placeholder="Scrivi un commento..."></textarea>
-					<input class="form-control" type="submit" value="Invia"/></form>
-				</form>
-			
-			<p class="btn btn-light" id="rispostaCorretta"> ${rispostaCorretta} </p>
-			<p class="btn btn-light" id="rispostaErrata"> ${rispostaErrata} </p>	
 			</div>
 			
+			<div  id="underPanel" class="down">
+			
+				<form id="form_commenti" action="pagina_video?url=${url}" method="GET" class="form-group">
+					<textarea class="form-control" id="textCommento"  name="commento" placeholder="Scrivi un commento..."></textarea>
+					<input class="form-control" type="submit" value="Invia"/>
+				 </form>
+			</div>
+			
+			<div align="center" id="risposte" class="three"> 
+			<button class="btn btn-light" id="rispostaCorretta"  > ${rispostaCorretta} </button>
+			<button class="btn btn-light"  id="rispostaErrata" > ${rispostaErrata} </button>
+			</div>
+		
+			</div>
+			
+			
 	</div>	
+
+	
 	</div>
-	
-	
 </body>
 </html>

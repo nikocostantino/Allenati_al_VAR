@@ -93,12 +93,12 @@
   
  <servlet-mapping>
  	<servlet-name>GestorePagine</servlet-name>
- 	<url-pattern>/html/preferiti</url-pattern>
+ 	<url-pattern>/html/gestorePagine</url-pattern>
  </servlet-mapping>
  
-  <servlet>
+ <servlet>
   	<servlet-name>ProvaAutovalutazione</servlet-name>
-  	<servlet-class>controller.ProvaAutovalutazione</servlet-class>
+  	<servlet-class>controller.GestoreProvaAutovalutazione</servlet-class>
 </servlet>
   
  <servlet-mapping>
@@ -106,7 +106,15 @@
  	<url-pattern>/html/prova_autovalutazione</url-pattern>
  </servlet-mapping>
  
- 
+ <servlet>
+  	<servlet-name>GestoreEsito</servlet-name>
+  	<servlet-class>controller.GestoreEsito</servlet-class>
+</servlet>
+  
+ <servlet-mapping>
+ 	<servlet-name>GestoreEsito</servlet-name>
+ 	<url-pattern>/html/esito</url-pattern>
+ </servlet-mapping>
 
 
 

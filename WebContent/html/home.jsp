@@ -28,304 +28,67 @@
   	<p>PIU' VISTI</p>
 	<!-- Carousel row -->
         <div class="row">
-            <div class="col col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-                <!-- Carousel -->
-                <div id="carousel-visti" class="carousel slide">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel-visti" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-visti" data-slide-to="1"></li>
-                        <li data-target="#carousel-visti" data-slide-to="2"></li>
-                    </ol>
+            <!-- Top content -->
+			<div class="top-content">
+			    <div class="container-fluid">
+			        <div id="carousel-example" class="carousel slide" data-ride="carousel">
+			            <div class="carousel-inner row w-100 mx-auto" role="listbox">
+			            	<c:set var = "first" scope = "session" value = "${true}"/>
+			            	<c:set var = "cont" scope = "request" value ="${0}" />
+			            	<c:forEach items="${video}" var="v">
+			            	
+				            	<c:if test="${first == true}">
+			                		<div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
+				                </c:if>
+				                <c:if test="${first == false && cont % 5 == 0 }">
+				                	<div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+				                </c:if>
 
-                    
-                    <a class="column" href="#carousel-visti" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <div class="content">
-                    	<div class="carousel-inner">
-	                        <div class="carousel-item active">
-	                            
-	                            <c:forEach items="${video}" var="v">
-	                            	
-	                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
-	                            	<c:if test="${v.locale==false}">
-										<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
+								
+								
+								<div class="embed-responsive-item">
+		                         
+			                       	<c:if test="${v.locale==false}">
+										<iframe  src="${v.url}" allowfullscreen></iframe>
 									</c:if>
 									<c:if test="${v.locale==true}">
 										<video width="320" height="240" controls>
-	    									<source src="${v.url}" type="video/mp4">
+											<source src="${v.url}" type="video/mp4">
 										</video>
 									</c:if>
-									
-								</c:forEach>
-	                            
-	                        </div>
-	                        
-	                        <div class="carousel-item">
-                            <c:forEach items="${video}" var="v">
-
-                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
-                            		<c:if test="${v.locale==false}">
-								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
-								</c:if>
-								<c:if test="${v.locale==true}">
-									<video width="320" height="240" controls>
-    									<source src="${v.url}" type="video/mp4">
-									</video>
-								</c:if>
-									
+								</div>
+								
+								<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
+								
+							
+							<c:set var = "cont" scope = "request" value ="${cont + 1}" />
+							<c:set var = "first" scope = "session" value = "${false}"/>
+							<c:if test="${cont % 5 == 0}">	
+								</div>
+							</c:if>
 							</c:forEach>
-                        </div>
- 
-                   		</div>
-                    </div>
-                    <a class="column" href="#carousel-visti" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                    
-                </div>
-                <!-- End carousel -->
-            </div>
-        </div>
+							
+						</div>	
+						<a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
+			                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			                <span class="sr-only">Previous</span>
+			            </a>
+			            <a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next">
+			                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			                <span class="sr-only">Next</span>
+			            </a>
+		         	</div>	
+			                
+	            </div>
+	            		<!--  -->
+	            
+	            
+			            <!--  -->
+	        </div>
+	    </div>
 </div>
 <!-- FINE CATEGORIA I PIU' VISTI -->
 
-<!-- CATEGORIA HAI GUARDATO RECENTEMENTE -->
-<div class="jumbotron">
-	
-  	<p>HAI GUARDATO RECENTEMENTE</p>
-	<!-- Carousel row -->
-        <div class="row">
-            <div class="col col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-                <!-- Carousel -->
-                <div id="carousel-recenti" class="carousel slide">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel-recenti" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-recenti" data-slide-to="1"></li>
-                        <li data-target="#carousel-recenti" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <c:forEach items="${video}" var="v">
-
-                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
-                            		<c:if test="${v.locale==false}">
-								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
-								</c:if>
-								<c:if test="${v.locale==true}">
-									<video width="320" height="240" controls>
-    									<source src="${v.url}" type="video/mp4">
-									</video>
-								</c:if>
-									
-							</c:forEach>
-                        </div>
-                        <div class="carousel-item">
-                            <c:forEach items="${video}" var="v">
-
-                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
-                            		<c:if test="${v.locale==false}">
-								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
-								</c:if>
-								<c:if test="${v.locale==true}">
-									<video width="320" height="240" controls>
-    									<source src="${v.url}" type="video/mp4">
-									</video>
-								</c:if>
-									
-							</c:forEach>
-                        </div>
-                        <div class="carousel-item">
-                            <c:forEach items="${video}" var="v">
-
-                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
-                            		<c:if test="${v.locale==false}">
-								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
-								</c:if>
-								<c:if test="${v.locale==true}">
-									<video width="320" height="240" controls>
-    									<source src="${v.url}" type="video/mp4">
-									</video>
-								</c:if>
-									
-							</c:forEach>
-                        </div>
-                    </div>
-                    
-                    <a class="carousel-control-prev" href="#carousel-recenti" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carousel-recenti" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                    
-                </div>
-                <!-- End carousel -->
-            </div>
-        </div>
-</div>
-<!-- FINE CATEGORIA HAI GUARDATO RECENTEMENTE -->
-
-<!-- CATEGORIA DOGSO -->
-<div class="jumbotron">
-	
-  	<p>DOGSO</p>
-	<!-- Carousel row -->
-        <div class="row">
-            <div class="col col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-                <!-- Carousel -->
-                <div id="carousel-dogso" class="carousel slide">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel-dogso" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-dogso" data-slide-to="1"></li>
-                        <li data-target="#carousel-dogso" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <c:forEach items="${video}" var="v">
-
-                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
-                            		<c:if test="${v.locale==false}">
-								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
-								</c:if>
-								<c:if test="${v.locale==true}">
-									<video width="320" height="240" controls>
-    									<source src="${v.url}" type="video/mp4">
-									</video>
-								</c:if>
-									
-							</c:forEach>
-                        </div>
-                        <div class="carousel-item">
-                            <c:forEach items="${video}" var="v">
-
-                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
-                            		<c:if test="${v.locale==false}">
-								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
-								</c:if>
-								<c:if test="${v.locale==true}">
-									<video width="320" height="240" controls>
-    									<source src="${v.url}" type="video/mp4">
-									</video>
-								</c:if>
-									
-							</c:forEach>
-                        </div>
-                        <div class="carousel-item">
-                            <c:forEach items="${video}" var="v">
-
-                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
-                            		<c:if test="${v.locale==false}">
-								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
-								</c:if>
-								<c:if test="${v.locale==true}">
-									<video width="320" height="240" controls>
-    									<source src="${v.url}" type="video/mp4">
-									</video>
-								</c:if>
-									
-							</c:forEach>
-                        </div>
-                    </div>
-                    
-                    <a class="carousel-control-prev" href="#carousel-dogso" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carousel-dogso" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                    
-                </div>
-                <!-- End carousel -->
-            </div>
-        </div>
-</div>
-<!-- FINE CATEGORIA DOGSO -->
-
-<!-- CATEGORIA FALLO DI MANO -->
-<div class="jumbotron">
-	
-  	<p>FALLO DI MANO</p>
-	<!-- Carousel row -->
-        <div class="row">
-            <div class="col col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-                <!-- Carousel -->
-                <div id="carousel-fallo-di-mano" class="carousel slide">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel-fallo-di-mano" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-fallo-di-mano" data-slide-to="1"></li>
-                        <li data-target="#carousel-fallo-di-mano" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <c:forEach items="${video}" var="v">
-
-                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
-                            		<c:if test="${v.locale==false}">
-								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
-								</c:if>
-								<c:if test="${v.locale==true}">
-									<video width="320" height="240" controls>
-    									<source src="${v.url}" type="video/mp4">
-									</video>
-								</c:if>
-									
-							</c:forEach>
-                        </div>
-                        <div class="carousel-item">
-                            <c:forEach items="${video}" var="v">
-
-                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
-                            		<c:if test="${v.locale==false}">
-								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
-								</c:if>
-								<c:if test="${v.locale==true}">
-									<video width="320" height="240" controls>
-    									<source src="${v.url}" type="video/mp4">
-									</video>
-								</c:if>
-									
-							</c:forEach>
-                        </div>
-                        <div class="carousel-item">
-                            <c:forEach items="${video}" var="v">
-
-                            	<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a>
-                            		<c:if test="${v.locale==false}">
-								<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
-								</c:if>
-								<c:if test="${v.locale==true}">
-									<video width="320" height="240" controls>
-    									<source src="${v.url}" type="video/mp4">
-									</video>
-								</c:if>
-									
-							</c:forEach>
-                        </div>
-                    </div>
-                    
-                    <a class="carousel-control-prev" href="#carousel-fallo-di-mano" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carousel-fallo-di-mano" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                    
-                </div>
-                <!-- End carousel -->
-            </div>
-        </div>
-</div>
-<!-- FINE CATEGORIA FALLO DI MANO -->
-		
          
 </body>
 </html>

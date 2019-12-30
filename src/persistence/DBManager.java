@@ -38,6 +38,13 @@ public class DBManager {
 		aggiungiVideo(new Video("https://www.youtube.com/embed/5TKseKToQ6c","spa","Questa è la descrizione","DIFFICILE",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
 		aggiungiVideo(new Video("https://www.youtube.com/embed/9H4ahHuTGbI","fallo di mani","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
 		aggiungiVideo(new Video("../video/video1.mp4","fallo di mani","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),true));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/rBCCKH-anBQ","dogso","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/K6T__X9t2Fc","dogso","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/FkhRBitSt70","dogso","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
+		
+		aggiungiVideo(new Video("https://www.youtube.com/embed/9VJljTFfPhk","spa","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/32MCGRKo83M","fallo di mani","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/yX79G9nyn1s","dogso","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
 		
 	}
 	

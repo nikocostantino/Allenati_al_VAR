@@ -1,5 +1,7 @@
 package model;
 
+import persistence.DBManager;
+
 public class Video {
 
 	private String url;
@@ -93,5 +95,9 @@ public class Video {
 
 	public void setLocale(Boolean locale) {
 		this.locale = locale;
+	}
+
+	public Boolean isPreferito() {
+		return DBManager.getInstance().getUtenti().get(0).getPreferiti().contains(this);
 	}
 }

@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="../css/preferiti.css" type="text/css">
 
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>ALLENATI AL VAR - Preferiti</title>
 </head>
 <body>
 	<%@include file="header_default.html" %>

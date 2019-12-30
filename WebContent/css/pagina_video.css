@@ -1,3 +1,9 @@
+
+#body{
+	font-family: "Garamond";
+  	
+}
+
 #categoria{
 	display: inline-block;
 }
@@ -11,7 +17,18 @@
 }
 
 .column {
-  flex: 50%;
+	margin: 0 !important;
+	padding: 0 !important;	
+  	flex: 50%;
+  	float:right;
+  	border-right:1px solid black;
+}
+
+
+
+#cornice{
+	 background-color:#ffffff;
+	 
 }
 
 
@@ -21,39 +38,48 @@
   clear: both;
 }
 
-@media screen and (max-width: 1500px){
+.up{
+	height: 33%;
+}
+.down{
+	height: 33%;
+}
+.three{
+	height: 33%;
+}
+@media screen and (max-width: 1499px) and (min-width: 1000px) {
 	
 	iframe{
 		
 		width: 600px;
-		height: 250px;
+		height: 350px;
 	
 	}
 	
 	#form_commenti{
 		
-		width: 600px;
+		width: 400px;
 		height: 250px;
+		padding-top: 15px;
+		
 	}
 	
 	#lista_commenti{
 		
-		width: 600px;
+		width: 400px;
 		height: 250px;
+		overflow-y: scroll;	
 	}
 }
 
-@media screen and (max-width: 4000px){
+@media screen and (max-width: 2000px) and (min-width: 1500px){
 	
 	iframe{
-		
-		width: 1000px;
-		height: 650px;
-	
+		width: 90%;
+		height: 75%;
 	}
 	
 	#form_commenti{
-		
 		width: 600px;
 		height: 250px;
 	}
@@ -61,6 +87,6 @@
 	#lista_commenti{
 		
 		width: 600px;
-		height: 250px;
+		height: 250px;	
 	}
 }

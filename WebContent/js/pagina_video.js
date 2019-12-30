@@ -1,13 +1,22 @@
-function changeText(){
-	if(document.getElementById("addPreferiti").textContent == "Preferiti")
-		document.getElementById("addPreferiti").textContent = "Rimuovi";
-	else
-		document.getElementById("addPreferiti").textContent = "Preferiti";
+
+window.onload = function() {
+    document.getElementById("rispostaCorretta").addEventListener("click", checkAnswer );
+    document.getElementById("rispostaErrata").addEventListener("click", checkAnswer );
+    document.getElementById("rispostaErrata").addEventListener("click", enableButtonCorrect );
+    document.getElementById("rispostaCorretta").addEventListener("click", enableButtonWrong );   
 }
 
 
-//NON FUNZIONA, PERCHE'?????
-document.getElementById("rispostaCorretta").addEventListener("click", checkAnswer);
-function checkAnswer(){
-	alert("controlla");
+
+function checkAnswer(e){
+	alert("Controllo la risposta ma ricordati di implementare una funziona decente");
+}
+function enableButtonCorrect() {
+    document.getElementById("rispostaCorretta").setAttribute("disabled", "disabled");
+    document.getElementById("rispostaErrata").className = "btn btn-danger";
+    	
+ }
+function enableButtonWrong() {
+    document.getElementById("rispostaErrata").setAttribute("disabled", "disabled");
+    document.getElementById("rispostaCorretta").className = "btn btn-success";
 }

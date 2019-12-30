@@ -3,15 +3,19 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.sun.tools.javac.code.Attribute.Array;
+
 public class Utente {
 	private String nome;
 	private String cognome;
 	private String password;
 	private String email;
 	private ArrayList<Video> video_preferiti;
+	private ArrayList<ProvaAutovalutazione> storico;
 
 	public Utente() {
 		this.video_preferiti = new ArrayList<Video>();
+		this.storico = new ArrayList<ProvaAutovalutazione>();
 	}
 	
 	public Utente(String nome, String cognome, String password, String email) {
@@ -20,6 +24,7 @@ public class Utente {
 		this.password = password;
 		this.email = email;
 		this.video_preferiti = new ArrayList<Video>();
+		this.storico = new ArrayList<ProvaAutovalutazione>();
 	}
 	public String getNome() {
 		return nome;
@@ -55,5 +60,29 @@ public class Utente {
 			video_preferiti.add(v);
 		else
 			video_preferiti.remove(v);
+	}
+
+	public ArrayList<ProvaAutovalutazione> getStorico() {
+		return storico;
+	}
+	
+	public void aggiungiAlloStorico(ProvaAutovalutazione provaAutovalutazione) {
+		storico.add(provaAutovalutazione);
+	}
+
+	public ArrayList<Video> trovaStorico(String data) {
+		for (ProvaAutovalutazione provaAutovalutazione : storico) {
+			if(provaAutovalutazione.getData().toString().equals(data)) {
+				
+				System.out.println(data);
+				System.out.println(provaAutovalutazione.getData().toString());
+				
+				return provaAutovalutazione.getVideo();
+				
+				
+			}
+				
+		}
+		return null;
 	}
 }

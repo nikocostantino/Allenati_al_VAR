@@ -19,25 +19,22 @@
 <body>
 
 	<h1 class="jumbotron">PROVA DI AUTOVALUTAZIONE</h1>
+	<div align="center" id="cornice" class="jumbotron" >
+
+	<br>
+	<br>
+	<c:set var = "videoProva" scope = "session" value = "${videoProva}"/>
+	<p> TEMPO RIMANENTE </p>
+	<iframe id="video" class="embed-responsive-item" src="${videoProva[0].url}"></iframe>
+	<br>
+	<br>
+	<a class="btn btn-light" href="prova_autovalutazione?risposta=${videoProva[0].risposte.opzioneCorretta}" id="rispostaCorretta"> ${videoProva[0].risposte.opzioneCorretta} </a>
+	<a class="btn btn-light" href="prova_autovalutazione?risposta=${videoProva[0].risposte.opzioneErrata}" id="rispostaErrata"> ${videoProva[0].risposte.opzioneErrata} </a>	
+
 	
-	<div class="row">
-	
-		<div class="column">
-		
-			<c:set var = "videoProva" scope = "session" value = "${videoProva}"/>
-			<iframe id="video" class="embed-responsive-item" src="${videoProva[0].url}"></iframe>
-			
-		</div>
-		
-		<div class="column">
-			
-			<a class="btn btn-light" href="prova_autovalutazione?risposta=${videoProva[0].risposte.opzioneCorretta}" id="rispostaCorretta"> ${videoProva[0].risposte.opzioneCorretta} </a>
-			<a class="btn btn-light" href="prova_autovalutazione?risposta=${videoProva[0].risposte.opzioneErrata}" id="rispostaErrata"> ${videoProva[0].risposte.opzioneErrata} </a>	
-		
-		</div>
 	
 	</div>
-
+	
 </body>
 
 </html>
