@@ -30,6 +30,11 @@ public class GestoreProvaAutovalutazione extends HttpServlet {
 		if (req.getParameter("risposta") == null) {
 			esito.clear();
 			risposteErrate = 0;
+			if(DBManager.getInstance().getVideo().size()<10) {
+				rd = req.getRequestDispatcher("error_page.html");
+				rd.forward(req, resp);
+				return;
+			}
 			while (videoProva.size() <= 9) {
 				int indice = random.nextInt(DBManager.getInstance().getVideo().size());
 				while (videoProva.contains(DBManager.getInstance().getVideo().get(indice))) {

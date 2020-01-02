@@ -34,17 +34,16 @@ public class DBManager {
 		utenti.get(0).setEmail("kristian@reale.it");
 		utenti.get(0).setPassword("kristian");
 		video = new ArrayList<Video>();
-		aggiungiVideo(new Video("https://www.youtube.com/embed/ODmuRSPTipI","dogso","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("https://www.youtube.com/embed/5TKseKToQ6c","spa","Questa è la descrizione","DIFFICILE",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("https://www.youtube.com/embed/9H4ahHuTGbI","fallo di mani","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("../video/video1.mp4","fallo di mani","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),true));
-		aggiungiVideo(new Video("https://www.youtube.com/embed/rBCCKH-anBQ","dogso","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("https://www.youtube.com/embed/K6T__X9t2Fc","dogso","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("https://www.youtube.com/embed/FkhRBitSt70","dogso","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
-		
-		aggiungiVideo(new Video("https://www.youtube.com/embed/9VJljTFfPhk","spa","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("https://www.youtube.com/embed/32MCGRKo83M","fallo di mani","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("https://www.youtube.com/embed/yX79G9nyn1s","dogso","","",new Categoria("recenti"),new OpzioniRisposte("corretta", "errata"),false));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/ODmuRSPTipI","DOGSO","Questo è un video sul DOGSO","NORMALE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),false));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/5TKseKToQ6c","SPA","Questo è un video sulla SPA","DIFFICILE",new Categoria("SPA"),new OpzioniRisposte("corretta", "errata"),false));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/9H4ahHuTGbI","FALLO DI MANI","Questo è un video sul fallo di mani","DIFFICILE",new Categoria("FALLO DI MANI"),new OpzioniRisposte("corretta", "errata"),false));
+		aggiungiVideo(new Video("../video/video1.mp4","CORIGLIANO vs NOLA - DOGSO","Questo è un video sul DOGSO","FACILE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),true));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/rBCCKH-anBQ","NEW ENGLAND REVOLUTION VS COLORADO RAPIDS - DOGSO","Questo è un video sul DOGSO","NORMALE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),false));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/K6T__X9t2Fc","COLUMBUS CREW vs HOUSTON DYNAMO - OFFSIDE and DOGSO","Questo è un video sul DOGSO","NORMALE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),false));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/FkhRBitSt70","ATLANTA UNITED vs ORLANDO CITY - DOGSO","Questo è un video sul DOGSO","NORMALE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),false));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/9VJljTFfPhk","PHILADELPHIA UNION vs NY RED BULLS - SPA","Questo è un video sulla SPA","NORMALE",new Categoria("SPA"),new OpzioniRisposte("corretta", "errata"),false));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/32MCGRKo83M","D.C. UNITED vs PHILADELPHIA UNION - FALLO DI MANI","Questo è un video sul fallo di mani","DIFFICILE",new Categoria("FALLO DI MANI"),new OpzioniRisposte("corretta", "errata"),false));
+		aggiungiVideo(new Video("https://www.youtube.com/embed/yX79G9nyn1s","PHILADELPHIA UNION vs COLORADO RAPIDS - FALLO DI MANI","Questo è un video sul fallo di mani","DIFFICILE",new Categoria("FALLO DI MANI"),new OpzioniRisposte("corretta", "errata"),false));
 		
 	}
 	

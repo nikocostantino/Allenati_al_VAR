@@ -1,4 +1,3 @@
-
 window.onload = function() {
     document.getElementById("rispostaCorretta").addEventListener("click", checkAnswer );
     document.getElementById("rispostaErrata").addEventListener("click", checkAnswer );

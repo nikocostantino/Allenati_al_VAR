@@ -5,14 +5,15 @@
 <html>
 <head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> 
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="../css/home.css" type="text/css">
 	<link rel="stylesheet" href="../css/pagina_video.css" type="text/css">
 	<script type="text/javascript" src="../js/pagina_video.js"></script>
-<meta charset="UTF-8">
-<title>ALLENATI AL VAR - Pagina video</title>
+	<script type="text/javascript" src="../js/home.js"></script>
+	<meta charset="UTF-8">
+	<title>ALLENATI AL VAR - Pagina video</title>
 </head>
 <body>
 	<%@include file="header_default.html" %>
@@ -48,33 +49,27 @@
 		
 			<div align="center" id="colonnaDx" class="column jumbotron">
 			
-			<div id="lista_commenti" class="up" >
-				<c:forEach items="${lista_commenti}" var="c">
-		                            	                            	
-					<p> ${c} </p>
-					
-				</c:forEach>
-			</div>
+				<div id="lista_commenti" class="up" >
+					<c:forEach items="${lista_commenti}" var="c">                 	                            	
+						<p> ${c} </p>				
+					</c:forEach>
+				</div>
 			
-			<div  id="underPanel" class="down">
+				<div  id="underPanel" class="down">
+				
+					<form id="form_commenti" action="pagina_video?url=${url}" method="GET" class="form-group">
+						<textarea class="form-control" id="textCommento"  name="commento" placeholder="Scrivi un commento..."></textarea>
+						<input class="form-control" type="submit" value="Invia"/>
+					 </form>
+				</div>
 			
-				<form id="form_commenti" action="pagina_video?url=${url}" method="GET" class="form-group">
-					<textarea class="form-control" id="textCommento"  name="commento" placeholder="Scrivi un commento..."></textarea>
-					<input class="form-control" type="submit" value="Invia"/>
-				 </form>
-			</div>
-			
-			<div align="center" id="risposte" class="three"> 
-			<button class="btn btn-light" id="rispostaCorretta"  > ${rispostaCorretta} </button>
-			<button class="btn btn-light"  id="rispostaErrata" > ${rispostaErrata} </button>
-			</div>
+				<div align="center" id="risposte" class="three"> 
+					<button class="btn btn-light" id="rispostaCorretta"> ${rispostaCorretta} </button>
+					<button class="btn btn-light" id="rispostaErrata"> ${rispostaErrata} </button>
+				</div>
 		
-			</div>
-			
-			
-	</div>	
-
-	
+			</div>	
+		</div>	
 	</div>
 </body>
 </html>

@@ -24,7 +24,8 @@ public class Ricerca extends HttpServlet {
 		
 		
 		for(int i=0; i<video.size(); i++) {
-			if(video.get(i).getNome().equals(textRicerca)) {
+			
+			if(video.get(i).getNome().contains(textRicerca)) {
 				risultatoRicerca.add(video.get(i));
 			}
 		}

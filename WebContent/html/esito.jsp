@@ -23,7 +23,7 @@
 	
 	<div class="jumbotron container" id="risposte">
 	
-		<h1>ESITO PROVA AUTOVALUTAZIONE</h1>
+		<h1><span class="badge badge-dark">ESITO PROVA AUTOVALUTAZIONE</span></h1>
 		
 		<ul class="list-group">
 		

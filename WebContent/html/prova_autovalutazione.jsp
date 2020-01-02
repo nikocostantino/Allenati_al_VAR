@@ -18,7 +18,9 @@
 
 <body>
 
-	<h1 class="jumbotron">PROVA DI AUTOVALUTAZIONE</h1>
+	<div class="jumbotron">
+		<h1><span class="badge badge-dark">PROVA DI AUTOVALUTAZIONE</span></h1>
+	</div>
 	<div align="center" id="cornice" class="jumbotron" >
 
 	<br>

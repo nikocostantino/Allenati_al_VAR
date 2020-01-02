@@ -8,8 +8,9 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-	
 	<link rel="stylesheet" href="../css/preferiti.css" type="text/css">
+	<script type="text/javascript" src="../js/home.js"></script>
+	
 
 	<meta charset="UTF-8">
 	<title>ALLENATI AL VAR - Preferiti</title>
@@ -20,15 +21,14 @@
 	<div class="jumbotron">
 	
 		<div class="container">
-  			<h2>I miei preferiti</h2>
-  				
+  			<h1><span class="badge badge-light">PREFERITI</span></h1>	
   				<div class="list-group">
     				
     				
     			    	
     			    	<div class="row">
 	    			    	<c:forEach items="${video_preferiti}" var="v">
-	    			    		<a class="list-group-item list-group-item-action">
+	    			    		<a href="pagina_video?url=${v.url}" class="list-group-item list-group-item-action">
 		    			    	<div class="column left">
 		                            	<c:if test="${v.locale==false}">
 											<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
