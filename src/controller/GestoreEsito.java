@@ -21,9 +21,6 @@ public class GestoreEsito extends HttpServlet{
 		
 		req.getSession().setAttribute("esito", DBManager.getInstance().getUtenti().get(0).trovaStorico(data));
 		
-		
-		
-		
 		rd.forward(req, resp);
 	}
 }

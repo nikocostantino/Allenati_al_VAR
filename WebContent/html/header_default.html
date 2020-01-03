@@ -26,7 +26,7 @@
 				</div>
 		</li>
 		<li class="nav-item">
-      <a class="nav-link" id="prova_autovalutazione" href="#">Prova Autovalutazione</a>
+      <a class="nav-link" id="prova_autovalutazione" href="#" data-toggle="modal" data-target="#myModal">Prova Autovalutazione</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="aggiungiVideo">Aggiungi Video</a>
@@ -42,3 +42,32 @@
   </div>
 </nav>
 <!-- FINE BARRA DI NAVIGAZIONE -->
+
+
+<!-- INIZIO CUSTOM ALERT -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Sei Sicuro?</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Stai per iniziare una Prova di Autovalutazione.
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+          <a class="btn btn-secondary" href="prova_autovalutazione">Inizia</a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+<!-- FINE CUSTOM ALERT -->

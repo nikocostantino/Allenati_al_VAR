@@ -22,10 +22,9 @@ public class Ricerca extends HttpServlet {
 		ArrayList<Video> video = DBManager.getInstance().getVideo(); 
 		ArrayList<Video> risultatoRicerca = new ArrayList<Video>();
 		
-		
 		for(int i=0; i<video.size(); i++) {
 			
-			if(video.get(i).getNome().contains(textRicerca)) {
+			if(video.get(i).getNome().contains(textRicerca.toUpperCase()) || video.get(i).getNome().contains(textRicerca.toLowerCase())) {
 				risultatoRicerca.add(video.get(i));
 			}
 		}

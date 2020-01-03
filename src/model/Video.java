@@ -4,6 +4,7 @@ import persistence.DBManager;
 
 public class Video {
 
+	private String id;
 	private String url;
 	private String nome;
 	private String descrizione;
@@ -15,7 +16,8 @@ public class Video {
 	private Boolean locale;
 
 
-	public Video(String url, String nome, String descrizione, String difficolta, Categoria categoria, OpzioniRisposte risposte, Boolean locale) {
+	public Video(String id,String url, String nome, String descrizione, String difficolta, Categoria categoria, OpzioniRisposte risposte, Boolean locale) {
+		this.id = id;
 		this.url = url;
 		this.nome = nome;
 		this.descrizione = descrizione;
@@ -28,12 +30,21 @@ public class Video {
 		this.locale = locale;
 	}
 	
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	public String getId() {
+		return id;
+	}
+	
 	public String getUrl() {
 		return url;
 	}
 	public void setUrl(String url) {
 		this.url = url;
 	}
+	
 	public String getNome() {
 		return nome;
 	}

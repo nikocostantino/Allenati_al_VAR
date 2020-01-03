@@ -69,7 +69,7 @@ public class GestoreProvaAutovalutazione extends HttpServlet {
 			}
 
 		}
-
+		
 		rd.forward(req, resp);
 	}
 

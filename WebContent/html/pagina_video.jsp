@@ -11,7 +11,9 @@
 	<link rel="stylesheet" href="../css/home.css" type="text/css">
 	<link rel="stylesheet" href="../css/pagina_video.css" type="text/css">
 	<script type="text/javascript" src="../js/pagina_video.js"></script>
-	<script type="text/javascript" src="../js/home.js"></script>
+	
+	<script src="https://www.youtube.com/iframe_api" ></script >
+	
 	<meta charset="UTF-8">
 	<title>ALLENATI AL VAR - Pagina video</title>
 </head>
@@ -30,11 +32,18 @@
 				</div>
 				<br>
 				
-				<iframe class="embed-responsive-item" src="${url}"></iframe>
+				<c:if test="${locale == true }">
+					<iframe class="embed-responsive-item" src="${url}"></iframe> 
+				</c:if>
+				<c:if test="${locale != true }">
+					<div  id="video-placeholder"></div>
+					<div id="controls">
+				</c:if>
+				<!--  <iframe class="embed-responsive-item" src="${url}"></iframe> -->
 				<div id="dati_video">
 					<h1> ${nome} </h1>
 					<p> ${descrizione}</p>
-					<p> ${visualizzazioni}</p>
+					<p> ${visualizzazioni} visualizzazioni</p>
 					
 					<c:set var = "isPreferito" scope = "session" value = "${isPreferito}"/>
 					<c:if test="${isPreferito == false}">
@@ -71,5 +80,52 @@
 			</div>	
 		</div>	
 	</div>
+	
+	<script>
+		var player;
+	
+		function onYouTubeIframeAPIReady() {
+		    player = new YT.Player('video-placeholder', {
+		        width: 600,
+		        height: 400,
+		        videoId: '${id}',
+		        playerVars: {
+		            color: 'white',
+		            playlist: 'taJ60kskkns,FG0fTKAqZ5g'
+		        },
+		        events: {
+		            onReady: initialize
+		        }
+		    });
+		}
+
+		function initialize(){
+
+		    // Update the controls on load
+		    updateTimerDisplay();
+		    updateProgressBar();
+
+		    // Clear any old interval.
+		    clearInterval(time_update_interval);
+
+		    // Start interval to update elapsed time display and
+		    // the elapsed part of the progress bar every second.
+		    time_update_interval = setInterval(function () {
+		        updateTimerDisplay();
+		        updateProgressBar();
+		    }, 1000);
+
+
+		    $('#volume-input').val(Math.round(player.getVolume()));
+		}
+		
+		function onYouTubePlayerReady(playerId) {
+		    alert(player.getDuration());
+		}
+		
+	</script>
+	
+	
+	
 </body>
 </html>

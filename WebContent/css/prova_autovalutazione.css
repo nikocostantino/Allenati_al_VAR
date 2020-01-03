@@ -59,3 +59,12 @@ body {
 		font-size: xx-large;
 	}
 }
+
+#video-placeholder{
+    width: 600px;
+    height: 300px;
+    
+}
+#controls{
+    margin-right: 40%;
+}

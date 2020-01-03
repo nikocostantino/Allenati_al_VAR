@@ -26,6 +26,14 @@ public class MostraVideo extends HttpServlet{
 		
 		if(url!=null) {
 			req.getSession().setAttribute("url", req.getParameter("url"));
+			for (Video video : DBManager.getInstance().getVideo()) {
+				if(video.getUrl().equals(req.getParameter("url"))){
+					req.getSession().setAttribute("id", video.getId());
+					if(video.getLocale()==true)
+						req.getSession().setAttribute("locale", true);
+				}
+				
+			}
 			ArrayList<Video> video = DBManager.getInstance().getVideo();
 			
 			for(Video v : video) {
