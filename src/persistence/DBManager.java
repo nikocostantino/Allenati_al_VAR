@@ -1,7 +1,6 @@
 package persistence;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import model.Categoria;
@@ -91,9 +90,8 @@ public class DBManager {
 	{
 		for(int i=0; i<video.size(); i++)
 		{
-			if(video.get(i).getUrl()==url)
+			if(video.get(i).getUrl().equals(url))
 			{
-				System.out.println("eliminioooo");
 				video.remove(i);
 			}
 		}
