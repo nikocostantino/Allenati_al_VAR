@@ -1,9 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-
-import com.sun.tools.javac.code.Attribute.Array;
 
 public class Utente {
 	private String nome;
