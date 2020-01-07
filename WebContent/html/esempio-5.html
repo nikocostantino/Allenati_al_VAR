@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>	
+		body{font-family: arial;padding:40px; margin:0; background: #19a2c9; color:#fff; }
+		a{color:#fff210; text-decoration: none; display: inline-block; width:33%;text-align: center}
+		hr{ border: 0; height: 1px; background: #ccc; margin-bottom: 40px; }
+		ul{padding: 0;margin:0;}
+		li{display: inline-block;padding: 5px}
+		.panel{display: none; padding:0; margin: 0;}
+		.panel.active{display: block}
+		li.active{background: #333}
+	</style>
+</head>
+<body>
+	<h1>JQuery</h1>
+	<h2>Introduzione a jquery</h2>
+	
+	<div class="tab-container">
+		<ul class="tab-menu">
+			<li class="active" data-panel="panel1">Titolo 1</li>
+			<li data-panel="panel2">Titolo 2</li>
+			<li data-panel="panel3">Titolo 3</li>
+		</ul>	
+		<div class="panel active" id="panel1">	
+			<h3>Pannello 1</h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</div>
+		<div class="panel" id="panel2">	
+			<h3>Pannello 2</h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</div>
+		<div class="panel" id="panel3">	
+			<h3>Pannello 3</h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>	
+		$(document).ready(function(){
+			
+			// evento che ascolta ogni click su gli elementi li
+			$(".tab-menu li").on('click', function(){
+				
+				//stabilisco qual'è il container
+				var $currentContainer = $(this).closest(".tab-container");
+				
+				//trovo l'elemento corrente nel menù e rimuovo la classe active
+				$currentContainer.find(".tab-menu li.active").removeClass("active");
+				
+				//aggiungo la classe al nuovo elemento corrente
+				$(this).addClass("active");
+				
+				
+				//stabilisco qual'è il pannello da mostrare
+				// 1) this si riferisce a .tab-menu li 
+				var panelToShow  = $(this).attr("data-panel");
+				
+				//trovo il pannello attivo lo nascondo e mostro quello nuovo
+				$currentContainer.find(".panel.active").slideUp(600, showPanel);
+				
+				//funzione che viene passato dopo lo slideUp come "callback"
+				function showPanel(){
+					
+					// 2) this si riferisce a .panel.active 
+					$(this).removeClass('active');
+					
+					//creo il selettore per mostrare il nuovo pannello corrente
+					$("#"+panelToShow ).slideDown(600, function (){
+						
+						// 3) this si riferisce al panelToShow
+						$(this).addClass('active');
+					});
+				}
+			});
+		});
+	</script>
+</body>
+</html>
