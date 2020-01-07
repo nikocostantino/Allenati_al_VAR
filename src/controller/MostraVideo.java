@@ -40,6 +40,9 @@ public class MostraVideo extends HttpServlet{
 				if(v.getUrl().equals(url))
 					videoChiesto = v;			
 			}
+			
+			DBManager.getInstance().aggiornaRecenti(videoChiesto);
+			
 			videoChiesto.setVisualizzazioni(videoChiesto.getVisualizzazioni()+1); 
 			req.getSession().setAttribute("nome", videoChiesto.getNome());
 			req.getSession().setAttribute("descrizione", videoChiesto.getDescrizione());

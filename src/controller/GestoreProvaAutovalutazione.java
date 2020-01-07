@@ -43,6 +43,7 @@ public class GestoreProvaAutovalutazione extends HttpServlet {
 				videoProva.add(DBManager.getInstance().getVideo().get(indice));
 			}
 			req.getSession().setAttribute("videoProva", videoProva);
+			req.getSession().setAttribute("dimensione", videoProva.size());
 		} else {
 			
 			if (req.getParameter("risposta").equals("corretta"))
@@ -70,6 +71,7 @@ public class GestoreProvaAutovalutazione extends HttpServlet {
 
 		}
 		
+		req.getSession().setAttribute("indice", esito.size()+1);
 		rd.forward(req, resp);
 	}
 

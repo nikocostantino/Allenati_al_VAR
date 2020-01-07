@@ -37,11 +37,11 @@
 				</c:if>
 				<c:if test="${locale != true }">
 					<div  id="video-placeholder"></div>
-					<div id="controls">
+					<div id="controls"> </div>
 				</c:if>
 				<!--  <iframe class="embed-responsive-item" src="${url}"></iframe> -->
 				<div id="dati_video">
-					<h1> ${nome} </h1>
+					<div id="nome_video"> ${nome} </div> 
 					<p> ${descrizione}</p>
 					<p> ${visualizzazioni} visualizzazioni</p>
 					
@@ -56,7 +56,7 @@
 				</div>
 			</div>
 		
-			<div align="center" id="colonnaDx" class="column jumbotron">
+			<div align="right" id="colonnaDx" class="column jumbotron">
 			
 				<div id="lista_commenti" class="up" >
 					<c:forEach items="${lista_commenti}" var="c">                 	                            	

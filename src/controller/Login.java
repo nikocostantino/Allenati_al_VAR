@@ -32,9 +32,13 @@ public class Login extends HttpServlet{
 		if (utente != null) {
 			req.getSession().setAttribute("utente", utente);
 
-//			resp.sendRedirect(".");
+			//resp.sendRedirect(".");
 			List<Video> video = DBManager.getInstance().getVideo();
 			req.getSession().setAttribute("video", video);
+			List<Video> piu_visti = DBManager.getInstance().getPiuVisti();
+			req.getSession().setAttribute("video_piu_visti", piu_visti);
+			List<Video> recenti = DBManager.getInstance().getRecenti();
+			req.getSession().setAttribute("video_recenti", recenti);
 
 			RequestDispatcher rd = req.getRequestDispatcher("/html/home");
 			rd.forward(req, resp);
