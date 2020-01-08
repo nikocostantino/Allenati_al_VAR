@@ -28,7 +28,7 @@
 				
 				<div class="btn-group btn-group-toggle" data-toggle="buttons">
 				  <a class="btn btn-primary" type="submit" href="#">Modifica</a>
-				  <a class="btn btn-danger" type="submit" href="eliminaVideo?url=${url}">Elimina</a>
+				  <a class="btn btn-danger" id="eliminazione" href="#" data-toggle="modal" data-target="#Eliminazione">Rimuovi</a>
 				</div>
 				<br>
 				
@@ -81,6 +81,33 @@
 		</div>	
 	</div>
 	
+	<!-- INIZIO CUSTOM ALERT -->
+<div class="modal fade" id="Eliminazione">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Sei Sicuro?</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Vuoi eliminare davvero questo video?
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+          <a class="btn btn-secondary" href="eliminaVideo?url=${url}">Elimina</a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+<!-- FINE CUSTOM ALERT -->
 	<script>
 		var player;
 	
