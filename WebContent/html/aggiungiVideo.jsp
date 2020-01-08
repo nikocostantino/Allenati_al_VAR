@@ -78,7 +78,7 @@
 	    <div id="anteprimaVideo" class="column right">
 
 	    	</div>
-			</div>
+			</div> 
 	    	
 </div>
 
