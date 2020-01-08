@@ -114,6 +114,22 @@ public class DBManager {
 				video.remove(i);
 			}
 		}
+		
+		for(int i=0; i<recenti.size(); i++)
+		{
+			if(recenti.get(i).getUrl().equals(url))
+			{
+				recenti.remove(i);
+			}
+		}
+		
+		for(int i=0; i<piu_visti.size(); i++)
+		{
+			if(piu_visti.get(i).getUrl().equals(url))
+			{
+				piu_visti.remove(i);
+			}
+		}
 	}
 
 	public ArrayList<Video> getPiuVisti() {
@@ -145,6 +161,7 @@ public class DBManager {
 		if(recenti.size()>15)
 			recenti.remove(15);
 		
-		recenti.add(0, videoChiesto);
+		if(!recenti.contains(videoChiesto))
+			recenti.add(0, videoChiesto);
 	}
 }

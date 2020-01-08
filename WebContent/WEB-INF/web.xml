@@ -22,26 +22,10 @@
  </servlet-mapping>
 
 
-<servlet>
-  	<servlet-name>RegistraUtente</servlet-name>
-  	<servlet-class>controller.RegistraUtente</servlet-class>
- </servlet>
-  
- <servlet-mapping>
-  	<servlet-name>RegistraUtente</servlet-name>
-  	<url-pattern>/html/registraUtente</url-pattern>
- </servlet-mapping>
+
 
   
-<servlet>
-  	<servlet-name>Registrati</servlet-name>
-  	<servlet-class>controller.Registrati</servlet-class>
- </servlet>
-  
- <servlet-mapping>
-  	<servlet-name>Registrati</servlet-name>
-  	<url-pattern>/html/registrati</url-pattern>
- </servlet-mapping>
+
 
 <servlet>
   	<servlet-name>Login</servlet-name>
