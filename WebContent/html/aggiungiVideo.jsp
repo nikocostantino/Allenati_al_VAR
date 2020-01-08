@@ -27,7 +27,7 @@
   			
   			<div class="row">
   			<div class="column left">
-  			<form id="formContent" method="POST" action="aggiungiVideo">
+  			<form id="formContent" method="POST" action="gestoreVideo?aggiungiVideo=true">
 	      	
 	      	<div class="active">
 	      		<input type="text" id="link" class="fadeIn second" name="link" placeholder="link"/>
@@ -35,7 +35,7 @@
 	      	</div>
 	      	
 	      	<div class="inactive">
-	      		<input type="text" id="nome" class="fadeIn second" name="nome" placeholder="nome"/>
+	      	<input type="text" id="nome" class="fadeIn second" name="nome" placeholder="nome"/>
 								
 				
 				
@@ -59,21 +59,26 @@
 				</select>
 			</div>
 			
+			<input type="text" id="opzioneRispostaCorretta" class="fadeIn second" name="opzioneRispostaCorretta" placeholder="opzione di risposta corretta"/>
+			<input type="text" id="opzioneRispostaErrata" class="fadeIn second" name="opzioneRispostaErrata" placeholder="opzione di risposta errata"/>
+			
+			
 			<textarea class="fadeIn second" id="descrizione"  name="descrizione" placeholder="descrizione"></textarea>
 			
 					  
 			<div class="btn-group-toggle" data-toggle="buttons">
+				<a class="btn btn-secondary" id="Indietro" href="gestorePagine?pagina=aggiungiVideo" type="submit">Indietro</a>
 				<a class="btn btn-danger" id="Annulla" href="home" type="submit">Annulla</a>
-	      		<a class="btn btn-primary" id="Aggiungi" href="#" type="submit">Aggiungi</a>
+	      		<button class="btn btn-primary" id="Aggiungi" type="submit">Aggiungi</button>
 			</div>
 			</div>		
 	      	
 	    	</form>
 	    </div>
-	    <div class="column right">
-	    ippolito
+	    <div id="anteprimaVideo" class="column right">
+
 	    	</div>
-			</div>
+			</div> 
 	    	
 </div>
 
@@ -82,8 +87,25 @@
 		$("document").ready(function(){
 			$("#avanti").on('click',function(){
 				var $temp= $(this).closest("#formContent");
-				$temp.find(".inactive").removeClass("inactive");
-				$temp.find("#avanti").addClass("inactive");
+							
+				var url=document.getElementById("link").value;
+				if(url=="")
+				{
+					alert("URL VIDEO VUOTO!");				
+				}
+				else
+				{
+					$temp.find(".inactive").removeClass("inactive");
+					$temp.find("#avanti").addClass("inactive");
+					$temp.find("#link").addClass("inactive");
+
+					var frame = "<iframe width='448' id='video' src='' height='252' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
+					document.getElementById("anteprimaVideo").innerHTML=frame;
+				
+					document.getElementById("video").setAttribute("src", url);
+				}
+				
+
 			})
 		})
 	</script>

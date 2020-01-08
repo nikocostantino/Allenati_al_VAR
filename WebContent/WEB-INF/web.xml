@@ -2,38 +2,22 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
 
 <servlet>
-  	<servlet-name>aggiungiVideo</servlet-name>
-  	<servlet-class>controller.AggiungiVideo</servlet-class>
+  	<servlet-name>gestoreVideo</servlet-name>
+  	<servlet-class>controller.GestoreVideo</servlet-class>
  </servlet>
   
  <servlet-mapping>
-  	<servlet-name>aggiungiVideo</servlet-name>
-  	<url-pattern>/html/aggiungiVideo</url-pattern>
+  	<servlet-name>gestoreVideo</servlet-name>
+  	<url-pattern>/html/gestoreVideo</url-pattern>
  </servlet-mapping>
 
 <servlet>
-  	<servlet-name>eliminaVideo</servlet-name>
-  	<servlet-class>controller.EliminaVideo</servlet-class>
- </servlet>
-  
- <servlet-mapping>
-  	<servlet-name>eliminaVideo</servlet-name>
-  	<url-pattern>/html/eliminaVideo</url-pattern>
- </servlet-mapping>
-
-
-
-
-  
-
-
-<servlet>
-  	<servlet-name>Login</servlet-name>
+  	<servlet-name>login</servlet-name>
   	<servlet-class>controller.Login</servlet-class>
  </servlet>
   
  <servlet-mapping>
-  	<servlet-name>Login</servlet-name>
+  	<servlet-name>login</servlet-name>
   	<url-pattern>/html/login</url-pattern>
  </servlet-mapping>
   

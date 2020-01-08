@@ -101,7 +101,7 @@
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
-          <a class="btn btn-secondary" href="eliminaVideo?url=${url}">Elimina</a>
+          <a class="btn btn-secondary" href="gestoreVideo?eliminaVideo=${url}">Elimina</a>
         </div>
         
       </div>
