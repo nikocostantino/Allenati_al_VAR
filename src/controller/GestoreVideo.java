@@ -17,13 +17,13 @@ public class GestoreVideo extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url=req.getParameter("eliminaVideo");
+		String nuovoVideo=req.getParameter("aggiungiVideo");
 		if(url!=null)
 		{
 			DBManager.getInstance().eliminaVideo(url);
 		}
 		
-		String nuovoVideo=req.getParameter("aggiungiVideo");
-		if(nuovoVideo.equals("true"))
+		else if(nuovoVideo!=null && nuovoVideo.equals("true"))
 		{
 			String link = req.getParameter("link");
 			String nome = req.getParameter("nome");
@@ -32,8 +32,7 @@ public class GestoreVideo extends HttpServlet {
 			String rispostaCorretta = req.getParameter("opzione di risposta corretta");
 			String rispostaErrata = req.getParameter("opzione di risposta errata");
 			String descrizione = req.getParameter("descrizione");	
-			
-			Video V = new Video("1", link, nome, descrizione, gradoDifficolta, new Categoria(categoria), new OpzioniRisposte(rispostaCorretta, rispostaErrata), false);
+			Video V = new Video(link.substring(30), link, nome, descrizione, gradoDifficolta, new Categoria(categoria), new OpzioniRisposte(rispostaCorretta, rispostaErrata), false);
 			DBManager.getInstance().aggiungiVideo(V);
 			
 			
