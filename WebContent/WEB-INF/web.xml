@@ -21,19 +21,13 @@
   	<url-pattern>/html/eliminaVideo</url-pattern>
  </servlet-mapping>
 
-
-
-
-  
-
-
 <servlet>
-  	<servlet-name>Login</servlet-name>
+  	<servlet-name>login</servlet-name>
   	<servlet-class>controller.Login</servlet-class>
  </servlet>
   
  <servlet-mapping>
-  	<servlet-name>Login</servlet-name>
+  	<servlet-name>login</servlet-name>
   	<url-pattern>/html/login</url-pattern>
  </servlet-mapping>
   
