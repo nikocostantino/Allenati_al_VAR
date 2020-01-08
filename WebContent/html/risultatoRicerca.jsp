@@ -22,12 +22,12 @@
 	<h1><span class="badge badge-light">RISULTATO RICERCA: ${textRicerca}</span></h1>
 	
 	<!--Carousel Wrapper-->
-	<div id="video-carousel-example" class="carousel slide carousel-fade" data-ride="carousel">
+	<div id="video-carousel-ricerca" class="carousel slide carousel-fade" data-ride="carousel">
 	  <!--Indicators-->
 	  <ol class="carousel-indicators">
-	    <li data-target="#video-carousel-example" data-slide-to="0" class="active"></li>
-	    <li data-target="#video-carousel-example" data-slide-to="1"></li>
-	    <li data-target="#video-carousel-example" data-slide-to="2"></li>
+	    <li data-target="#video-carousel-ricerca" data-slide-to="0" class="active"></li>
+	    <li data-target="#video-carousel-ricerca" data-slide-to="1"></li>
+	    <li data-target="#video-carousel-ricerca" data-slide-to="2"></li>
 	  </ol>
 	  <!--/.Indicators-->
 	  
@@ -46,7 +46,15 @@
 			</c:if>
 			<div class="inline" align="center">
 				<div class=rowUp>
-					<object  data="${r.url}" width="300" height="180" muted></object>
+					<c:if test="${r.locale==false}">
+						<iframe id="single_video" src="${r.url}" class="video-fluid"></iframe>
+					</c:if>
+	
+					<c:if test="${r.locale==true}">
+						<video id="single_local_video" class="video-fluid" controls muted>
+			       			<source src="${r.url}" type="video/mp4" />
+			     		</video>
+					</c:if>
 				</div>
 				<div class="rowDown">
 					<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${r.url}">${r.nome}</a> 
@@ -63,11 +71,11 @@
 	  
 	  <!--Controls-->
 	  
-	  <a id="column" class="carousel-control-prev" href="#video-carousel-example" role="button" data-slide="prev">
+	  <a id="column" class="carousel-control-prev" href="#video-carousel-ricerca" role="button" data-slide="prev">
 	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 	    <span class="sr-only">Previous</span>
 	  </a>
-	  <a id="column" class="carousel-control-next" href="#video-carousel-example" role="button" data-slide="next">
+	  <a id="column" class="carousel-control-next" href="#video-carousel-ricerca" role="button" data-slide="next">
 	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 	    <span class="sr-only">Next</span>
 	  </a>

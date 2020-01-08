@@ -13,17 +13,10 @@ import model.Video;
 
 public class DBManager {
 	private static DBManager instance = null;
-	
 	private List<Utente> utenti;
-	
-	
-
 	private ArrayList<Video> video;
-
 	private ArrayList<Video> piu_visti;
-
 	private ArrayList<Video> recenti;
-	
 	
 	public static DBManager getInstance() {
 		if (instance == null) {
@@ -34,15 +27,14 @@ public class DBManager {
 	
 	private DBManager() {
 		utenti = new ArrayList<Utente>();
-		utenti.add(new Utente());
-		utenti.get(0).setNome("kristian");
-		utenti.get(0).setCognome("reale");
-		utenti.get(0).setEmail("kristian@reale.it");
-		utenti.get(0).setPassword("kristian");
+		Utente user = new Utente("Kristian","Reale","kristian@reale.it","kristian", "on");
+		utenti.add(user);
+		
 		video = new ArrayList<Video>();
 		piu_visti = new ArrayList<Video>();
 		recenti = new ArrayList<Video>();
-		aggiungiVideo(new Video("ODmuRSPTipI","https://www.youtube.com/embed/ODmuRSPTipI","DOGSO","Questo è un video sul DOGSO","NORMALE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),false));
+		
+		aggiungiVideo(new Video("ODmuRSPTipI","https://www.youtube.com/embed/ODmuRSPTipI","Dogso","Questo è un video sul DOGSO","NORMALE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),false));
 		aggiungiVideo(new Video("5TKseKToQ6c","https://www.youtube.com/embed/5TKseKToQ6c","SPA","Questo è un video sulla SPA","DIFFICILE",new Categoria("SPA"),new OpzioniRisposte("corretta", "errata"),false));
 		aggiungiVideo(new Video("9H4ahHuTGbI","https://www.youtube.com/embed/9H4ahHuTGbI","FALLO DI MANI","Questo è un video sul fallo di mani","DIFFICILE",new Categoria("FALLO DI MANI"),new OpzioniRisposte("corretta", "errata"),false));
 		aggiungiVideo(new Video("rBCCKH-anBQ","https://www.youtube.com/embed/rBCCKH-anBQ","NEW ENGLAND REVOLUTION VS COLORADO RAPIDS - DOGSO","Questo è un video sul DOGSO","NORMALE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),false));
@@ -62,19 +54,7 @@ public class DBManager {
 		aggiungiVideo(new Video("","../video/video8.mp4","FALLO DI MANI NON PUNIBILE","Questo è un video sul fallo di mani","FACILE",new Categoria("FALLO DI MANI"),new OpzioniRisposte("corretta", "errata"),true));
 		aggiungiVideo(new Video("","../video/video9.mp4","DOGSO CON FALLO DI MANI","Questo è un video sul fallo di mani","FACILE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),true));
 		aggiungiVideo(new Video("","../video/video10.mp4","FALLO DI GIOCO","Questo è un video su fallo di gioco","FACILE",new Categoria("FALLO DI GIOCO"),new OpzioniRisposte("corretta", "errata"),true));
-		
-		/*
-		aggiungiVideo(new Video("ODmuRSPTipI","DOGSO","Questo è un video sul DOGSO","NORMALE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("5TKseKToQ6c","SPA","Questo è un video sulla SPA","DIFFICILE",new Categoria("SPA"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("9H4ahHuTGbI","FALLO DI MANI","Questo è un video sul fallo di mani","DIFFICILE",new Categoria("FALLO DI MANI"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("../video/video1.mp4","CORIGLIANO vs NOLA - DOGSO","Questo è un video sul DOGSO","FACILE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),true));
-		aggiungiVideo(new Video("rBCCKH-anBQ","NEW ENGLAND REVOLUTION VS COLORADO RAPIDS - DOGSO","Questo è un video sul DOGSO","NORMALE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("K6T__X9t2Fc","COLUMBUS CREW vs HOUSTON DYNAMO - OFFSIDE and DOGSO","Questo è un video sul DOGSO","NORMALE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("FkhRBitSt70","ATLANTA UNITED vs ORLANDO CITY - DOGSO","Questo è un video sul DOGSO","NORMALE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("9VJljTFfPhk","PHILADELPHIA UNION vs NY RED BULLS - SPA","Questo è un video sulla SPA","NORMALE",new Categoria("SPA"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("32MCGRKo83M","D.C. UNITED vs PHILADELPHIA UNION - FALLO DI MANI","Questo è un video sul fallo di mani","DIFFICILE",new Categoria("FALLO DI MANI"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("yX79G9nyn1s","PHILADELPHIA UNION vs COLORADO RAPIDS - FALLO DI MANI","Questo è un video sul fallo di mani","DIFFICILE",new Categoria("FALLO DI MANI"),new OpzioniRisposte("corretta", "errata"),false));
-*/
+
 	}
 	
 	public void inserisciUtente(Utente u) {
@@ -85,10 +65,7 @@ public class DBManager {
 		for(int i=0; i<utenti.size(); i++)
 		{	
 			if (email.equals(utenti.get(i).getEmail()) && password.equals(utenti.get(i).getPassword())) {
-				Utente u = new Utente();
-				u.setEmail(utenti.get(i).getEmail());
-				u.setPassword(utenti.get(i).getPassword());
-				return u;
+				return utenti.get(i);
 			}
 		}
 		return null;
@@ -135,6 +112,7 @@ public class DBManager {
 	public ArrayList<Video> getPiuVisti() {
 		
 		int totaleVisualizzazioni = 0;
+		piu_visti.clear();
 		
 		for (Video video : video) {
 			totaleVisualizzazioni+= video.getVisualizzazioni();
@@ -144,7 +122,8 @@ public class DBManager {
 		
 		for (Video video : video) {
 			if(video.getVisualizzazioni() > mediaVisualizzazioni) {
-				piu_visti.add(video);
+				if(!piu_visti.contains(video))
+					piu_visti.add(video);
 			}
 		}
 		

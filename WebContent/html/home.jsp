@@ -20,11 +20,12 @@
 <body>
 <%@include file="header_default.html" %>
 
-<div class="jumbotron">
+<div id="jumbo1" class="jumbotron">
 	<h1><span class="badge badge-light">PIU' VISTI</span></h1>
 	
 	<!--Carousel Wrapper-->
 	<div id="video-carousel-piu_visti" class="carousel slide carousel-fade" data-ride="carousel">
+	  
 	  <!--Indicators-->
 	  <ol class="carousel-indicators">
 	    <li data-target="#video-carousel-piu_visti" data-slide-to="0" class="active"></li>
@@ -38,7 +39,7 @@
 	    
 	    <c:set var = "first" scope = "session" value = "${true}"/>
 	    <c:set var = "cont" scope = "request" value ="${0}" />
-	    <c:forEach items="${video}" var="v">
+	    <c:forEach items="${video_piu_visti}" var="v">
        	
 	    	<c:if test="${first == true && cont % 5 == 0}">
 	        	<div class="carousel-item active">
@@ -53,7 +54,7 @@
 					</c:if>
 	
 					<c:if test="${v.locale==true}">
-						<video id="single_local_video" width="300px" height="150px" class="video-fluid" controls muted>
+						<video id="single_local_video" class="video-fluid" controls muted>
 			       			<source src="${v.url}" type="video/mp4" />
 			     		</video>
 					</c:if>
@@ -88,10 +89,9 @@
 	</div> 
 	<!--Carousel Wrapper-->
 
-
-
-
-<div class="jumbotron">
+<br>
+<br> 
+<div id="jumbo2" class="jumbotron">
 	<h1><span class="badge badge-light">RECENTI</span></h1>
 	
 	<!--Carousel Wrapper-->
@@ -124,7 +124,7 @@
 					</c:if>
 	
 					<c:if test="${v.locale==true}">
-						<video id="single_local_video" width="300px" height="150px" class="video-fluid" controls muted>
+						<video id="single_local_video" class="video-fluid" controls muted>
 			       			<source src="${v.url}" type="video/mp4" />
 			     		</video>
 					</c:if>
@@ -158,9 +158,10 @@
 	</div>
 	</div> 
 	<!--Carousel Wrapper-->
-
-
-<div class="jumbotron">
+	
+<br>
+<br> 
+<div id="jumbo3"  class="jumbotron">
 	<h1><span class="badge badge-light">TUTTI</span></h1>
 	
 	<!--Carousel Wrapper-->
@@ -193,7 +194,7 @@
 					</c:if>
 	
 					<c:if test="${v.locale==true}">
-						<video id="single_local_video" width="300px" height="150px" class="video-fluid" controls muted>
+						<video id="single_local_video" class="video-fluid" controls muted>
 			       			<source src="${v.url}" type="video/mp4" />
 			     		</video>
 					</c:if>

@@ -23,12 +23,12 @@
 	<div id="cornice" class="jumbotron">
 	 	<div  class="row">
 		 	<div id="colonnaSx" class="column jumbotron">
-		 		<p id="categoria">Categoria: ${categoria} </p>
+		 		<p id="categoria"> Categoria: ${categoria} </p>
 				<p id="difficolta"> ${difficolta} </p>
 				
 				<div class="btn-group btn-group-toggle" data-toggle="buttons">
-				  <a class="btn btn-primary" type="submit" href="#">Modifica</a>
-				  <a class="btn btn-danger" id="eliminazione" href="#" data-toggle="modal" data-target="#Eliminazione">Rimuovi</a>
+				  <a class="btn btn-primary" id="button_modifica" type="submit" href="#">Modifica</a>
+				  <a class="btn btn-danger" id="button_elimina" href="#" data-toggle="modal" data-target="#Eliminazione">Rimuovi</a>
 				</div>
 				<br>
 				
@@ -73,6 +73,7 @@
 				</div>
 			
 				<div align="center" id="risposte" class="three"> 
+				
 					<button class="btn btn-light" id="rispostaCorretta"> ${rispostaCorretta} </button>
 					<button class="btn btn-light" id="rispostaErrata"> ${rispostaErrata} </button>
 				</div>

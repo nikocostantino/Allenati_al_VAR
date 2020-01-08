@@ -29,7 +29,7 @@ public class Login extends HttpServlet{
 		
 		
 		
-		if(req.getParameter("login").equals("true")) {
+		if(req.getParameter("login")!= null && req.getParameter("login").equals("true")) {
 			
 			String email = req.getParameter("email");
 			String password = req.getParameter("password");
@@ -37,41 +37,35 @@ public class Login extends HttpServlet{
 			if (utente != null) {
 				req.getSession().setAttribute("utente", utente);
 
-				//resp.sendRedirect(".");
-				List<Video> video = DBManager.getInstance().getVideo();
-				req.getSession().setAttribute("video", video);
-				List<Video> piu_visti = DBManager.getInstance().getPiuVisti();
-				req.getSession().setAttribute("video_piu_visti", piu_visti);
-				List<Video> recenti = DBManager.getInstance().getRecenti();
-				req.getSession().setAttribute("video_recenti", recenti);
-
 				RequestDispatcher rd = req.getRequestDispatcher("/html/home");
 				rd.forward(req, resp);
-			}else {
+			}
+			else {
 				RequestDispatcher rd = req.getRequestDispatcher("/html/error_page.html");
 				rd.forward(req, resp);
 			}
 		}
-		else if (req.getParameter("registrazione").equals("true")){
+		else if (req.getParameter("registrazione")!= null && req.getParameter("registrazione").equals("true")){
 			
 			String nome = req.getParameter("nome");
 			String cognome = req.getParameter("cognome");
 			String email = req.getParameter("email");
 			String password = req.getParameter("password");
 			String confPassword = req.getParameter("conferma_password");
+			String amministratore = req.getParameter("amministratore");
 			
 			
-			if(password.equals(confPassword))  //ovviamente devo controllare anche altri parametri
+			if(password.equals(confPassword))
 			{
-				Utente ut = new Utente();
-				ut.setNome(nome);
-				ut.setCognome(cognome);
-				ut.setPassword(password);
-				ut.setEmail(email);
+				Utente user = new Utente(nome,cognome,email,password,amministratore);
+				user.setNome(nome);
+				user.setCognome(cognome);
+				user.setPassword(password);
+				user.setEmail(email);
+				user.setAmministratore(amministratore);
+				DBManager.getInstance().inserisciUtente(user);
 				
-				DBManager.getInstance().inserisciUtente(ut);
-				
-				req.setAttribute("utenteRegistrato", ut);
+				req.setAttribute("utenteRegistrato", user);
 				
 				RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
 				rd.forward(req, resp);

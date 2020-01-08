@@ -1,12 +1,17 @@
 #body{
-	font-family: "Garamond";
-  	
+	font-family: "Garamond";	
 }
 
 #categoria{
 	display: inline-block;
+	margin-left: 5%;
 }
-
+#button_modifica{
+	
+}
+#button_elimina{
+	
+}
 #difficolta{
 	display: inline-block;
 }
@@ -16,97 +21,52 @@
 }
 
 .column {
-	margin: 0 !important;
-	padding: 0 !important;	
   	flex: 50%;
- 	margin-right:10px;
+ 
 }
 
+#colonnaSx{
+	height: 80%;
+}
+#colonnaDx{
+	height: 80%;
+}
 #cornice{
-	 background-color:#ffffff; 
+	background-color:#ffffff;
 }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+#dati_video{
+	margin-left: 5%; 
 }
-
 .up{
-	height: 200px;
+	height: 33%;
 }
 .down{
-	height: 200px;
+	height: 33%;
 }
 .three{
-	height: 200px;
+	height: 33%;
 }
 
 iframe{
-		width: 90%;
-		height: 90%;
-	}
-
-@media screen and (max-width: 1499px) and (min-width: 1000px) {
-	
-	iframe{
-		
-		width: 600px;
-		height: 350px;
-	
-	}
-	
-	#form_commenti{
-		
-		width: 400px;
-		height: 250px;
-		padding-top: 15px;
-		 margin-right: 20%;
-		
-	}
-	
-	#lista_commenti{
-		width: 400px;
-		height: 250px;
-		overflow-y: scroll;	
-		 margin-right: 20%;
-		 text-align:center;
-	}
-
-	#video-placeholder{
-	    width: 100px;
-	    height: 100px;
-	    
-	}
-	#controls{
-	    margin-right: 20%;
-	}
-
-@media screen and (max-width: 2000px) and (min-width: 1500px){
-	
-	
-	
-	#form_commenti{
-		width: 600px;
-		height: 250px;
-		 margin-right: 20%;
-	}
-	
-	#lista_commenti{
-		
-		width: 600px;
-		height: 250px;	
-		 margin-right: 20%;
-	}
-	
-	#video-placeholder{
-    width: 600px;
-    height: 300px;
-    
-	}
-	#controls{
-    margin-right: 40%;
-	}
+	width: 90%;
+	height: 180%;
+	margin-left: 5%;
 }
-
-
+	
+#form_commenti{
+	
+	width: 90%;
+	height: 10%;
+	padding-top: 5%;
+	margin-right: 20%;
+	
+}
+	
+#lista_commenti{
+	width: 90%;
+	height: 10%;
+	overflow-y: scroll;	
+	margin-right: 20%;
+	text-align:center;
+}

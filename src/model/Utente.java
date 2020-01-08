@@ -9,19 +9,24 @@ public class Utente {
 	private String email;
 	private ArrayList<Video> video_preferiti;
 	private ArrayList<ProvaAutovalutazione> storico;
+	private Boolean amministratore;
 
 	public Utente() {
 		this.video_preferiti = new ArrayList<Video>();
 		this.storico = new ArrayList<ProvaAutovalutazione>();
 	}
 	
-	public Utente(String nome, String cognome, String password, String email) {
+	public Utente(String nome, String cognome, String email, String password, String amministratore) {
 		this.nome = nome;
 		this.cognome = cognome;
-		this.password = password;
 		this.email = email;
+		this.password = password;
 		this.video_preferiti = new ArrayList<Video>();
 		this.storico = new ArrayList<ProvaAutovalutazione>();
+		if(amministratore.equals("on"))
+			this.amministratore = true;
+		else
+			this.amministratore = false;
 	}
 	public String getNome() {
 		return nome;
@@ -81,5 +86,12 @@ public class Utente {
 				
 		}
 		return null;
+	}
+
+	public void setAmministratore(String amministratore) {
+		if(amministratore.equals("on"))
+			this.amministratore = true;
+		else
+			this.amministratore = false;
 	}
 }

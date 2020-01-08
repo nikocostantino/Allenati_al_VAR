@@ -50,9 +50,9 @@
 			</div>
 			
 		</div>
-		<div id="colonna Dx">
-			<div id="rigaTimer">
-				<img id="img_timer" src="../img/timer.png" />
+		<div align="center" id="colonnaDx">
+			<div align="center" id="rigaTimer">	
+				<!-- <img id="img_timer" src="../img/timer.png" />  -->
 				<c:if test="${videoProva[0].locale == true }">
 					<span class="badge badge-success" id="tempo"></span>
 				</c:if>
@@ -61,7 +61,7 @@
 				</c:if>
 			
 			</div>
-			<div id="rigaRisposte">
+			<div align="center" id="rigaRisposte">
 				<a class="btn btn-light" href="prova_autovalutazione?risposta=${videoProva[0].risposte.opzioneCorretta}" id="rispostaCorretta"> ${videoProva[0].risposte.opzioneCorretta} </a>
 				<a class="btn btn-light" href="prova_autovalutazione?risposta=${videoProva[0].risposte.opzioneErrata}" id="rispostaErrata"> ${videoProva[0].risposte.opzioneErrata} </a>	
 			</div>
@@ -76,8 +76,7 @@
 	function onYouTubeIframeAPIReady() {
 	    player = new YT.Player('video-placeholder', {
 	    	autoplay: 1,
-	        width: 600,
-	        height: 400,
+	       
 	        videoId: '${videoProva[0].id}',
 	        playerVars: {
 	            color: 'white',

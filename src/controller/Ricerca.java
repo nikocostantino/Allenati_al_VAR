@@ -24,9 +24,14 @@ public class Ricerca extends HttpServlet {
 		
 		for(int i=0; i<video.size(); i++) {
 			
-			if(video.get(i).getNome().contains(textRicerca.toUpperCase()) || video.get(i).getNome().contains(textRicerca.toLowerCase())) {
-				risultatoRicerca.add(video.get(i));
+			String[] titolo = video.get(i).getNome().split(" ", -1);
+			for(int j=0; j<titolo.length; j++) {
+				
+				if(titolo[j].equalsIgnoreCase(textRicerca)) {
+					risultatoRicerca.add(video.get(i));
+				}
 			}
+			
 		}
 		
 		req.getSession().setAttribute("risultatoRicerca", risultatoRicerca);
