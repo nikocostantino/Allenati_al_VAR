@@ -70,6 +70,8 @@
 				<a class="btn btn-secondary" id="Indietro" href="gestorePagine?pagina=aggiungiVideo" type="submit">Indietro</a>
 				<a class="btn btn-danger" id="Annulla" href="home" type="submit">Annulla</a>
 	      		<button class="btn btn-primary" id="Aggiungi" type="submit">Aggiungi</button>
+	      		
+
 			</div>
 			</div>		
 	      	
@@ -81,6 +83,7 @@
 			</div> 
 	    	
 </div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script>
