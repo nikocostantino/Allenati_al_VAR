@@ -30,12 +30,15 @@
   			<form id="formContent" method="POST" action="gestoreVideo?aggiungiVideo=true">
 	      	
 	      	<div class="active">
-	      		<input type="text" id="link" class="fadeIn second" name="link" placeholder="link"/>
-	      		<a class="btn btn-primary" id="avanti" type="submit" href="#">Avanti</a>
+	      		<input type="text" id="link" class="fadeIn second" name="link" placeholder="link" required/>
+	      		<div id="formatoErrato" class="inactive">
+	      			<div id='formatErrato' class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Formato video non valido!</strong></div>
+	      		</div>
+	      		<button class="btn btn-primary" id="avanti" type="submit">Avanti</button>
 	      	</div>
 	      	
 	      	<div class="inactive">
-	      	<input type="text" id="nome" class="fadeIn second" name="nome" placeholder="nome"/>
+	      	<input type="text" id="nome" class="fadeIn second" name="nome" placeholder="nome" required/>
 								
 				
 				
@@ -59,8 +62,8 @@
 				</select>
 			</div>
 			
-			<input type="text" id="opzioneRispostaCorretta" class="fadeIn second" name="opzioneRispostaCorretta" placeholder="opzione di risposta corretta"/>
-			<input type="text" id="opzioneRispostaErrata" class="fadeIn second" name="opzioneRispostaErrata" placeholder="opzione di risposta errata"/>
+			<input type="text" id="opzioneRispostaCorretta" class="fadeIn second" name="opzioneRispostaCorretta" placeholder="opzione di risposta corretta" required/>
+			<input type="text" id="opzioneRispostaErrata" class="fadeIn second" name="opzioneRispostaErrata" placeholder="opzione di risposta errata" required/>
 			
 			
 			<textarea class="fadeIn second" id="descrizione"  name="descrizione" placeholder="descrizione"></textarea>
@@ -92,25 +95,34 @@
 				var $temp= $(this).closest("#formContent");
 							
 				var url=document.getElementById("link").value;
-				if(url=="")
-				{
-					alert("URL VIDEO VUOTO!");				
-				}
-				else
+				
+				
+				if(url!="" && url.indexOf("https://www.youtube.com/embed/") != -1)
 				{
 					$temp.find(".inactive").removeClass("inactive");
 					$temp.find("#avanti").addClass("inactive");
 					$temp.find("#link").addClass("inactive");
+					$temp.find("#formatoErrato").addClass("inactive");
 
 					var frame = "<iframe width='448' id='video' src='' height='252' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
 					document.getElementById("anteprimaVideo").innerHTML=frame;
 				
 					document.getElementById("video").setAttribute("src", url);
 				}
-				
+				else if(url!="")
+				{		
+					$temp.find("#formatoErrato").removeClass("inactive");
 
+				}
+				else if(url=="")
+				{
+					$temp.find("#formatoErrato").addClass("inactive");
+					
+				}
 			})
 		})
+		
+		
 	</script>
 </body>
 </html>

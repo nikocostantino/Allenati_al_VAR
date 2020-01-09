@@ -21,8 +21,14 @@ public class GestoreVideo extends HttpServlet {
 		if(url!=null)
 		{
 			DBManager.getInstance().eliminaVideo(url);
+		
+			req.getSession().setAttribute("eliminaVideo", url);
+
 			RequestDispatcher rd = req.getRequestDispatcher("/html/home");
 			rd.forward(req, resp);
+		
+			req.getSession().removeAttribute("eliminaVideo");
+
 		}
 		
 		else if(nuovoVideo!=null && nuovoVideo.equals("true"))
