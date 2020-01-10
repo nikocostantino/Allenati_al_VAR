@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.OpzioniRisposte;
-import model.ProvaAutovalutazione;
+import model.Esito;
 import model.Video;
 import persistence.DBManager;
 
@@ -56,7 +56,7 @@ public class GestoreProvaAutovalutazione extends HttpServlet {
 			videoProva.remove(0);
 
 			if (videoProva.isEmpty()) {
-				ProvaAutovalutazione prova = new ProvaAutovalutazione(esito);
+				Esito prova = new Esito(esito);
 				for (Video video : esito) {
 					if(!video.getRisposte().getRispostaUtente())
 						risposteErrate++;

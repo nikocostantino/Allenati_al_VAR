@@ -3,19 +3,28 @@ package model;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class ProvaAutovalutazione {
+public class Esito {
 
+	private Long id;
 	private ArrayList<Video> video;
 	private Date data;
 	private Boolean risultato;
 	
-	public ProvaAutovalutazione(ArrayList<Video> video) {
+	
+	public Esito(ArrayList<Video> video) {
 	
 		this.video = video;
 		data = new Date();
 		risultato = true;
 	}
-	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public ArrayList<Video> getVideo() {
 		return video;
 	}

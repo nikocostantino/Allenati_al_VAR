@@ -2,6 +2,7 @@ package model;
 
 public class OpzioniRisposte {
 	
+	private Long id;
 	private String opzioneCorretta;
 	private String opzioneErrata;
 	private Boolean rispostaUtente; //true se l'utente ha inserito la risposta corretta
@@ -14,7 +15,22 @@ public class OpzioniRisposte {
 		this.opzioneErrata = opzioneErrata;
 		this.rispostaUtente = false;
 	}
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setOpzioneCorretta(String opzioneCorretta) {
+		this.opzioneCorretta = opzioneCorretta;
+	}
+
+	public void setOpzioneErrata(String opzioneErrata) {
+		this.opzioneErrata = opzioneErrata;
+	}
+	
 	public String getOpzioneCorretta() {
 		return opzioneCorretta;
 	}

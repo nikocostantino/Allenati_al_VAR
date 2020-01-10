@@ -8,12 +8,12 @@ public class Utente {
 	private String password;
 	private String email;
 	private ArrayList<Video> video_preferiti;
-	private ArrayList<ProvaAutovalutazione> storico;
+	private ArrayList<Esito> storico;
 	private Boolean amministratore;
 
 	public Utente() {
 		this.video_preferiti = new ArrayList<Video>();
-		this.storico = new ArrayList<ProvaAutovalutazione>();
+		this.storico = new ArrayList<Esito>();
 	}
 	
 	public Utente(String nome, String cognome, String email, String password, String amministratore) {
@@ -22,7 +22,7 @@ public class Utente {
 		this.email = email;
 		this.password = password;
 		this.video_preferiti = new ArrayList<Video>();
-		this.storico = new ArrayList<ProvaAutovalutazione>();
+		this.storico = new ArrayList<Esito>();
 		if(amministratore.equals("on"))
 			this.amministratore = true;
 		else
@@ -64,16 +64,16 @@ public class Utente {
 			video_preferiti.remove(v);
 	}
 
-	public ArrayList<ProvaAutovalutazione> getStorico() {
+	public ArrayList<Esito> getStorico() {
 		return storico;
 	}
 	
-	public void aggiungiAlloStorico(ProvaAutovalutazione provaAutovalutazione) {
+	public void aggiungiAlloStorico(Esito provaAutovalutazione) {
 		storico.add(provaAutovalutazione);
 	}
 
 	public ArrayList<Video> trovaStorico(String data) {
-		for (ProvaAutovalutazione provaAutovalutazione : storico) {
+		for (Esito provaAutovalutazione : storico) {
 			if(provaAutovalutazione.getData().toString().equals(data)) {
 				
 				System.out.println(data);

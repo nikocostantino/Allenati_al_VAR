@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.ProvaAutovalutazione;
+import model.Esito;
 import model.Video;
 import persistence.DBManager;
 
