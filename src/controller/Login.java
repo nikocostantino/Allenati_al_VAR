@@ -28,15 +28,22 @@ public class Login extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
-		
-		if(req.getParameter("login")!= null && req.getParameter("login").equals("true")) {
-			
+		if (req.getParameter("login")!= null && req.getParameter("login").equals("true")) {
+
 			String email = req.getParameter("email");
 			String password = req.getParameter("password");
-			Utente utente = DBManager.getInstance().login(email, password);
-			if (utente != null) {
-				req.getSession().setAttribute("utente", utente);
+			Utente utente = DBManager.getInstance().login(email,password);
 
+			if (utente != null) {
+				DBManager.getInstance().setUtenteCorrente(utente);
+				req.getSession().setAttribute("utente", utente);
+				List<Video> video = DBManager.getInstance().getVideo();
+				req.getSession().setAttribute("video", video);
+				List<Video> piu_visti = DBManager.getInstance().getPiuVisti();
+				req.getSession().setAttribute("video_piu_visti", piu_visti);
+				List<Video> recenti = DBManager.getInstance().getUtenteCorrente().getRecenti();
+				req.getSession().setAttribute("video_recenti", recenti);		
+				DBManager.getInstance().setUtenteCorrente(utente);
 				RequestDispatcher rd = req.getRequestDispatcher("/html/home");
 				rd.forward(req, resp);
 			}

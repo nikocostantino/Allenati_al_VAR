@@ -30,18 +30,14 @@
 	    			    	<c:forEach items="${video_preferiti}" var="v">
 	    			    		<a href="pagina_video?url=${v.url}" class="list-group-item list-group-item-action">
 		    			    	<div class="column left">
-		                            	<c:if test="${v.locale==false}">
-											<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
-										</c:if>
-										<c:if test="${v.locale==true}">
-											<video width="320" height="240" controls>
-		    									<source src="${v.url}" type="video/mp4">
-											</video>
-										</c:if>
+		                            	
+										<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
+									
+										
 								</div>
 								<div class="column right">
 		    			    		<p>${v.nome}</p>
-		    			    		<p>${v.categoria.nome}</p>
+		    			    		<p>${v.categoria[0].nome}</p>
 		    			    		<p>${v.difficolta}</p>
 								</div>
 								</a>

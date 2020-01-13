@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 import persistence.DBManager;
 
 public class Video {
@@ -10,10 +12,9 @@ public class Video {
 	private String descrizione;
 	private String difficolta;
 	private int visualizzazioni;
-	private Categoria categoria;
+	private ArrayList<Categoria> categorie;
 	private Commenti commenti;
 	private OpzioniRisposte risposte;
-	private Boolean locale;
 
 
 	public Video(String id,String url, String nome, String descrizione, String difficolta, Categoria categoria, OpzioniRisposte risposte, Boolean locale) {
@@ -23,13 +24,18 @@ public class Video {
 		this.descrizione = descrizione;
 		this.difficolta = difficolta;
 		this.visualizzazioni = 0;
-		this.categoria = categoria;
+		this.categorie = new ArrayList<Categoria>();
+		this.categorie.add(categoria);
 		this.commenti = new Commenti();
 		this.risposte = risposte;
-		this.categoria.addVideo(this);
-		this.locale = locale;
+		
 	}
 	
+	public Video() {
+		this.categorie = new ArrayList<Categoria>();
+		this.commenti = new Commenti();
+	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -76,12 +82,16 @@ public class Video {
 		this.visualizzazioni = visualizzazioni;
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
+	public ArrayList<Categoria> getCategoria() {
+		return categorie;
 	}
 
+	public void setCategoria(ArrayList<Categoria> categorie) {
+		this.categorie = categorie;
+	}
+	
 	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+		this.categorie.add(categoria);
 	}
 
 	public Commenti getCommenti() {
@@ -100,13 +110,6 @@ public class Video {
 		this.risposte = risposte;
 	}
 	
-	public Boolean getLocale() {
-		return locale;
-	}
-
-	public void setLocale(Boolean locale) {
-		this.locale = locale;
-	}
 
 	public Boolean isPreferito() {
 		return DBManager.getInstance().getUtenti().get(0).getPreferiti().contains(this);

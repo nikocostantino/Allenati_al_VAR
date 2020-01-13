@@ -18,19 +18,21 @@ public class MostraVideo extends HttpServlet{
 
 	
 	Video videoChiesto = null;
+	String url = null;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("pagina_video.jsp");
-		String url = req.getParameter("url");
+		
+		if(req.getParameter("url") != null)
+			url = req.getParameter("url");
 		
 		if(url!=null) {
 			req.getSession().setAttribute("url", req.getParameter("url"));
 			for (Video video : DBManager.getInstance().getVideo()) {
 				if(video.getUrl().equals(req.getParameter("url"))){
 					req.getSession().setAttribute("id", video.getId());
-					if(video.getLocale()==true)
-						req.getSession().setAttribute("locale", true);
+					
 				}
 				
 			}
@@ -41,27 +43,30 @@ public class MostraVideo extends HttpServlet{
 					videoChiesto = v;			
 			}
 			
-			DBManager.getInstance().aggiornaRecenti(videoChiesto);
+			DBManager.getInstance().getUtenteCorrente().aggiornaRecenti(videoChiesto);
 			
 			videoChiesto.setVisualizzazioni(videoChiesto.getVisualizzazioni()+1); 
 			req.getSession().setAttribute("nome", videoChiesto.getNome());
 			req.getSession().setAttribute("descrizione", videoChiesto.getDescrizione());
-			req.getSession().setAttribute("categoria", videoChiesto.getCategoria().getNome());
+			req.getSession().setAttribute("categoria", videoChiesto.getCategoria().get(0).getNome()); //da correggere
 			req.getSession().setAttribute("difficolta", videoChiesto.getDifficolta());
 			req.getSession().setAttribute("visualizzazioni", videoChiesto.getVisualizzazioni());
 			req.getSession().setAttribute("rispostaCorretta", videoChiesto.getRisposte().getOpzioneCorretta());
 			req.getSession().setAttribute("rispostaErrata", videoChiesto.getRisposte().getOpzioneErrata());
-			req.getSession().setAttribute("isPreferito", videoChiesto.isPreferito());
+			req.getSession().setAttribute("isPreferito", DBManager.getInstance().isPreferito(videoChiesto));
+			req.getSession().setAttribute("lista_commenti", videoChiesto.getCommenti().getLista_commenti());
 			
 		}
 		if(req.getParameter("addPreferiti") != null) {
-			DBManager.getInstance().getUtenti().get(0).aggiungiAiPreferiti(videoChiesto);
-			req.getSession().setAttribute("isPreferito", videoChiesto.isPreferito());
+			DBManager.getInstance().aggiungiAiPreferiti(videoChiesto);
+			req.getSession().setAttribute("isPreferito", DBManager.getInstance().isPreferito(videoChiesto));
 		}
-		
-		videoChiesto.getCommenti().aggiungiCommento(req.getParameter("commento"));
-		req.getSession().setAttribute("lista_commenti", videoChiesto.getCommenti().getLista_commenti());
-		rd.forward(req, resp);
+		if(req.getParameter("commento")!= null) {
+			DBManager.getInstance().aggiungiCommento(req.getParameter("commento"),videoChiesto.getUrl());
+			videoChiesto.getCommenti().aggiungiCommento(req.getParameter("commento"));
+			req.getSession().setAttribute("lista_commenti", videoChiesto.getCommenti().getLista_commenti());
+		}
+			rd.forward(req, resp);
 		
 	}
 	

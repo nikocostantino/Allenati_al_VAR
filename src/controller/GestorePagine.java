@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.ProvaAutovalutazione;
+import model.Esito;
 import model.Video;
 import persistence.DBManager;
 
@@ -20,11 +20,11 @@ public class GestorePagine extends HttpServlet {
 	
 		String pagina = req.getParameter("pagina");
 		if(pagina.equals("preferiti")) {
-			ArrayList<Video> preferiti = DBManager.getInstance().getUtenti().get(0).getPreferiti();
+			ArrayList<Video> preferiti = DBManager.getInstance().getPreferiti();
 			req.getSession().setAttribute("video_preferiti",preferiti);
 		}
 		else if(pagina.contentEquals("storico")) {
-			req.getSession().setAttribute("storico",DBManager.getInstance().getUtenti().get(0).getStorico());
+			req.getSession().setAttribute("storico",DBManager.getInstance().getStorico());
 		}
 		else if(pagina.contentEquals("registrati")){
 			//operzioni per la pagina di registrazione

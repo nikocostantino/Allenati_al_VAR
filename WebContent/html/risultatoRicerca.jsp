@@ -46,15 +46,11 @@
 			</c:if>
 			<div class="inline" align="center">
 				<div class=rowUp>
-					<c:if test="${r.locale==false}">
-						<iframe id="single_video" src="${r.url}" class="video-fluid"></iframe>
-					</c:if>
+					
+					<iframe id="single_video" src="${r.url}" class="video-fluid"></iframe>
+				
 	
-					<c:if test="${r.locale==true}">
-						<video id="single_local_video" class="video-fluid" controls muted>
-			       			<source src="${r.url}" type="video/mp4" />
-			     		</video>
-					</c:if>
+					
 				</div>
 				<div class="rowDown">
 					<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${r.url}">${r.nome}</a> 

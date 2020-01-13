@@ -49,15 +49,9 @@
 			</c:if>
 			<div class="inline" align="center">
 				<div class=rowUp>
-					<c:if test="${v.locale==false}">
+					
 						<iframe id="single_video" src="${v.url}" class="video-fluid"></iframe>
-					</c:if>
-	
-					<c:if test="${v.locale==true}">
-						<video id="single_local_video" class="video-fluid" controls muted>
-			       			<source src="${v.url}" type="video/mp4" />
-			     		</video>
-					</c:if>
+					
 				</div>
 				<div class="rowDown">
 				 <a class="badge badge-secondary"  id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a> 
@@ -88,9 +82,8 @@
 	</div>
 	</div> 
 	<!--Carousel Wrapper-->
+</div>
 
-<br>
-<br> 
 <div id="jumbo2" class="jumbotron">
 	<h1><span class="badge badge-light">RECENTI</span></h1>
 	
@@ -119,15 +112,9 @@
 			</c:if>
 			<div class="inline" align="center">
 				<div class=rowUp>
-					<c:if test="${v.locale==false}">
+				
 						<iframe id="single_video" src="${v.url}" class="video-fluid"></iframe>
-					</c:if>
 	
-					<c:if test="${v.locale==true}">
-						<video id="single_local_video" class="video-fluid" controls muted>
-			       			<source src="${v.url}" type="video/mp4" />
-			     		</video>
-					</c:if>
 				</div>
 				<div class="rowDown">
 				 <a class="badge badge-secondary"  id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a> 
@@ -158,9 +145,8 @@
 	</div>
 	</div> 
 	<!--Carousel Wrapper-->
-	
-<br>
-<br> 
+</div>	
+
 <div id="jumbo3"  class="jumbotron">
 	<h1><span class="badge badge-light">TUTTI</span></h1>
 	
@@ -189,15 +175,10 @@
 			</c:if>
 			<div class="inline" align="center">
 				<div class=rowUp>
-					<c:if test="${v.locale==false}">
+				
 						<iframe id="single_video" src="${v.url}" class="video-fluid"></iframe>
-					</c:if>
+				
 	
-					<c:if test="${v.locale==true}">
-						<video id="single_local_video" class="video-fluid" controls muted>
-			       			<source src="${v.url}" type="video/mp4" />
-			     		</video>
-					</c:if>
 				</div>
 				<div class="rowDown">
 				 <a class="badge badge-secondary"  id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a> 
@@ -228,5 +209,6 @@
 	</div>
 	</div> 
 	<!--Carousel Wrapper-->
+</div>
 </body>
 </html>

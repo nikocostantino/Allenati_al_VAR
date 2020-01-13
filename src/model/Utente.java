@@ -5,15 +5,18 @@ import java.util.ArrayList;
 public class Utente {
 	private String nome;
 	private String cognome;
-	private String password;
 	private String email;
+	private String password;
 	private ArrayList<Video> video_preferiti;
-	private ArrayList<ProvaAutovalutazione> storico;
+	private ArrayList<Video> video_recenti;
+	private ArrayList<Esito> storico;
 	private Boolean amministratore;
 
 	public Utente() {
 		this.video_preferiti = new ArrayList<Video>();
-		this.storico = new ArrayList<ProvaAutovalutazione>();
+		this.storico = new ArrayList<Esito>();
+		this.video_recenti = new ArrayList<Video>();
+	
 	}
 	
 	public Utente(String nome, String cognome, String email, String password, String amministratore) {
@@ -22,11 +25,14 @@ public class Utente {
 		this.email = email;
 		this.password = password;
 		this.video_preferiti = new ArrayList<Video>();
-		this.storico = new ArrayList<ProvaAutovalutazione>();
+		this.storico = new ArrayList<Esito>();
+		
 		if(amministratore.equals("on"))
-			this.amministratore = true;
+			this.setAmministratore(true);
 		else
-			this.amministratore = false;
+			this.setAmministratore(false);
+		
+		this.video_recenti = new ArrayList<Video>();
 	}
 	public String getNome() {
 		return nome;
@@ -46,6 +52,14 @@ public class Utente {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public Boolean getAmministratore() {
+		return amministratore;
+	}
+
+	public void setAmministratore(Boolean amministratore) {
+		this.amministratore = amministratore;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -64,16 +78,16 @@ public class Utente {
 			video_preferiti.remove(v);
 	}
 
-	public ArrayList<ProvaAutovalutazione> getStorico() {
+	public ArrayList<Esito> getStorico() {
 		return storico;
 	}
 	
-	public void aggiungiAlloStorico(ProvaAutovalutazione provaAutovalutazione) {
+	public void aggiungiAlloStorico(Esito provaAutovalutazione) {
 		storico.add(provaAutovalutazione);
 	}
 
 	public ArrayList<Video> trovaStorico(String data) {
-		for (ProvaAutovalutazione provaAutovalutazione : storico) {
+		for (Esito provaAutovalutazione : storico) {
 			if(provaAutovalutazione.getData().toString().equals(data)) {
 				
 				System.out.println(data);
@@ -93,5 +107,23 @@ public class Utente {
 			this.amministratore = true;
 		else
 			this.amministratore = false;
+	}
+	
+	public ArrayList<Video> getRecenti() {
+		
+		return video_recenti;
+	}
+
+	public void aggiornaRecenti(Video videoChiesto) {
+		
+		if(video_recenti.size()>15)
+			video_recenti.remove(15);
+		
+		for(Video v : video_recenti)
+			if(v.getId().equals(videoChiesto.getId()))
+				return;
+		
+		video_recenti.add(0, videoChiesto);
+					
 	}
 }

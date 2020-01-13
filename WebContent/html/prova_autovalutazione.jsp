@@ -35,16 +35,9 @@
 			<div id="rigaVideo">
 				<!--  <iframe id="video" class="embed-responsive-item" src="${videoProva[0].url += "?autoplay=1"}"></iframe> -->
 	
-				<c:if test="${videoProva[0].locale == true }">
-					<video  id="video" class="embed-responsive-item" controls="">
-						<source src="${videoProva[0].url}" type="video/mp4">
-					</video>
-					
-				</c:if>
-				<c:if test="${videoProva[0].locale == false }">
-					<div id="video-placeholder"></div>
-					<div id="controls"> </div>
-				</c:if>
+				<div id="video-placeholder"></div>
+				<div id="controls"> </div>
+				
 				<p> Video ${indice} di ${dimensione} </p>
 				
 			</div>
@@ -52,13 +45,9 @@
 		</div>
 		<div align="center" id="colonnaDx">
 			<div align="center" id="rigaTimer">	
-				<!-- <img id="img_timer" src="../img/timer.png" />  -->
-				<c:if test="${videoProva[0].locale == true }">
-					<span class="badge badge-success" id="tempo"></span>
-				</c:if>
-				<c:if test="${videoProva[0].locale == false }">
-					<span class="badge badge-success" id="timer"></span>
-				</c:if>
+				
+				<span class="badge badge-success" id="timer"></span>
+				
 			
 			</div>
 			<div align="center" id="rigaRisposte">

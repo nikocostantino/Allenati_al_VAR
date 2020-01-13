@@ -20,9 +20,9 @@
 <body>
 	<%@include file="header_default.html" %>
 	
-	<div id="cornice" class="jumbotron">
+	<div id="cornice" class="container">
 	 	<div  class="row">
-		 	<div id="colonnaSx" class="column jumbotron">
+		 	<div id="colonnaSx" class="column col-sm-7">
 		 		<p id="categoria"> Categoria: ${categoria} </p>
 				<p id="difficolta"> ${difficolta} </p>
 				
@@ -30,16 +30,10 @@
 				  <a class="btn btn-primary" id="button_modifica" type="submit" href="#">Modifica</a>
 				  <a class="btn btn-danger" id="button_elimina" href="#" data-toggle="modal" data-target="#Eliminazione">Rimuovi</a>
 				</div>
-				<br>
+
+				<div  id="video-placeholder"></div>
+				<div id="controls"> </div>
 				
-				<c:if test="${locale == true }">
-					<iframe class="embed-responsive-item" src="${url}"></iframe> 
-				</c:if>
-				<c:if test="${locale != true }">
-					<div  id="video-placeholder"></div>
-					<div id="controls"> </div>
-				</c:if>
-				<!--  <iframe class="embed-responsive-item" src="${url}"></iframe> -->
 				<div id="dati_video">
 					<div id="nome_video"> ${nome} </div> 
 					<p> ${descrizione}</p>
@@ -56,9 +50,9 @@
 				</div>
 			</div>
 		
-			<div align="right" id="colonnaDx" class="column jumbotron">
+			<div align="right" id="colonnaDx" class="column col-sm-5">
 			
-				<div id="lista_commenti" class="up" >
+				<div  id="lista_commenti" class="up" >
 					<c:forEach items="${lista_commenti}" var="c">                 	                            	
 						<p> ${c} </p>				
 					</c:forEach>
@@ -74,8 +68,8 @@
 			
 				<div align="center" id="risposte" class="three"> 
 				
-					<button class="btn btn-light" id="rispostaCorretta"> ${rispostaCorretta} </button>
-					<button class="btn btn-light" id="rispostaErrata"> ${rispostaErrata} </button>
+					<button class="btn btn-dark" id="rispostaCorretta"> ${rispostaCorretta} </button>
+					<button class="btn btn-dark" id="rispostaErrata"> ${rispostaErrata} </button>
 				</div>
 		
 			</div>	

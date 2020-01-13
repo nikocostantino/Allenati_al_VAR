@@ -23,13 +23,11 @@ public class Home extends HttpServlet {
 			sezioni.add("video");
 			req.getSession().setAttribute("sezioni", sezioni);
 			
-			
-			
 			List<Video> video = DBManager.getInstance().getVideo();
 			req.getSession().setAttribute("video", video);
 			List<Video> piu_visti = DBManager.getInstance().getPiuVisti();
 			req.getSession().setAttribute("piu_visti", piu_visti);
-			List<Video> recenti = DBManager.getInstance().getRecenti();
+			List<Video> recenti = DBManager.getInstance().getUtenteCorrente().getRecenti();
 			req.getSession().setAttribute("recenti", recenti);
 			RequestDispatcher rd = req.getRequestDispatcher("home.jsp");
 			rd.forward(req, resp);

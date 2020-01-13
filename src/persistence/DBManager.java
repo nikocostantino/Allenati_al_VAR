@@ -1,22 +1,46 @@
 package persistence;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
+
 import model.Categoria;
+import model.Esito;
 import model.OpzioniRisposte;
 import model.Utente;
 import model.Video;
+
 
 public class DBManager {
 	private static DBManager instance = null;
 	private List<Utente> utenti;
 	private ArrayList<Video> video;
 	private ArrayList<Video> piu_visti;
-	private ArrayList<Video> recenti;
+	private Utente utenteCorrente;
+	
+	static {
+		try {
+			Class.forName("org.postgresql.Driver").newInstance();
+			//manca un pezzo
+		} 
+		catch (Exception e) {
+			System.err.println("PostgresDAOFactory.class: failed to load MySQL JDBC driver\n"+e);
+			e.printStackTrace();
+		}
+	}
+	
+	public Connection getConnection() throws SQLException {
+		Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Allenati_Al_Var", "postgres", "postgres");
+		return connection;
+	}
+	
 	
 	public static DBManager getInstance() {
 		if (instance == null) {
@@ -27,48 +51,21 @@ public class DBManager {
 	
 	private DBManager() {
 		utenti = new ArrayList<Utente>();
-		Utente user = new Utente("Kristian","Reale","kristian@reale.it","kristian", "on");
-		utenti.add(user);
 		
 		video = new ArrayList<Video>();
 		piu_visti = new ArrayList<Video>();
-		recenti = new ArrayList<Video>();
 		
-		aggiungiVideo(new Video("ODmuRSPTipI","https://www.youtube.com/embed/ODmuRSPTipI","Dogso","Questo è un video sul DOGSO","NORMALE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("5TKseKToQ6c","https://www.youtube.com/embed/5TKseKToQ6c","SPA","Questo è un video sulla SPA","DIFFICILE",new Categoria("SPA"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("9H4ahHuTGbI","https://www.youtube.com/embed/9H4ahHuTGbI","FALLO DI MANI","Questo è un video sul fallo di mani","DIFFICILE",new Categoria("FALLO DI MANI"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("rBCCKH-anBQ","https://www.youtube.com/embed/rBCCKH-anBQ","NEW ENGLAND REVOLUTION VS COLORADO RAPIDS - DOGSO","Questo è un video sul DOGSO","NORMALE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("K6T__X9t2Fc","https://www.youtube.com/embed/K6T__X9t2Fc","COLUMBUS CREW vs HOUSTON DYNAMO - OFFSIDE and DOGSO","Questo è un video sul DOGSO","NORMALE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("FkhRBitSt70","https://www.youtube.com/embed/FkhRBitSt70","ATLANTA UNITED vs ORLANDO CITY - DOGSO","Questo è un video sul DOGSO","NORMALE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("9VJljTFfPhk","https://www.youtube.com/embed/9VJljTFfPhk","PHILADELPHIA UNION vs NY RED BULLS - SPA","Questo è un video sulla SPA","NORMALE",new Categoria("SPA"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("32MCGRKo83M","https://www.youtube.com/embed/32MCGRKo83M","D.C. UNITED vs PHILADELPHIA UNION - FALLO DI MANI","Questo è un video sul fallo di mani","DIFFICILE",new Categoria("FALLO DI MANI"),new OpzioniRisposte("corretta", "errata"),false));
-		aggiungiVideo(new Video("yX79G9nyn1s","https://www.youtube.com/embed/yX79G9nyn1s","PHILADELPHIA UNION vs COLORADO RAPIDS - FALLO DI MANI","Questo è un video sul fallo di mani","DIFFICILE",new Categoria("FALLO DI MANI"),new OpzioniRisposte("corretta", "errata"),false));
 		
-		aggiungiVideo(new Video("","../video/video1.mp4","CORIGLIANO vs NOLA - DOGSO","Questo è un video sul DOGSO","FACILE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),true));
-		aggiungiVideo(new Video("","../video/video2.mp4","FALLO DI MANI IN AREA DI RIGORE","Questo è un video sul fallo di mani","FACILE",new Categoria("FALLO DI MANI"),new OpzioniRisposte("corretta", "errata"),true));
-		aggiungiVideo(new Video("","../video/video3.mp4","SAN LUCA - BOCALE - SPA","Questo è un video sulla SPA","FACILE",new Categoria("FALLO DI MANI"),new OpzioniRisposte("corretta", "errata"),true));
-		aggiungiVideo(new Video("","../video/video4.mp4","FALLO DI MANI IN SERIE D","Questo è un video sul fallo di mani","FACILE",new Categoria("FALLO DI MANI"),new OpzioniRisposte("corretta", "errata"),true));
-		aggiungiVideo(new Video("","../video/video5.mp4","SAN LUCA - MORRONE - GRAVE FALLO DI GIOCO","Questo è un video su un grave fallo di gioco","FACILE",new Categoria("FALLO DI GIOCO"),new OpzioniRisposte("corretta", "errata"),true));
-		aggiungiVideo(new Video("","../video/video6.mp4","FALLO DI MANI CON VISUALE SULL'AA","Questo è un video sul fallo di mani","NORMALE",new Categoria("FALLO DI MANI"),new OpzioniRisposte("corretta", "errata"),true));
-		aggiungiVideo(new Video("","../video/video7.mp4","FALLO DI MANI CON GIOCATA","Questo è un video sul fallo di mani","NORMALE",new Categoria("FALLO DI MANI"),new OpzioniRisposte("corretta", "errata"),true));
-		aggiungiVideo(new Video("","../video/video8.mp4","FALLO DI MANI NON PUNIBILE","Questo è un video sul fallo di mani","FACILE",new Categoria("FALLO DI MANI"),new OpzioniRisposte("corretta", "errata"),true));
-		aggiungiVideo(new Video("","../video/video9.mp4","DOGSO CON FALLO DI MANI","Questo è un video sul fallo di mani","FACILE",new Categoria("DOGSO"),new OpzioniRisposte("corretta", "errata"),true));
-		aggiungiVideo(new Video("","../video/video10.mp4","FALLO DI GIOCO","Questo è un video su fallo di gioco","FACILE",new Categoria("FALLO DI GIOCO"),new OpzioniRisposte("corretta", "errata"),true));
-
+	
 	}
 	
 	public void inserisciUtente(Utente u) {
-		utenti.add(u);
+		getUtenteDAO().save(u);
 	}
 
 	public Utente login(String email, String password) {
-		for(int i=0; i<utenti.size(); i++)
-		{	
-			if (email.equals(utenti.get(i).getEmail()) && password.equals(utenti.get(i).getPassword())) {
-				return utenti.get(i);
-			}
-		}
-		return null;
+		
+		return getUtenteDAO().findByPrimaryKey(email,password);
 	}
 	
 	public void aggiungiVideo(Video v) {
@@ -76,7 +73,39 @@ public class DBManager {
 	}
 
 	public ArrayList<Video> getVideo() {
-		return video;
+		return getVideoDAO().findAll();
+	}
+	
+	public ArrayList<Esito> getStorico(){
+		return getEsitoDAO().findByPrimaryKey(utenteCorrente.getEmail());
+	}
+	
+	public ArrayList<Video> getPreferiti() {
+		return getPreferitiDAO().findByPrimaryKey(utenteCorrente.getEmail());
+	}
+	
+	public void aggiungiAiPreferiti(Video video) {
+		if(getPreferitiDAO().getVideo(video.getUrl(), utenteCorrente.getEmail())== null)
+			getPreferitiDAO().save(video);
+		else
+			getPreferitiDAO().delete(video);
+	}
+	
+	public Boolean isPreferito(Video video) {
+		if(getPreferitiDAO().getVideo(video.getUrl(),utenteCorrente.getEmail()) != null) {
+			return true;
+		}
+		else
+			return false;
+		
+	}
+	
+	public void aggiungiCommento(String commento, String url) {
+		getCommentiDAO().save(commento, url);
+	}
+	
+	public void aggiungiAlloStorico(Esito esito) {
+		getEsitoDAO().save(esito);
 	}
 	
 	public List<Utente> getUtenti() {
@@ -92,11 +121,14 @@ public class DBManager {
 			}
 		}
 		
-		for(int i=0; i<recenti.size(); i++)
-		{
-			if(recenti.get(i).getUrl().equals(url))
+		for (Utente utente : DBManager.getInstance().getUtenti()) {
+			
+			for(int i=0; i<utente.getRecenti().size(); i++)
 			{
-				recenti.remove(i);
+				if(utente.getRecenti().get(i).getUrl().equals(url))
+				{
+					utente.getRecenti().remove(i);
+				}
 			}
 		}
 		
@@ -111,36 +143,69 @@ public class DBManager {
 
 	public ArrayList<Video> getPiuVisti() {
 		
-		int totaleVisualizzazioni = 0;
-		piu_visti.clear();
-		
-		for (Video video : video) {
-			totaleVisualizzazioni+= video.getVisualizzazioni();
-		}
-		int mediaVisualizzazioni = totaleVisualizzazioni / video.size();
-		
-		
-		for (Video video : video) {
-			if(video.getVisualizzazioni() > mediaVisualizzazioni) {
-				if(!piu_visti.contains(video))
-					piu_visti.add(video);
+		try {
+			
+			int totaleVisualizzazioni = 0;
+			piu_visti.clear();
+			ArrayList<Video> video_nel_db = getVideo();
+			
+			for (Video video : video_nel_db) {
+				totaleVisualizzazioni+= video.getVisualizzazioni();
+			}
+			int mediaVisualizzazioni = totaleVisualizzazioni / video_nel_db.size();
+			
+			
+			
+			for (Video video : video_nel_db) {
+				if(video.getVisualizzazioni() > mediaVisualizzazioni) {
+					if(!piu_visti.contains(video))
+						piu_visti.add(video);
+				}
 			}
 		}
+		catch (ArithmeticException e) {
+			return piu_visti; //db vuoto
+		}
+		finally {
+			return piu_visti;
+		}
 		
-		return piu_visti;
+		
 	}
 
-	public ArrayList<Video> getRecenti() {
-		
-		return recenti;
+	
+
+	public Utente getUtenteCorrente() {
+		return utenteCorrente;
 	}
 
-	public void aggiornaRecenti(Video videoChiesto) {
-		
-		if(recenti.size()>15)
-			recenti.remove(15);
-		
-		if(!recenti.contains(videoChiesto))
-			recenti.add(0, videoChiesto);
+	public void setUtenteCorrente(Utente utenteCorrente) {
+		this.utenteCorrente = utenteCorrente;
 	}
+
+	
+	public VideoDAO getVideoDAO() {
+		return new VideoDAO_JDBC();
+	}
+
+	public CategoriaDAO getCategoriaDAO() {
+		return new CategoriaDAO_JDBC();
+	}
+	
+	public CommentiDAO getCommentiDAO() {
+		return new CommentiDAO_JDBC();
+	}
+	
+	public PreferitiDAO getPreferitiDAO() {
+		return new PreferitiDAO_JDBC();
+	}
+
+	public EsitoDAO getEsitoDAO() {
+		return new EsitoDAO_JDBC();
+	}
+
+	public UtenteDAO getUtenteDAO() {
+		return new UtenteDAO_JDBC();
+	}
+	
 }

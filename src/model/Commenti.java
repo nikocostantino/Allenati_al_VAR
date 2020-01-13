@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import persistence.DBManager;
+
 public class Commenti {
 
 	private ArrayList<String> lista_commenti;
