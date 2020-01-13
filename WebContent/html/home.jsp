@@ -20,7 +20,25 @@
 <body>
 <%@include file="header_default.html" %>
 
+
+<c:if test="${eliminaVideo != null}">
+						
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					  <strong>Video rimosso correttamente!</strong>
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					    <span aria-hidden="true">&times;</span>
+					  </button>
+					</div>
+</c:if>
+
+
+
 <div id="jumbo1" class="jumbotron">
+
+		
+
+
+
 	<h1><span class="badge badge-light">PIU' VISTI</span></h1>
 	
 	<!--Carousel Wrapper-->

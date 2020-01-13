@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class Esito {
 
+
 	private ArrayList<Video> video;
 	private Date data;
 	private Boolean risultato;

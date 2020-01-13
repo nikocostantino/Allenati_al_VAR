@@ -21,6 +21,14 @@ public class GestoreVideo extends HttpServlet {
 		if(url!=null)
 		{
 			DBManager.getInstance().eliminaVideo(url);
+		
+			req.getSession().setAttribute("eliminaVideo", url);
+
+			RequestDispatcher rd = req.getRequestDispatcher("/html/home");
+			rd.forward(req, resp);
+		
+			req.getSession().removeAttribute("eliminaVideo");
+
 		}
 		
 		else if(nuovoVideo!=null && nuovoVideo.equals("true"))
@@ -29,16 +37,21 @@ public class GestoreVideo extends HttpServlet {
 			String nome = req.getParameter("nome");
 			String categoria = req.getParameter("categoria");
 			String gradoDifficolta = req.getParameter("grado di difficoltà");
-			String rispostaCorretta = req.getParameter("opzione di risposta corretta");
-			String rispostaErrata = req.getParameter("opzione di risposta errata");
+			String rispostaCorretta = req.getParameter("opzioneRispostaCorretta");
+			String rispostaErrata = req.getParameter("opzioneRispostaErrata");
 			String descrizione = req.getParameter("descrizione");	
 			Video V = new Video(link.substring(30), link, nome, descrizione, gradoDifficolta, new Categoria(categoria), new OpzioniRisposte(rispostaCorretta, rispostaErrata), false);
 			DBManager.getInstance().aggiungiVideo(V);
+
+					
+			req.getSession().setAttribute("link", V);
 			
+			RequestDispatcher rd = req.getRequestDispatcher("/html/pagina_video?url="+link);
+			rd.forward(req, resp);
 			
+			req.getSession().removeAttribute("link");
 		}
-		RequestDispatcher rd = req.getRequestDispatcher("/html/home");
-		rd.forward(req, resp);
+		
 	}
 	
 	@Override

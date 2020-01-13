@@ -16,7 +16,6 @@ public class Utente {
 		this.video_preferiti = new ArrayList<Video>();
 		this.storico = new ArrayList<Esito>();
 		this.video_recenti = new ArrayList<Video>();
-	
 	}
 	
 	public Utente(String nome, String cognome, String email, String password, String amministratore) {
@@ -26,7 +25,7 @@ public class Utente {
 		this.password = password;
 		this.video_preferiti = new ArrayList<Video>();
 		this.storico = new ArrayList<Esito>();
-		
+
 		if(amministratore.equals("on"))
 			this.setAmministratore(true);
 		else

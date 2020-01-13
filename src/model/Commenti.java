@@ -6,6 +6,7 @@ import persistence.DBManager;
 
 public class Commenti {
 
+	private Long id;
 	private ArrayList<String> lista_commenti;
 	
 	public Commenti() {
@@ -18,5 +19,13 @@ public class Commenti {
 	
 	public void aggiungiCommento(String testo) {
 		lista_commenti.add(testo);
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 }

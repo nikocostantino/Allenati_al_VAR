@@ -21,8 +21,20 @@
 	<%@include file="header_default.html" %>
 	
 	<div id="cornice" class="container">
+	
+				<c:if test="${link != null}">
+						
+						<div class="alert alert-success alert-dismissible fade show" role="alert">
+						  <strong>Video aggiunto correttamente!</strong>
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						    <span aria-hidden="true">&times;</span>
+						  </button>
+						</div>
+		 		</c:if>
+
 	 	<div  class="row">
 		 	<div id="colonnaSx" class="column col-sm-7">
+
 		 		<p id="categoria"> Categoria: ${categoria} </p>
 				<p id="difficolta"> ${difficolta} </p>
 				
