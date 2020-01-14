@@ -19,22 +19,28 @@ public class GestorePagine extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		String pagina = req.getParameter("pagina");
-		if(pagina.equals("preferiti")) {
-			ArrayList<Video> preferiti = DBManager.getInstance().getPreferiti();
-			req.getSession().setAttribute("video_preferiti",preferiti);
-		}
-		else if(pagina.contentEquals("storico")) {
-			req.getSession().setAttribute("storico",DBManager.getInstance().getStorico());
-		}
-		else if(pagina.contentEquals("registrati")){
-			//operzioni per la pagina di registrazione
-			RequestDispatcher rd = req.getRequestDispatcher(pagina+".html");
+		if(pagina!=null)
+		{
+			if(pagina.equals("preferiti")) {
+				ArrayList<Video> preferiti = DBManager.getInstance().getPreferiti();
+				req.getSession().setAttribute("video_preferiti",preferiti);
+			}
+			else if(pagina.contentEquals("storico")) {
+				req.getSession().setAttribute("storico",DBManager.getInstance().getStorico());
+			}
+			else if(pagina.contentEquals("registrati")){
+				//operzioni per la pagina di registrazione
+				RequestDispatcher rd = req.getRequestDispatcher(pagina+".html");
+				rd.forward(req, resp);
+				return;
+			}
+			RequestDispatcher rd = req.getRequestDispatcher(pagina+".jsp");
 			rd.forward(req, resp);
-			return;
+			
 		}
 		
-		RequestDispatcher rd = req.getRequestDispatcher(pagina+".jsp");
-		rd.forward(req, resp);
+		
+		
 	}
 
 }

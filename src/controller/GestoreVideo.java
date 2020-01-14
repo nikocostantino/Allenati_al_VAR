@@ -18,6 +18,9 @@ public class GestoreVideo extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url=req.getParameter("eliminaVideo");
 		String nuovoVideo=req.getParameter("aggiungiVideo");
+		String urlNuovo = req.getParameter("urlNuovo");
+		String nomeNuovo = req.getParameter("nomeNuovo");
+		
 		if(url!=null)
 		{
 			DBManager.getInstance().eliminaVideo(url);
@@ -51,7 +54,45 @@ public class GestoreVideo extends HttpServlet {
 			
 			req.getSession().removeAttribute("link");
 		}
-		
+		else if(urlNuovo!=null)
+		{
+			System.out.println(urlNuovo);
+			if(urlNuovo.matches("https://www.youtube.com/embed/(.*)") == false)
+			{
+				
+				resp.getOutputStream().println(
+						"<div id='formatErrato' class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Formato video non valido!</strong></div>"
+						);
+			}
+			else
+			{
+				if(DBManager.getInstance().getVideoDAO().esisteVideo(urlNuovo))
+				{
+					resp.getOutputStream().println(
+							"<div id='formatErrato' class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Il video &egrave; gi&agrave; presente!</strong></div>"
+							);
+				}
+				else
+				{
+					resp.getOutputStream().println("urlCorretto");
+				}
+			}
+		}
+		else if(nomeNuovo!=null && nomeNuovo!="")
+		{
+			if(DBManager.getInstance().getVideoDAO().esisteNome(nomeNuovo))
+			{
+				resp.getOutputStream().println(
+						"<div id='formatErrato' class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Nome gi&agrave; utilizzato!</strong></div>"
+						);
+			}
+			else
+			{
+				resp.getOutputStream().println("nomeCorretto");
+
+			}
+
+		}
 	}
 	
 	@Override

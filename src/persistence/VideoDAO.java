@@ -11,4 +11,6 @@ public interface VideoDAO {
 	public ArrayList<Video> findAll();       
 	public void update(Video video); //Update
 	public void delete(Video video); //Delete	
+	public boolean esisteVideo(String urlNuovo);
+	public boolean esisteNome(String nomeNuovo);
 }
