@@ -44,7 +44,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString("nome"));
 				video.setDescrizione(result.getString("descrizione"));
-				video.setDifficolta(result.getString("difficolt√†"));
+				video.setDifficolta(result.getString("difficolt‡"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				
 				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));
@@ -83,6 +83,53 @@ public class VideoDAO_JDBC implements VideoDAO{
 	public void delete(Video video) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public boolean esisteVideo(String urlNuovo) {
+		Connection connection = null;
+	
+		try {
+			connection = DBManager.getInstance().getConnection();
+			
+			PreparedStatement statement;
+			statement = connection.prepareStatement("SELECT nome FROM video WHERE url=?");
+			statement.setString(1, urlNuovo);
+
+			ResultSet result = statement.executeQuery();
+			if(result.next()) {
+				return true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+
+	public boolean esisteNome(String nomeNuovo) {
+		Connection connection = null;
+		
+		try {
+			connection = DBManager.getInstance().getConnection();
+			
+			PreparedStatement statement;
+			statement = connection.prepareStatement("SELECT * FROM video WHERE nome=?");
+			statement.setString(1, nomeNuovo);
+
+			ResultSet result = statement.executeQuery();
+			if(result.next()) {
+				System.out.println(result.getString("nome"));
+				return true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return false;
 	}
 	
 }
