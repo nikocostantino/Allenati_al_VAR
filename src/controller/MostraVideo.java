@@ -28,7 +28,7 @@ public class MostraVideo extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher rd = req.getRequestDispatcher("pagina_video.jsp");
+		
 		
 		if(req.getParameter("url") != null)
 			url = req.getParameter("url");
@@ -61,6 +61,7 @@ public class MostraVideo extends HttpServlet{
 			
 			req.getSession().setAttribute("rispostaCorretta", videoChiesto.getRisposte().getOpzioneCorretta());
 			req.getSession().setAttribute("rispostaErrata", videoChiesto.getRisposte().getOpzioneErrata());
+
 			req.getSession().setAttribute("isPreferito", DBManager.getInstance().isPreferito(videoChiesto));
 			req.getSession().setAttribute("lista_commenti", DBManager.getInstance().getCommenti(videoChiesto.getUrl()).getLista_commenti());
 			
@@ -73,6 +74,7 @@ public class MostraVideo extends HttpServlet{
 			DBManager.getInstance().aggiungiCommento(req.getParameter("commento"),videoChiesto.getUrl());
 			req.getSession().setAttribute("lista_commenti", DBManager.getInstance().getCommenti(videoChiesto.getUrl()).getLista_commenti());
 		}
+		RequestDispatcher rd = req.getRequestDispatcher("pagina_video.jsp");
 			
 		req.getSession().setAttribute("amministratore", DBManager.getInstance().getUtenteCorrente().getAmministratore());
 		rd.forward(req, resp);

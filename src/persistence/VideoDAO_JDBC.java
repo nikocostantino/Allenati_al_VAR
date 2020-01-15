@@ -70,7 +70,31 @@ public class VideoDAO_JDBC implements VideoDAO{
 	
 	@Override
 	public void save(Video video) {
-		// TODO Auto-generated method stub
+		Connection connection = null;
+		try {
+			connection = DBManager.getInstance().getConnection();
+			String insert = "insert into video(id, url, nome, descrizione, difficoltà, visualizzazioni,rispostaCorretta, rispostaErrata, categoria) values (?,?,?,?,?,?,?,?,?)";
+			PreparedStatement statement = connection.prepareStatement(insert);
+			statement.setString(1, video.getId());
+			statement.setString(2, video.getUrl());
+			statement.setString(3, video.getNome());
+			statement.setString(4, video.getDescrizione());
+			statement.setString(5, video.getDifficolta());
+			statement.setInt(6, 0);
+			statement.setString(7, video.getRisposte().getOpzioneCorretta());
+			statement.setString(8, video.getRisposte().getOpzioneErrata());
+			statement.setString(9, video.getCategoria().get(0).getNome());
+			
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
 		
 	}
 	
@@ -81,9 +105,24 @@ public class VideoDAO_JDBC implements VideoDAO{
 	}
 	
 	@Override
-	public void delete(Video video) {
-		// TODO Auto-generated method stub
+	public void delete(String url) {
+		Connection connection = null;
 		
+		try {
+			connection = DBManager.getInstance().getConnection();
+			
+			PreparedStatement statement;
+			statement = connection.prepareStatement("DELETE FROM video WHERE url=?");
+			statement.setString(1, url);
+
+			statement.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	public boolean esisteVideo(String urlNuovo) {

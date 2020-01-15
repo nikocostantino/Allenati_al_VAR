@@ -90,7 +90,7 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString("nome"));
 				video.setDescrizione(result.getString("descrizione"));
-				video.setDifficolta(result.getString("difficolt√†"));
+				video.setDifficolta(result.getString("difficolt‡"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				video.setCategoria(new Categoria(result.getString("categoria")));
 				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));
@@ -131,14 +131,27 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 
 	@Override
 	public void update(Esito esito) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void delete(Esito esito) {
-		// TODO Auto-generated method stub
+	public void delete(String url) {
+		Connection connection = null;
 		
+		try {
+			connection = DBManager.getInstance().getConnection();
+			
+			PreparedStatement statement;
+			statement = connection.prepareStatement("DELETE FROM esiti WHERE fk_video=?");
+			statement.setString(1, url);
+
+			statement.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
 	
 	@Override
@@ -167,7 +180,7 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString("nome"));
 				video.setDescrizione(result.getString("descrizione"));
-				video.setDifficolta(result.getString("difficolt√†"));
+				video.setDifficolta(result.getString("difficolt‡"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				video.setCategoria(new Categoria(result.getString("categoria")));
 				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));

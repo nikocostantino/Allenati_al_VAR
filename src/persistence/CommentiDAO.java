@@ -11,5 +11,5 @@ public interface CommentiDAO {
 	public Commenti findByPrimaryKey(String url);     // Retrieve
 	public ArrayList<Commenti> findAll();       
 	public void update(String commento); //Update
-	public void delete(String commento); //Delete	
+	public void delete(String url); //Delete	
 }

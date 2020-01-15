@@ -70,7 +70,7 @@ public class DBManager {
 	}
 	
 	public void aggiungiVideo(Video v) {
-		video.add(v);
+		getVideoDAO().save(v);
 	}
 
 	public ArrayList<Video> getVideo() {
@@ -120,34 +120,10 @@ public class DBManager {
 	public List<Utente> getUtenti() {
 		return utenti;
 	}
+
 	public void eliminaVideo(String url)
 	{
-		for(int i=0; i<video.size(); i++)
-		{
-			if(video.get(i).getUrl().equals(url))
-			{
-				video.remove(i);
-			}
-		}
-		
-		for (Utente utente : DBManager.getInstance().getUtenti()) {
-			
-			for(int i=0; i<utente.getRecenti().size(); i++)
-			{
-				if(utente.getRecenti().get(i).getUrl().equals(url))
-				{
-					utente.getRecenti().remove(i);
-				}
-			}
-		}
-		
-		for(int i=0; i<piu_visti.size(); i++)
-		{
-			if(piu_visti.get(i).getUrl().equals(url))
-			{
-				piu_visti.remove(i);
-			}
-		}
+		getVideoDAO().delete(url);
 	}
 
 	public ArrayList<Video> getPiuVisti() {
@@ -215,6 +191,19 @@ public class DBManager {
 
 	public UtenteDAO getUtenteDAO() {
 		return new UtenteDAO_JDBC();
+	}
+
+
+	public void eliminaVideoEsito(String url) {
+		getEsitoDAO().delete(url);
+	}
+	
+	public void eliminaVideoCommento(String url) {
+		getCommentiDAO().delete(url);
+	}
+	
+	public void eliminaVideoPreferito(String url) {
+		getPreferitiDAO().deleteUrlPreferiti(url);
 	}
 
 

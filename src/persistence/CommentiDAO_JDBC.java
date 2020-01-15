@@ -76,9 +76,23 @@ public class CommentiDAO_JDBC implements CommentiDAO {
 	}
 
 	@Override
-	public void delete(String commento) {
-		// TODO Auto-generated method stub
+	public void delete(String url) {
+		Connection connection = null;
+		
+		try {
+			connection = DBManager.getInstance().getConnection();
+			
+			PreparedStatement statement;
+			statement = connection.prepareStatement("DELETE FROM commenti WHERE fk_video=?");
+			statement.setString(1, url);
 
+			statement.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
 
 }
