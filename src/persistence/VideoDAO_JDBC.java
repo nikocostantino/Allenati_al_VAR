@@ -19,6 +19,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 
 	
 	public final String query_findAll = "SELECT * FROM video";
+	public final String query_risposta_corretta = "SELECT * FROM video WHERE url=?";
 	
 	
 	@Override
@@ -44,7 +45,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString("nome"));
 				video.setDescrizione(result.getString("descrizione"));
-				video.setDifficolta(result.getString("difficolt‡"));
+				video.setDifficolta(result.getString("difficolt√†"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				
 				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));
@@ -130,6 +131,33 @@ public class VideoDAO_JDBC implements VideoDAO{
 		}
 
 		return false;
+	}
+	
+	@Override
+	public String getRispostaCorretta(String url) {
+		
+		Connection connection = null;
+		String risposta_corretta = null;
+		try {
+			connection = DBManager.getInstance().getConnection();
+			PreparedStatement statement;
+			
+			statement = connection.prepareStatement(query_risposta_corretta);
+			statement.setString(1, url);
+			ResultSet result = statement.executeQuery();
+			if(result.next()){
+				risposta_corretta = result.getString("rispostaCorretta");
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}	 finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}		
+		return risposta_corretta;
 	}
 	
 }

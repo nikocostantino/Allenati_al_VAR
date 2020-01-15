@@ -37,12 +37,7 @@ public class Login extends HttpServlet{
 			if (utente != null) {
 				DBManager.getInstance().setUtenteCorrente(utente);
 				req.getSession().setAttribute("utente", utente);
-				List<Video> video = DBManager.getInstance().getVideo();
-				req.getSession().setAttribute("video", video);
-				List<Video> piu_visti = DBManager.getInstance().getPiuVisti();
-				req.getSession().setAttribute("video_piu_visti", piu_visti);
-				List<Video> recenti = DBManager.getInstance().getUtenteCorrente().getRecenti();
-				req.getSession().setAttribute("video_recenti", recenti);		
+						
 				DBManager.getInstance().setUtenteCorrente(utente);
 				RequestDispatcher rd = req.getRequestDispatcher("/html/home");
 				rd.forward(req, resp);

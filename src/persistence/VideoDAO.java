@@ -13,4 +13,5 @@ public interface VideoDAO {
 	public void delete(Video video); //Delete	
 	public boolean esisteVideo(String urlNuovo);
 	public boolean esisteNome(String nomeNuovo);
+	public String getRispostaCorretta(String url);
 }

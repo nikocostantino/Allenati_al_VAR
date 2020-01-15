@@ -1,6 +1,9 @@
 package controller;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -11,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.catalina.startup.AddPortOffsetRule;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import model.Video;
 import persistence.DBManager;
@@ -76,7 +81,33 @@ public class MostraVideo extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doGet(req, resp);
+		//doGet(req, resp);
+		
+		StringBuffer jsonReceived = new StringBuffer();
+		BufferedReader reader = new BufferedReader(new InputStreamReader(req.getInputStream()));		
+		String line = reader.readLine();
+		while (line != null){
+			jsonReceived.append(line);
+			line = reader.readLine();
+		}		
+		System.out.println(jsonReceived.toString());
+		try {
+			JSONObject json = new JSONObject(jsonReceived.toString());				
+			
+			//studente.setMatricola(json.getString("matricola"));
+		
+			//query al db
+			DBManager.getInstance().aggiungiCommento(json.getString("testo"),json.getString("url_video"));
+			req.getSession().setAttribute("lista_commenti", DBManager.getInstance().getCommenti(videoChiesto.getUrl()).getLista_commenti());
+			PrintWriter out = resp.getWriter(); //per mandare il data
+			out.println(json.toString()); //mando il data
+			
+			System.out.println(json.toString());
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

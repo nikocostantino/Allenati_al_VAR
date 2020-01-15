@@ -3,14 +3,15 @@ package persistence;
 import java.util.ArrayList;
 
 import model.Categoria;
+import model.Video;
 
 public interface CategoriaDAO {
 	
 
-	public void save(Categoria categoria);  // Create
-	public Categoria findByPrimaryKey(String nome);    // Retrieve
-	public ArrayList<Categoria> findAll();       
+	public void save(Video video);  // Create
+	public ArrayList<Video> findByPrimaryKey(String nome,String utente);    // Retrieve
+	public ArrayList<Video> findAll();       
 	public void update(Categoria categoria); //Update
-	public void delete(Categoria categoria); //Delete	
+	public void delete(Video video); //Delete	
 
 }

@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import persistence.DBManager;
+
 public class Utente {
 	private String nome;
 	private String cognome;
@@ -90,20 +92,10 @@ public class Utente {
 	}
 	
 	public ArrayList<Video> getRecenti() {
-		
-		return video_recenti;
+		return DBManager.getInstance().getCategoriaDAO().findByPrimaryKey("recenti", email);
 	}
 
 	public void aggiornaRecenti(Video videoChiesto) {
-		
-		if(video_recenti.size()>15)
-			video_recenti.remove(15);
-		
-		for(Video v : video_recenti)
-			if(v.getId().equals(videoChiesto.getId()))
-				return;
-		
-		video_recenti.add(0, videoChiesto);
-					
+		DBManager.getInstance().getCategoriaDAO().save(videoChiesto);
 	}
 }
