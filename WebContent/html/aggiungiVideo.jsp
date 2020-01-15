@@ -47,7 +47,7 @@
 				
 				
 			<div class="fadeIn second" id="categoria" >
-				<select name="categoria" required>
+				<select id="cat" name="categoria" required>
 					<option value="" disabled selected>categoria</option>
 					<option value="rigore">rigore</option>
 					<option value="rosso">rosso</option>
@@ -57,26 +57,46 @@
 				
 				</select>
 			</div>	
+			<div id="controlloCategoria" class="inactive">
+				  <div id="formatErrato" class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Seleziona una categoria!</strong></div>	
+			
+			</div>
+			
 			<div class="fadeIn second" id="grado di difficoltà" >
-				<select name="grado di difficoltà" required>
+				<select id="sel" name="grado di difficoltà" required>
 					<option value="" disabled selected>grado di difficoltà</option>
 					<option value="normale">normale</option>
 					<option value="difficile">difficile</option>
 					<option value="facile">facile</option>						
 				</select>
 			</div>
+			<div id="controlloDifficolta" class="inactive">
+				  <div id="formatErrato" class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Seleziona un grado di difficolt&agrave;!</strong></div>	
+			
+			</div>
 			
 			<input type="text" id="opzioneRispostaCorretta" class="fadeIn second" name="opzioneRispostaCorretta" placeholder="opzione di risposta corretta" required/>
+			<div id="controlloOpzioneUno" class="inactive">
+	      			<div id="formatErrato" class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Inserisci l'opzione di risposta corretta!</strong></div>	
+	      	</div>
+	      	
 			<input type="text" id="opzioneRispostaErrata" class="fadeIn second" name="opzioneRispostaErrata" placeholder="opzione di risposta errata" required/>
+			<div id="controlloOpzioneDue" class="inactive">
+	      			<div id="formatErrato" class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Inserisci l'opzione di risposta errata!</strong></div>	
+	      	</div>
 			
-			
-			<textarea class="fadeIn second" id="descrizione"  name="descrizione" placeholder="descrizione"></textarea>
-			
+			<textarea class="fadeIn second" id="descrizione"  name="descrizione" placeholder="descrizione" ></textarea>
+			<div id="controlloDescrizione" class="inactive">
+	      			<div id="formatErrato" class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Inserisci una descrizione per il video!</strong></div>	
+	      	</div>
+	      	<div id="controlloLunghezzaDescrizione" class="inactive">
+	      			<div id="formatErrato" class='alert alert-danger alert-dismissible fade show' role='alert'><strong>La descrizione che hai inserito è troppo lunga!</strong></div>	
+	      	</div>
 					  
 			<div class="btn-group-toggle" data-toggle="buttons">
 				<a class="btn btn-secondary" id="Indietro" href="gestorePagine?pagina=aggiungiVideo" type="submit">Indietro</a>
 				<a class="btn btn-danger" id="Annulla" href="home" type="submit">Annulla</a>
-	      		<a class="btn btn-primary" id="Aggiungi" onclick="controllaNome()" href="javascript:void(0)" type="submit">Aggiungi</a>
+	      		<a class="btn btn-primary" id="Aggiungi" onclick="controllaCaratteristiche()" href="javascript:void(0)" type="submit">Aggiungi</a>
 	      		
 	      			      		
 
@@ -109,7 +129,7 @@
 						$("document").ready(function(){
 									var $temp= $("form");
 															
-									$temp.find(".inactive").removeClass("inactive");
+									$temp.find("#formAggiungi").removeClass("inactive");
 									$temp.find("#avanti").addClass("inactive");
 									$temp.find("#link").addClass("inactive");
 									$temp.find("#formatoErrato").addClass("inactive");
@@ -129,23 +149,101 @@
 			});
 		}
 		
-		function controllaNome(){
-			
+		function controllaCaratteristiche(){
+			var url = $("#link").val();
+			var $temp= $("form");
 			var nome = $("#nome").val();
+			var descrizione = $("#descrizione").val();
+			var opzioneUno = $("#opzioneRispostaCorretta").val();
+			var opzioneDue = $("#opzioneRispostaErrata").val();
+			
+			var selectorDifficolta = document.getElementById('sel');
+		    var valueDifficolta = selectorDifficolta[selectorDifficolta.selectedIndex].value;
+		    
+		    var selectorCategoria = document.getElementById('cat');
+		    var valueCategoria = selectorCategoria[selectorCategoria.selectedIndex].value;
+    
+		   	var lunghezzaDescrizione = descrizione.length;
+
+			if(valueDifficolta=="")
+			{
+				$temp.find("#controlloDifficolta").removeClass("inactive");
+			}
+			else
+			{
+				$temp.find("#controlloDifficolta").addClass("inactive");
+
+			}
+			
+			
+			if(valueCategoria=="")
+			{
+				$temp.find("#controlloCategoria").removeClass("inactive");
+			}
+			else
+			{
+				$temp.find("#controlloCategoria").addClass("inactive");
+
+			}
+
+			if(descrizione == "")
+			{
+				$temp.find("#controlloDescrizione").removeClass("inactive");
+				$temp.find("#controlloLunghezzaDescrizione").addClass("inactive");
+
+			}
+			else if(lunghezzaDescrizione>100)
+			{
+				$temp.find("#controlloLunghezzaDescrizione").removeClass("inactive");
+				$temp.find("#controlloDescrizione").addClass("inactive");
+
+			}
+			else
+			{
+				$temp.find("#controlloDescrizione").addClass("inactive");
+				$temp.find("#controlloLunghezzaDescrizione").addClass("inactive");
+
+			}
+			
+			if(opzioneUno == "")
+			{
+				$temp.find("#controlloOpzioneUno").removeClass("inactive");
+			}
+			else
+			{
+				$temp.find("#controlloOpzioneUno").addClass("inactive");
+			}
+			
+			if(opzioneDue == "")
+			{
+				$temp.find("#controlloOpzioneDue").removeClass("inactive");
+			}
+			else
+			{
+				$temp.find("#controlloOpzioneDue").addClass("inactive");
+			}
+
+			
 			$.ajax({
 				type: "GET",
-				url: "gestoreVideo",
+				url: "gestoreVideo?link="+url+"&&nome="+nome+"&&desc="+descrizione+"&&diff="+valueDifficolta+"&&cat="+valueCategoria+"&&opC="+opzioneUno+"&&opE="+opzioneDue,
 				data: {nomeNuovo: nome},
 				success: function(info){
 					$("document").ready(function(){
-				
-						var $temp= $("form");
-						$temp.find("#nomeErrato").removeClass("inactive");
-						$("#nomeErrato").html(info);
+							if(info.match("tuttoAPosto"))
+							{
+								window.location.href="gestoreVideo?aggiungiVideo=true&&link="+url+"&&nome="+nome+"&&desc="+descrizione+"&&diff="+valueDifficolta+"&&cat="+valueCategoria+"&&opC="+opzioneUno+"&&opE="+opzioneDue;
+							}
+							else
+							{
+								var $temp= $("form");
+								$temp.find("#nomeErrato").removeClass("inactive");
+								$("#nomeErrato").html(info);
+							}
+						
 					})
 				}
 			});
-			
 		}
 		
 		

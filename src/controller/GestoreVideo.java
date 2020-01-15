@@ -35,15 +35,16 @@ public class GestoreVideo extends HttpServlet {
 		}
 		
 		else if(nuovoVideo!=null && nuovoVideo.equals("true"))
-		{
+		{	
 			String link = req.getParameter("link");
 			String nome = req.getParameter("nome");
-			String categoria = req.getParameter("categoria");
-			String gradoDifficolta = req.getParameter("grado di difficoltà");
-			String rispostaCorretta = req.getParameter("opzioneRispostaCorretta");
-			String rispostaErrata = req.getParameter("opzioneRispostaErrata");
-			String descrizione = req.getParameter("descrizione");	
-			Video V = new Video(link.substring(30), link, nome, descrizione, gradoDifficolta, new Categoria(categoria), new OpzioniRisposte(rispostaCorretta, rispostaErrata), false);
+			String descrizione = req.getParameter("desc");
+			String difficolta = req.getParameter("diff");
+			String categoria = req.getParameter("cat");
+			String opzioneCorretta = req.getParameter("opC");
+			String opzioneErrata = req.getParameter("opE");
+			
+			Video V = new Video(link.substring(30), link, nome, descrizione, difficolta, new Categoria(categoria), new OpzioniRisposte(opzioneCorretta, opzioneErrata), false);
 			DBManager.getInstance().aggiungiVideo(V);
 
 					
@@ -53,6 +54,8 @@ public class GestoreVideo extends HttpServlet {
 			rd.forward(req, resp);
 			
 			req.getSession().removeAttribute("link");
+			
+			
 		}
 		else if(urlNuovo!=null)
 		{
@@ -88,10 +91,15 @@ public class GestoreVideo extends HttpServlet {
 			}
 			else
 			{
-				resp.getOutputStream().println("nomeCorretto");
-
+				resp.getOutputStream().println("tuttoAPosto");	
 			}
 
+		}
+		else if(nomeNuovo=="")
+		{
+			resp.getOutputStream().println(
+					"<div id='formatErrato' class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Inserire un nome!</strong></div>"
+					);
 		}
 	}
 	

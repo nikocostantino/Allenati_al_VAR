@@ -37,7 +37,7 @@ public class DBManager {
 	}
 	
 	public Connection getConnection() throws SQLException {
-		Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Allenati_Al_Var", "postgres", "Simone_10");
+		Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Allenati_Al_Var", "postgres", "7Ronaldo");
 		return connection;
 	}
 	
@@ -69,7 +69,7 @@ public class DBManager {
 	}
 	
 	public void aggiungiVideo(Video v) {
-		video.add(v);
+		getVideoDAO().save(v);
 	}
 
 	public ArrayList<Video> getVideo() {

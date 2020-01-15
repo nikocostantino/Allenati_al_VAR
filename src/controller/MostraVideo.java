@@ -22,7 +22,7 @@ public class MostraVideo extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher rd = req.getRequestDispatcher("pagina_video.jsp");
+		
 		
 		if(req.getParameter("url") != null)
 			url = req.getParameter("url");
@@ -43,7 +43,7 @@ public class MostraVideo extends HttpServlet{
 					videoChiesto = v;			
 			}
 			
-			DBManager.getInstance().getUtenteCorrente().aggiornaRecenti(videoChiesto);
+		//	DBManager.getInstance().getUtenteCorrente().aggiornaRecenti(videoChiesto);
 			
 			videoChiesto.setVisualizzazioni(videoChiesto.getVisualizzazioni()+1); 
 			req.getSession().setAttribute("nome", videoChiesto.getNome());
@@ -53,7 +53,7 @@ public class MostraVideo extends HttpServlet{
 			req.getSession().setAttribute("visualizzazioni", videoChiesto.getVisualizzazioni());
 			req.getSession().setAttribute("rispostaCorretta", videoChiesto.getRisposte().getOpzioneCorretta());
 			req.getSession().setAttribute("rispostaErrata", videoChiesto.getRisposte().getOpzioneErrata());
-			req.getSession().setAttribute("isPreferito", DBManager.getInstance().isPreferito(videoChiesto));
+		//	req.getSession().setAttribute("isPreferito", DBManager.getInstance().isPreferito(videoChiesto));
 			req.getSession().setAttribute("lista_commenti", videoChiesto.getCommenti().getLista_commenti());
 			
 		}
@@ -66,7 +66,8 @@ public class MostraVideo extends HttpServlet{
 			videoChiesto.getCommenti().aggiungiCommento(req.getParameter("commento"));
 			req.getSession().setAttribute("lista_commenti", videoChiesto.getCommenti().getLista_commenti());
 		}
-			rd.forward(req, resp);
+		RequestDispatcher rd = req.getRequestDispatcher("pagina_video.jsp");
+		rd.forward(req, resp);
 		
 	}
 	
