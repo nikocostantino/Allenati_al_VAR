@@ -37,11 +37,12 @@
 
 		 		<p id="categoria"> Categoria: ${categoria} </p>
 				<p id="difficolta"> ${difficolta} </p>
-				
-				<div class="btn-group btn-group-toggle" data-toggle="buttons">
-				  <a class="btn btn-primary" id="button_modifica" type="submit" href="#">Modifica</a>
-				  <a class="btn btn-danger" id="button_elimina" href="#" data-toggle="modal" data-target="#Eliminazione">Rimuovi</a>
-				</div>
+				<c:if test="${amministratore == true}">
+					<div id="div_button_gestione" class="btn-group btn-group-toggle" data-toggle="buttons">
+					  <a class="btn btn-primary" id="button_modifica" type="submit" href="#">Modifica</a>
+					  <a class="btn btn-danger" id="button_elimina" href="#" data-toggle="modal" data-target="#Eliminazione">Rimuovi</a>
+					</div>
+				</c:if>
 
 				<div  id="video-placeholder"></div>
 				<div id="controls"> </div>
@@ -66,7 +67,7 @@
 			
 				<div  id="lista_commenti" class="up" >
 					<c:forEach items="${lista_commenti}" var="c">                 	                            	
-						<p> ${c} </p>				
+						<p class="" id="commento"> ${c} </p>				
 					</c:forEach>
 				</div>
 			
@@ -79,9 +80,15 @@
 				</div>
 			
 				<div align="center" id="risposte" class="three"> 
-				
-					<button class="btn btn-dark" id="rispostaCorretta"> ${rispostaCorretta} </button>
-					<button class="btn btn-dark" id="rispostaErrata"> ${rispostaErrata} </button>
+					
+					<c:if test="${ordineRisposte==0}">
+						<button class="btn btn-dark" id="rispostaCorretta"> ${rispostaCorretta} </button>
+						<button class="btn btn-dark" id="rispostaErrata"> ${rispostaErrata} </button>
+					</c:if>
+					<c:if test="${ordineRisposte==1}">
+						<button class="btn btn-dark" id="rispostaErrata"> ${rispostaErrata} </button>
+						<button class="btn btn-dark" id="rispostaCorretta"> ${rispostaCorretta} </button>
+					</c:if>
 				</div>
 		
 			</div>	
@@ -124,8 +131,7 @@
 		        height: 400,
 		        videoId: '${id}',
 		        playerVars: {
-		            color: 'white',
-		            playlist: 'taJ60kskkns,FG0fTKAqZ5g'
+		            color: 'white'
 		        },
 		        events: {
 		            onReady: initialize
@@ -151,10 +157,6 @@
 
 
 		    $('#volume-input').val(Math.round(player.getVolume()));
-		}
-		
-		function onYouTubePlayerReady(playerId) {
-		    alert(player.getDuration());
 		}
 		
 	</script>

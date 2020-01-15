@@ -80,26 +80,7 @@ public class Utente {
 	public ArrayList<Esito> getStorico() {
 		return storico;
 	}
-	
-	public void aggiungiAlloStorico(Esito provaAutovalutazione) {
-		storico.add(provaAutovalutazione);
-	}
 
-	public ArrayList<Video> trovaStorico(String data) {
-		for (Esito provaAutovalutazione : storico) {
-			if(provaAutovalutazione.getData().toString().equals(data)) {
-				
-				System.out.println(data);
-				System.out.println(provaAutovalutazione.getData().toString());
-				
-				return provaAutovalutazione.getVideo();
-				
-				
-			}
-				
-		}
-		return null;
-	}
 
 	public void setAmministratore(String amministratore) {
 		if(amministratore.equals("on"))

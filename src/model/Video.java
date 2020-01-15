@@ -17,7 +17,7 @@ public class Video {
 	private OpzioniRisposte risposte;
 
 
-	public Video(String id,String url, String nome, String descrizione, String difficolta, Categoria categoria, OpzioniRisposte risposte, Boolean locale) {
+	public Video(String id,String url, String nome, String descrizione, String difficolta, Categoria categoria, OpzioniRisposte risposte) {
 		this.id = id;
 		this.url = url;
 		this.nome = nome;

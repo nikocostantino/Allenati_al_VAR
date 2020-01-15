@@ -24,28 +24,41 @@
 	
 	<div class="jumbotron container" id="risposte">
 	
-		<h1><span class="badge badge-light">STORICO</span></h1>
+		<h1><span class="badge badge-dark">STORICO</span></h1>
 		
 		<ul class="list-group">
 		
 			<c:forEach items="${storico}" var="s">
 				<c:if test="${s.risultato==true}">
 					<li class="list-group-item list-group-item-success">
+						<a href="esito?data=${s.data}&&id_esito=${s.id}">
+							<div class="row">
+							
+								<div class="column">
+									<p class="badge badge-light">Prova di autovalutazione del ${s.data}</p>
+									<p class="badge badge-success">Esito: POSITIVO</p>
+								</div>	
+								
+							</div>
+						</a>
+					</li>
 				</c:if>
 				<c:if test="${s.risultato==false}">
 					<li class="list-group-item list-group-item-danger">
-				</c:if>
-					<a href="esito?data=${s.data}">
-						<div class="row">
-						
-							<div class="column">
-								<p>${s.data}</p>
-								<p>${s.risultato}</p>
-							</div>	
+						<a href="esito?data=${s.data}&&id_esito=${s.id}">
+							<div class="row">
 							
-						</div>
-					</a>
-				</li>
+								<div class="column">
+									<p class="badge badge-light">Prova di autovalutazione del ${s.data}</p>
+									<p class="badge badge-danger">Esito: NEGATIVO</p>
+								</div>	
+								
+							</div>
+						</a>
+					</li>
+				</c:if>
+					
+				
 			</c:forEach>
 		</ul>
 	</div>

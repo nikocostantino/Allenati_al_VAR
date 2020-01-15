@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import model.Commenti;
 import model.Commenti;
@@ -17,11 +18,12 @@ public class CommentiDAO_JDBC implements CommentiDAO {
 		Connection connection = null;
 		try {
 			connection = DBManager.getInstance().getConnection();
-			String insert = "insert into commenti(commento,fk_utente, fk_video) values (?,?,?)";
+			String insert = "insert into commenti(data,commento,fk_utente, fk_video) values (?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setString(1, commento);
-			statement.setString(2, DBManager.getInstance().getUtenteCorrente().getEmail());
-			statement.setString(3, url);
+			statement.setString(1, new Date().toLocaleString());
+			statement.setString(2, commento);
+			statement.setString(3, DBManager.getInstance().getUtenteCorrente().getEmail());
+			statement.setString(4, url);
 
 			statement.executeUpdate();
 		} catch (SQLException e) {
@@ -42,12 +44,12 @@ public class CommentiDAO_JDBC implements CommentiDAO {
 		try {
 			connection = DBManager.getInstance().getConnection();
 			PreparedStatement statement;
-			String query = "select * from commenti where fk_video = ?";
+			String query = "SELECT * FROM commenti c JOIN utenti u ON c.fk_utente=u.email WHERE fk_video = ? ORDER BY c.data";
 			statement = connection.prepareStatement(query);
 			statement.setString(1, id);
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
-				commenti.aggiungiCommento(result.getString("commento"));
+				commenti.aggiungiCommento(result.getString("nome"),result.getString("cognome"),result.getString("commento"),result.getString("data"));
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());

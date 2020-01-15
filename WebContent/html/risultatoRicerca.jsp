@@ -17,17 +17,22 @@
 <body>
 <%@include file="header_default.html" %>
 <!-- RISULTATO RICERCA -->
-<div class="jumbotron">
+<div id="jumbo1" class="jumbotron">
 
-	<h1><span class="badge badge-light">RISULTATO RICERCA: ${textRicerca}</span></h1>
+		
+
+
+
+	<h1><span class="badge badge-light">RISULTATO RICERCA</span></h1>
 	
 	<!--Carousel Wrapper-->
-	<div id="video-carousel-ricerca" class="carousel slide carousel-fade" data-ride="carousel">
+	<div id="video-carousel-piu_visti" class="carousel slide carousel-fade" data-ride="carousel">
+	  
 	  <!--Indicators-->
 	  <ol class="carousel-indicators">
-	    <li data-target="#video-carousel-ricerca" data-slide-to="0" class="active"></li>
-	    <li data-target="#video-carousel-ricerca" data-slide-to="1"></li>
-	    <li data-target="#video-carousel-ricerca" data-slide-to="2"></li>
+	    <li data-target="#video-carousel-piu_visti" data-slide-to="0" class="active"></li>
+	    <li data-target="#video-carousel-piu_visti" data-slide-to="1"></li>
+	    <li data-target="#video-carousel-piu_visti" data-slide-to="2"></li>
 	  </ol>
 	  <!--/.Indicators-->
 	  
@@ -47,13 +52,11 @@
 			<div class="inline" align="center">
 				<div class=rowUp>
 					
-					<iframe id="single_video" src="${r.url}" class="video-fluid"></iframe>
-				
-	
+						<iframe id="single_video" src="${r.url}" class="video-fluid"></iframe>
 					
 				</div>
 				<div class="rowDown">
-					<a class="badge badge-secondary" id="textNomeVideo" href="pagina_video?url=${r.url}">${r.nome}</a> 
+				 <a class="badge badge-secondary"  id="textNomeVideo" href="pagina_video?url=${r.url}">${r.nome}</a> 
 				</div>
 			</div>
 			<c:set var = "cont" scope = "request" value ="${cont + 1}" />
@@ -67,16 +70,19 @@
 	  
 	  <!--Controls-->
 	  
-	  <a id="column" class="carousel-control-prev" href="#video-carousel-ricerca" role="button" data-slide="prev">
+	  <a id="freccia" class="carousel-control-prev" href="#video-carousel-piu_visti" role="button" data-slide="prev">
 	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 	    <span class="sr-only">Previous</span>
 	  </a>
-	  <a id="column" class="carousel-control-next" href="#video-carousel-ricerca" role="button" data-slide="next">
+	 
+	  <a id="freccia" class="carousel-control-next" href="#video-carousel-piu_visti" role="button" data-slide="next">
 	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 	    <span class="sr-only">Next</span>
 	  </a>
+	 
 	  <!--/.Controls-->
 	</div>
+	</div> 
 	<!--Carousel Wrapper-->
 </div>
 

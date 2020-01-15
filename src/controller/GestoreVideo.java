@@ -36,11 +36,11 @@ public class GestoreVideo extends HttpServlet {
 			String link = req.getParameter("link");
 			String nome = req.getParameter("nome");
 			String categoria = req.getParameter("categoria");
-			String gradoDifficolta = req.getParameter("grado di difficoltà");
+			String gradoDifficolta = req.getParameter("grado di difficoltï¿½");
 			String rispostaCorretta = req.getParameter("opzioneRispostaCorretta");
 			String rispostaErrata = req.getParameter("opzioneRispostaErrata");
 			String descrizione = req.getParameter("descrizione");	
-			Video V = new Video(link.substring(30), link, nome, descrizione, gradoDifficolta, new Categoria(categoria), new OpzioniRisposte(rispostaCorretta, rispostaErrata), false);
+			Video V = new Video(link.substring(30), link, nome, descrizione, gradoDifficolta, new Categoria(categoria), new OpzioniRisposte(rispostaCorretta, rispostaErrata,null));
 			DBManager.getInstance().aggiungiVideo(V);
 
 					

@@ -68,7 +68,7 @@ iframe{
 	width:40%;
 	height:70%;
 	font-family: "Garamond";
-	font-size:35px;
+	font-size:20px;
 	margin-top: 1%;
 	font-weight: 900;
 }
@@ -76,7 +76,7 @@ iframe{
 	width:40%;
 	height:70%;
 	font-family: "Garamond";
-	font-size:35px;
+	font-size:20px;
 	margin-top: 1%;
 	font-weight: 900;
 }
@@ -85,4 +85,8 @@ iframe{
 #lista_commenti{
 	width: 90%;
 	text-align:left;
+}
+
+#commento{
+	font-size: 25px;
 }

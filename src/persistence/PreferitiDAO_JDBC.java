@@ -54,7 +54,7 @@ public class PreferitiDAO_JDBC implements PreferitiDAO{
 				video.setDescrizione(result.getString("descrizione"));
 				video.setDifficolta(result.getString("difficoltà"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
-				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata")));
+				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));
 				video.setCategoria(new Categoria(result.getString("categoria")));
 				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));
 				
@@ -126,7 +126,7 @@ public class PreferitiDAO_JDBC implements PreferitiDAO{
 				video.setDescrizione(result.getString("descrizione"));
 				video.setDifficolta(result.getString("difficoltà"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
-				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata")));
+				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));
 				video.setCategoria(new Categoria(result.getString("categoria")));
 				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));
 				

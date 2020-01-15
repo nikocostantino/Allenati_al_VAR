@@ -47,7 +47,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 				video.setDifficolta(result.getString("difficoltà"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				
-				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata")));
+				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));
 				
 				video.setCategoria(new Categoria(result.getString("categoria")));
 				
