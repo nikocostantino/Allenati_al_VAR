@@ -23,6 +23,10 @@ public class GestoreVideo extends HttpServlet {
 		
 		if(url!=null)
 		{
+			DBManager.getInstance().eliminaVideoPreferito(url);
+			DBManager.getInstance().eliminaVideoCommento(url);
+			DBManager.getInstance().eliminaVideoEsito(url);
+			
 			DBManager.getInstance().eliminaVideo(url);
 		
 			req.getSession().setAttribute("eliminaVideo", url);
@@ -103,12 +107,6 @@ public class GestoreVideo extends HttpServlet {
 				resp.getOutputStream().println("tuttoAPosto");	
 			}
 
-		}
-		else if(nomeNuovo=="")
-		{
-			resp.getOutputStream().println(
-					"<div id='formatErrato' class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Inserire un nome!</strong></div>"
-					);
 		}
 	}
 	

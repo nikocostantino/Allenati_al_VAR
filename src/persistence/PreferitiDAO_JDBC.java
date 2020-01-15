@@ -84,7 +84,6 @@ public class PreferitiDAO_JDBC implements PreferitiDAO{
 		
 	}
 
-	@Override
 	public void delete(Video video) {
 		Connection connection = null;
 		try {
@@ -141,6 +140,25 @@ public class PreferitiDAO_JDBC implements PreferitiDAO{
 			}
 		}	
 		return video;
+	}
+
+	public void deleteUrlPreferiti(String url) {
+Connection connection = null;
+		
+		try {
+			connection = DBManager.getInstance().getConnection();
+			
+			PreparedStatement statement;
+			statement = connection.prepareStatement("DELETE FROM preferiti WHERE fk_video=?");
+			statement.setString(1, url);
+
+			statement.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}				
 	}
 
 }

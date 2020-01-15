@@ -10,7 +10,7 @@ public interface VideoDAO {
 	public Video findByPrimaryKey(String id);     // Retrieve
 	public ArrayList<Video> findAll();       
 	public void update(Video video); //Update
-	public void delete(Video video); //Delete	
+	public void delete(String url); //Delete	
 	public boolean esisteVideo(String urlNuovo);
 	public boolean esisteNome(String nomeNuovo);
 }

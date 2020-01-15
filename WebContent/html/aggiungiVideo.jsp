@@ -41,7 +41,8 @@
 	      	
 	      	<div class="inactive" id="formAggiungi">
 	      	<input type="text" id="nome" class="fadeIn second" name="nome" placeholder="nome" required/>
-				<div id="nomeErrato">
+				<div id="nomeErrato" class="inactive">
+	      				  <div id="formatErrato" class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Inserisci un nome!</strong></div>	
 	      			
 	      		</div>				
 				
@@ -167,6 +168,16 @@
 
 		   	var bool = true;
 		   	
+		   	if(nome=="")
+		   	{
+				$temp.find("#nomeErrato").removeClass("inactive");
+				bool=false;
+		   	}
+		   	else
+		   	{
+				$temp.find("#nomeErrato").addClass("inactive");
+		   	}
+		   	
 			if(valueDifficolta=="")
 			{
 				$temp.find("#controlloDifficolta").removeClass("inactive");
@@ -175,7 +186,6 @@
 			else
 			{
 				$temp.find("#controlloDifficolta").addClass("inactive");
-
 			}
 			
 			

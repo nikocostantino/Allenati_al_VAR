@@ -11,7 +11,7 @@ public interface EsitoDAO {
 	public ArrayList<Esito> findByPrimaryKey(String email);     // Retrieve
 	public ArrayList<Esito> findAll();       
 	public void update(Esito esito); //Update
-	public void delete(Esito esito); //Delete	
+	public void delete(String url); //Delete	
 	
 	public ArrayList<Video> getEsito(String email, int id_esito);
 }
