@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,7 +44,7 @@ public class MostraVideo extends HttpServlet{
 					videoChiesto = v;			
 			}
 			
-		//	DBManager.getInstance().getUtenteCorrente().aggiornaRecenti(videoChiesto);
+			DBManager.getInstance().getUtenteCorrente().aggiornaRecenti(videoChiesto);
 			
 			videoChiesto.setVisualizzazioni(videoChiesto.getVisualizzazioni()+1); 
 			req.getSession().setAttribute("nome", videoChiesto.getNome());
@@ -51,10 +52,13 @@ public class MostraVideo extends HttpServlet{
 			req.getSession().setAttribute("categoria", videoChiesto.getCategoria().get(0).getNome()); //da correggere
 			req.getSession().setAttribute("difficolta", videoChiesto.getDifficolta());
 			req.getSession().setAttribute("visualizzazioni", videoChiesto.getVisualizzazioni());
+			req.getSession().setAttribute("ordineRisposte", new Random().nextInt(2));
+			
 			req.getSession().setAttribute("rispostaCorretta", videoChiesto.getRisposte().getOpzioneCorretta());
 			req.getSession().setAttribute("rispostaErrata", videoChiesto.getRisposte().getOpzioneErrata());
-		//	req.getSession().setAttribute("isPreferito", DBManager.getInstance().isPreferito(videoChiesto));
-			req.getSession().setAttribute("lista_commenti", videoChiesto.getCommenti().getLista_commenti());
+
+			req.getSession().setAttribute("isPreferito", DBManager.getInstance().isPreferito(videoChiesto));
+			req.getSession().setAttribute("lista_commenti", DBManager.getInstance().getCommenti(videoChiesto.getUrl()).getLista_commenti());
 			
 		}
 		if(req.getParameter("addPreferiti") != null) {
@@ -63,10 +67,11 @@ public class MostraVideo extends HttpServlet{
 		}
 		if(req.getParameter("commento")!= null) {
 			DBManager.getInstance().aggiungiCommento(req.getParameter("commento"),videoChiesto.getUrl());
-			videoChiesto.getCommenti().aggiungiCommento(req.getParameter("commento"));
-			req.getSession().setAttribute("lista_commenti", videoChiesto.getCommenti().getLista_commenti());
+			req.getSession().setAttribute("lista_commenti", DBManager.getInstance().getCommenti(videoChiesto.getUrl()).getLista_commenti());
 		}
 		RequestDispatcher rd = req.getRequestDispatcher("pagina_video.jsp");
+			
+		req.getSession().setAttribute("amministratore", DBManager.getInstance().getUtenteCorrente().getAmministratore());
 		rd.forward(req, resp);
 		
 	}

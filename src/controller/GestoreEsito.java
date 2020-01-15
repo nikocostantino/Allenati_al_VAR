@@ -19,7 +19,7 @@ public class GestoreEsito extends HttpServlet{
 		RequestDispatcher rd = req.getRequestDispatcher("esito.jsp");
 		String data = req.getParameter("data");
 		
-		req.getSession().setAttribute("esito", DBManager.getInstance().getUtenti().get(0).trovaStorico(data));
+		req.getSession().setAttribute("esito", DBManager.getInstance().getEsito(Integer.parseInt(req.getParameter("id_esito"))));
 		
 		rd.forward(req, resp);
 	}

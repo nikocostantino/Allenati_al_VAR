@@ -12,6 +12,7 @@ import java.util.List;
 import org.apache.jasper.tagplugins.jstl.core.ForEach;
 
 import model.Categoria;
+import model.Commenti;
 import model.Esito;
 import model.OpzioniRisposte;
 import model.Utente;
@@ -80,6 +81,10 @@ public class DBManager {
 		return getEsitoDAO().findByPrimaryKey(utenteCorrente.getEmail());
 	}
 	
+	public ArrayList<Video> getEsito(int id_esito){
+		return getEsitoDAO().getEsito(utenteCorrente.getEmail(), id_esito);
+	}
+	
 	public ArrayList<Video> getPreferiti() {
 		return getPreferitiDAO().findByPrimaryKey(utenteCorrente.getEmail());
 	}
@@ -98,6 +103,10 @@ public class DBManager {
 		else
 			return false;
 		
+	}
+	
+	public Commenti getCommenti(String url_video) {
+		return getCommentiDAO().findByPrimaryKey(url_video);
 	}
 	
 	public void aggiungiCommento(String commento, String url) {
@@ -207,5 +216,8 @@ public class DBManager {
 	public UtenteDAO getUtenteDAO() {
 		return new UtenteDAO_JDBC();
 	}
+
+
+	
 	
 }

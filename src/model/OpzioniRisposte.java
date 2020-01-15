@@ -9,11 +9,11 @@ public class OpzioniRisposte {
 	
 	
 
-	public OpzioniRisposte(String opzioneCorretta, String opzioneErrata) {
+	public OpzioniRisposte(String opzioneCorretta, String opzioneErrata, Boolean rispostaUtente) {
 		
 		this.opzioneCorretta = opzioneCorretta;
 		this.opzioneErrata = opzioneErrata;
-		this.rispostaUtente = false;
+		this.rispostaUtente = rispostaUtente;
 	}
 	public Long getId() {
 		return id;

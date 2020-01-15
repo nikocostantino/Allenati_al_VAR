@@ -18,7 +18,7 @@ public class UtenteDAO_JDBC implements UtenteDAO{
 		Connection connection = null;
 		try {
 			connection = DBManager.getInstance().getConnection();
-			String insert = "insert into utente(nome, cognome, email, password, amministratore) values (?,?,?,?,?)";
+			String insert = "insert into utenti(nome, cognome, email, password, amministratore) values (?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, utente.getNome());
 			statement.setString(2, utente.getCognome());

@@ -85,7 +85,7 @@
 	      			<div id="formatErrato" class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Inserisci l'opzione di risposta errata!</strong></div>	
 	      	</div>
 			
-			<textarea class="fadeIn second" id="descrizione"  name="descrizione" placeholder="descrizione" ></textarea>
+			<textarea class="fadeIn second" id="descrizione"  name="descrizione" placeholder="descrizione" required></textarea>
 			<div id="controlloDescrizione" class="inactive">
 	      			<div id="formatErrato" class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Inserisci una descrizione per il video!</strong></div>	
 	      	</div>
@@ -165,9 +165,12 @@
     
 		   	var lunghezzaDescrizione = descrizione.length;
 
+		   	var bool = true;
+		   	
 			if(valueDifficolta=="")
 			{
 				$temp.find("#controlloDifficolta").removeClass("inactive");
+				bool=false;
 			}
 			else
 			{
@@ -179,6 +182,7 @@
 			if(valueCategoria=="")
 			{
 				$temp.find("#controlloCategoria").removeClass("inactive");
+				bool=false;
 			}
 			else
 			{
@@ -190,12 +194,14 @@
 			{
 				$temp.find("#controlloDescrizione").removeClass("inactive");
 				$temp.find("#controlloLunghezzaDescrizione").addClass("inactive");
+				bool=false;
 
 			}
 			else if(lunghezzaDescrizione>100)
 			{
 				$temp.find("#controlloLunghezzaDescrizione").removeClass("inactive");
 				$temp.find("#controlloDescrizione").addClass("inactive");
+				bool=false;
 
 			}
 			else
@@ -208,6 +214,7 @@
 			if(opzioneUno == "")
 			{
 				$temp.find("#controlloOpzioneUno").removeClass("inactive");
+				bool=false;
 			}
 			else
 			{
@@ -217,35 +224,37 @@
 			if(opzioneDue == "")
 			{
 				$temp.find("#controlloOpzioneDue").removeClass("inactive");
+				bool=false;
 			}
 			else
 			{
 				$temp.find("#controlloOpzioneDue").addClass("inactive");
 			}
 
+			if(bool==true){
 			
-			$.ajax({
-				type: "GET",
-				url: "gestoreVideo?link="+url+"&&nome="+nome+"&&desc="+descrizione+"&&diff="+valueDifficolta+"&&cat="+valueCategoria+"&&opC="+opzioneUno+"&&opE="+opzioneDue,
-				data: {nomeNuovo: nome},
-				success: function(info){
-					$("document").ready(function(){
-							if(info.match("tuttoAPosto"))
-							{
-								window.location.href="gestoreVideo?aggiungiVideo=true&&link="+url+"&&nome="+nome+"&&desc="+descrizione+"&&diff="+valueDifficolta+"&&cat="+valueCategoria+"&&opC="+opzioneUno+"&&opE="+opzioneDue;
-							}
-							else
-							{
-								var $temp= $("form");
-								$temp.find("#nomeErrato").removeClass("inactive");
-								$("#nomeErrato").html(info);
-							}
-						
-					})
+				$.ajax({
+					type: "GET",
+					url: "gestoreVideo?link="+url+"&&nome="+nome+"&&desc="+descrizione+"&&diff="+valueDifficolta+"&&cat="+valueCategoria+"&&opC="+opzioneUno+"&&opE="+opzioneDue,
+					data: {nomeNuovo: nome},
+					success: function(info){
+						$("document").ready(function(){
+								if(info.match("tuttoAPosto"))
+								{
+									window.location.href="gestoreVideo?aggiungiVideo=true&&link="+url+"&&nome="+nome+"&&desc="+descrizione+"&&diff="+valueDifficolta+"&&cat="+valueCategoria+"&&opC="+opzioneUno+"&&opE="+opzioneDue;
+								}
+								else
+								{
+									var $temp= $("form");
+									$temp.find("#nomeErrato").removeClass("inactive");
+									$("#nomeErrato").html(info);
+								}
+							
+							})
+						}
+					});
 				}
-			});
 		}
-		
 		
 	</script>
 </body>

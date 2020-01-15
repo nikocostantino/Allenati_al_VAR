@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import persistence.DBManager;
 
@@ -17,8 +18,8 @@ public class Commenti {
 		return lista_commenti;
 	}
 	
-	public void aggiungiCommento(String testo) {
-		lista_commenti.add(testo);
+	public void aggiungiCommento(String nome, String cognome, String testo, String data) {
+		lista_commenti.add(nome + " " + cognome + ": " + testo + "\n" + data);
 	}
 
 	public Long getId() {

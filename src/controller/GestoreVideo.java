@@ -38,13 +38,22 @@ public class GestoreVideo extends HttpServlet {
 		{	
 			String link = req.getParameter("link");
 			String nome = req.getParameter("nome");
+//<<<<<<< HEAD
 			String descrizione = req.getParameter("desc");
 			String difficolta = req.getParameter("diff");
 			String categoria = req.getParameter("cat");
 			String opzioneCorretta = req.getParameter("opC");
 			String opzioneErrata = req.getParameter("opE");
 			
-			Video V = new Video(link.substring(30), link, nome, descrizione, difficolta, new Categoria(categoria), new OpzioniRisposte(opzioneCorretta, opzioneErrata), false);
+			Video V = new Video(link.substring(30), link, nome, descrizione, difficolta, new Categoria(categoria), new OpzioniRisposte(opzioneCorretta, opzioneErrata,false));
+/*=======
+			String categoria = req.getParameter("categoria");
+			String gradoDifficolta = req.getParameter("grado di difficolt�");
+			String rispostaCorretta = req.getParameter("opzioneRispostaCorretta");
+			String rispostaErrata = req.getParameter("opzioneRispostaErrata");
+			String descrizione = req.getParameter("descrizione");	
+			Video V = new Video(link.substring(30), link, nome, descrizione, gradoDifficolta, new Categoria(categoria), new OpzioniRisposte(rispostaCorretta, rispostaErrata,null));
+>>>>>>> branch 'master' of https://github.com/nikocostantino/Allenati_al_VAR.git*/
 			DBManager.getInstance().aggiungiVideo(V);
 
 					
