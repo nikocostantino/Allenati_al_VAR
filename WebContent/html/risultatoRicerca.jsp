@@ -15,7 +15,7 @@
 	<title>ALLENATI AL VAR - Pagina di ricerca</title>
 </head>
 <body>
-<%@include file="header_default.html" %>
+<%@include file="header_default.jsp" %>
 <!-- RISULTATO RICERCA -->
 <div id="jumbo1" class="jumbotron">
 

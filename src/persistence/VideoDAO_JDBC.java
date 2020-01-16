@@ -45,7 +45,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString("nome"));
 				video.setDescrizione(result.getString("descrizione"));
-				video.setDifficolta(result.getString("difficolt√†"));
+				video.setDifficolta(result.getString("difficolt‡"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				
 				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));
@@ -100,7 +100,34 @@ public class VideoDAO_JDBC implements VideoDAO{
 	
 	@Override
 	public void update(Video video) {
+<<<<<<< HEAD
 		
+=======
+		Connection connection = null;
+		try {
+			connection = DBManager.getInstance().getConnection();
+			String insert = "UPDATE video SET nome=?, descrizione=?, difficolt‡=?, rispostacorretta=?, rispostaerrata=?, categoria=? WHERE url=?";
+			PreparedStatement statement = connection.prepareStatement(insert);
+			
+			statement.setString(1, video.getNome());
+			statement.setString(2, video.getDescrizione());
+			statement.setString(3, video.getDifficolta());
+			statement.setString(4, video.getRisposte().getOpzioneCorretta());
+			statement.setString(5, video.getRisposte().getOpzioneErrata());
+			statement.setString(6, video.getCategoria().get(0).getNome());
+			statement.setString(7, video.getUrl());
+			
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+>>>>>>> branch 'master' of https://github.com/nikocostantino/Allenati_al_VAR
 	}
 	
 	@Override
@@ -156,6 +183,32 @@ public class VideoDAO_JDBC implements VideoDAO{
 			PreparedStatement statement;
 			statement = connection.prepareStatement("SELECT * FROM video WHERE nome=?");
 			statement.setString(1, nomeNuovo);
+
+			ResultSet result = statement.executeQuery();
+			if(result.next()) {
+				System.out.println(result.getString("nome"));
+				return true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+
+	@Override
+	public boolean esisteNomeModifica(String modificaNome, String url) {
+		Connection connection = null;
+		
+		try {
+			connection = DBManager.getInstance().getConnection();
+			
+			PreparedStatement statement;
+			statement = connection.prepareStatement("SELECT * FROM video WHERE nome=? AND url!=?");
+			statement.setString(1, modificaNome);
+			statement.setString(2, url);
 
 			ResultSet result = statement.executeQuery();
 			if(result.next()) {

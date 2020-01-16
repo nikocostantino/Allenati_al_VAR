@@ -35,10 +35,14 @@ public class Login extends HttpServlet{
 			Utente utente = DBManager.getInstance().login(email,password);
 
 			if (utente != null) {
+				
 				DBManager.getInstance().setUtenteCorrente(utente);
 				req.getSession().setAttribute("utente", utente);
 						
 				DBManager.getInstance().setUtenteCorrente(utente);
+				
+				req.getSession().setAttribute("amministratore", DBManager.getInstance().getUtenteCorrente().getAmministratore());
+
 				RequestDispatcher rd = req.getRequestDispatcher("/html/home");
 				rd.forward(req, resp);
 			}

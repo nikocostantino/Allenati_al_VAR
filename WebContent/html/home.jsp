@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<%@include file="header_default.html" %>
+<%@include file="header_default.jsp" %>
 
 
 <c:if test="${eliminaVideo != null}">

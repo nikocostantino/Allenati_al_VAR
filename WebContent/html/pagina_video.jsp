@@ -61,7 +61,7 @@
 	
 </head>
 <body>
-	<%@include file="header_default.html" %>
+	<%@include file="header_default.jsp" %>
 	
 	<div id="cornice" class="container">
 	
@@ -74,9 +74,20 @@
 						  </button>
 						</div>
 		 		</c:if>
+		 		
+		 		<c:if test="${modificato != null}">
+						
+						<div class="alert alert-success alert-dismissible fade show" role="alert">
+						  <strong>Video modificato correttamente!</strong>
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						    <span aria-hidden="true">&times;</span>
+						  </button>
+						</div>
+		 		</c:if>
 
 	 	<div  class="row">
 		 	<div id="colonnaSx" class="column col-sm-7">
+<<<<<<< HEAD
 				<div id= "rigaButton" class="row">
 					
 					<div align="right" class="column col-sm-12">
@@ -95,6 +106,15 @@
 								
 							</c:if>
 						</div>
+=======
+
+		 		<p id="categoria"> Categoria: ${categoria} </p>
+				<p id="difficolta"> ${difficolta} </p>
+				<c:if test="${amministratore == true}">
+					<div id="div_button_gestione" class="btn-group btn-group-toggle" data-toggle="buttons">
+					  <a class="btn btn-primary" id="button_modifica" href="gestorePagine?pagina=modificaVideo&&url=${url}" type="submit" href="#">Modifica</a>
+					  <a class="btn btn-danger" id="button_elimina" href="#" data-toggle="modal" data-target="#Eliminazione">Rimuovi</a>
+>>>>>>> branch 'master' of https://github.com/nikocostantino/Allenati_al_VAR
 					</div>
 					
 					

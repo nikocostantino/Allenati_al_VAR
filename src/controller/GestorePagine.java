@@ -24,9 +24,13 @@ public class GestorePagine extends HttpServlet {
 			if(pagina.equals("preferiti")) {
 				ArrayList<Video> preferiti = DBManager.getInstance().getPreferiti();
 				req.getSession().setAttribute("video_preferiti",preferiti);
+				RequestDispatcher rd = req.getRequestDispatcher(pagina+".jsp");
+				rd.forward(req, resp);
 			}
 			else if(pagina.contentEquals("storico")) {
 				req.getSession().setAttribute("storico",DBManager.getInstance().getStorico());
+				RequestDispatcher rd = req.getRequestDispatcher(pagina+".jsp");
+				rd.forward(req, resp);
 			}
 			else if(pagina.contentEquals("registrati")){
 				//operzioni per la pagina di registrazione
@@ -34,9 +38,17 @@ public class GestorePagine extends HttpServlet {
 				rd.forward(req, resp);
 				return;
 			}
-			RequestDispatcher rd = req.getRequestDispatcher(pagina+".jsp");
-			rd.forward(req, resp);
-			
+			else if(pagina.equals("modificaVideo"))
+			{
+				req.getSession().setAttribute("url", req.getParameter("url"));
+				RequestDispatcher rd = req.getRequestDispatcher(pagina+".jsp");
+				rd.forward(req, resp);
+			}
+			else
+			{
+				RequestDispatcher rd = req.getRequestDispatcher(pagina+".jsp");
+				rd.forward(req, resp);
+			}
 		}
 		
 		
