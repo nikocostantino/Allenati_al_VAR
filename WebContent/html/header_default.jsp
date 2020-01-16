@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <div class="jumbotron" >
 	<header>
 		<h1>ALLENATI AL VAR</h1>
@@ -28,9 +32,18 @@
 		<li class="nav-item">
       <a class="nav-link" id="prova_autovalutazione" href="#" data-toggle="modal" data-target="#myModal">Prova Autovalutazione</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="gestorePagine?pagina=aggiungiVideo">Aggiungi Video</a>
-    </li>
+    
+    
+    <c:if test="${amministratore == true}">
+				<li class="nav-item">
+			    <a class="nav-link" href="gestorePagine?pagina=aggiungiVideo">Aggiungi Video</a>
+  				</li>
+	</c:if>
+    
+    
+    
+    
+    
     <li class="nav-item">
       <a class="nav-link disabled" href="#">Info</a>
 

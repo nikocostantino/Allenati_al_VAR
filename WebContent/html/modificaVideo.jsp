@@ -17,7 +17,7 @@
 </head>
 
 <body>
-	<%@include file="header_default.html" %>
+	<%@include file="header_default.jsp" %>
 
 
 
@@ -99,7 +99,7 @@
 	    	</form>
 	    </div>
 	    <div id="anteprimaVideo" class="column right">
-
+				<iframe width='448' id='video' src='${url}' height='252'></iframe>			
 	    	</div>
 			</div> 
 	    	

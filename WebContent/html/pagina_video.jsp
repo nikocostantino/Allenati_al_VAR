@@ -18,7 +18,7 @@
 	<title>ALLENATI AL VAR - Pagina video</title>
 </head>
 <body>
-	<%@include file="header_default.html" %>
+	<%@include file="header_default.jsp" %>
 	
 	<div id="cornice" class="container">
 	
@@ -86,6 +86,8 @@
 					<form id="form_commenti" action="pagina_video?url=${url}" method="GET" class="form-group">
 						<textarea class="form-control" id="textCommento"  name="commento" placeholder="Scrivi un commento..."></textarea>
 						<input class="form-control" type="submit" value="Invia"/>
+						<input value="ajaxButton" type="button" onclick="caricaConAjax()"> <!-- $url non funziona. chiedere al prof -->
+						<div id="output"></div>
 					 </form>
 				</div>
 			

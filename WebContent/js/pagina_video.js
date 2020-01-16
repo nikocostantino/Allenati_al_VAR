@@ -53,5 +53,28 @@ function changeColor2(){
 
 /////////////////////////////////////
 
+function caricaConAjax(url){
+	
+	//problema prendere url del video
+	//problema aggiornamento live
+	
+	
+	var c = {
+			testo : $("#textCommento").val(),
+			//url_video : url
+			url_video : "https://www.youtube.com/embed/ODmuRSPTipI"
+	};
 
+	$.ajax({
+		type: "POST",		
+		url: "pagina_video",		
+		datatype : "json",
+		data: JSON.stringify(c),
+		success: function(data){
+			var c = JSON.parse(data);
+			$("#lista_commenti").append(c.testo); 
+			//$("#output").text(item.o1); 
+		}	
+	});	
+}
 
