@@ -26,7 +26,7 @@ public class GestoreVideo extends HttpServlet {
 			DBManager.getInstance().eliminaVideoPreferito(url);
 			DBManager.getInstance().eliminaVideoCommento(url);
 			DBManager.getInstance().eliminaVideoEsito(url);
-			
+			DBManager.getInstance().eliminaVideoCategoria(url);
 			DBManager.getInstance().eliminaVideo(url);
 		
 			req.getSession().setAttribute("eliminaVideo", url);

@@ -81,6 +81,9 @@
 				</div>
 			</c:if>
 		</c:forEach>
+		<c:if test="${cont % 5 != 0}">
+			</div>
+		</c:if>
 	  </div>
 	  <!--/.Slides-->
 	  
@@ -144,6 +147,9 @@
 				</div>
 			</c:if>
 		</c:forEach>
+		<c:if test="${cont % 5 != 0}">
+			</div>
+		</c:if>
 	  </div>
 	  <!--/.Slides-->
 	  
@@ -192,14 +198,11 @@
 				<div class="carousel-item">
 			</c:if>
 			<div class="inline" align="center">
-				<div class=rowUp>
-				
-						<iframe id="single_video" src="${v.url}" class="video-fluid"></iframe>
-				
-	
+				<div class=rowUp>	
+					<iframe id="single_video" src="${v.url}" class="video-fluid"></iframe>
 				</div>
 				<div class="rowDown">
-				 <a class="badge badge-secondary"  id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a> 
+				 	<a class="badge badge-secondary"  id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a> 
 				</div>
 			</div>
 			<c:set var = "cont" scope = "request" value ="${cont + 1}" />
@@ -208,7 +211,11 @@
 				</div>
 			</c:if>
 		</c:forEach>
+		<c:if test="${cont % 5 != 0}">
+			</div>
+		</c:if>
 	  </div>
+	  
 	  <!--/.Slides-->
 	  
 	  <!--Controls-->

@@ -1,8 +1,22 @@
 body {
 	background-image:url(../img/background.jpg);
-  	font-family: "Poppins", sans-serif;
+  	
+  	/*font-family: "Poppins", sans-serif;*/
   	
 }
+
+#titolo{
+	font-family: 'Anton', sans-serif;
+	font-size: 60px;
+	font-weight: bold;
+}
+#sottoTitolo{
+	font-family: 'Anton', sans-serif;
+	font-size: 20px;
+	font-style: oblique;
+	
+}
+
 
 .jumbotron{
 	opacity: 0.9;
@@ -19,14 +33,6 @@ body {
 	margin-bottom: 1%;
 }
 
-.spacer{
-    height: 100px;
-    content: "";
-}
-
-header{
-	margin:1% 1% 1% 1%;
-}
 
 #textCerca{
 	position: absolute;
@@ -52,12 +58,6 @@ div.inline { float:left; }
 	padding-left: 8%;
 }
 
-.nav-item{
-	visibility:hidden;
-}
-
-
-
 #textNomeVideo{
   border: 2px solid;
   padding: 10px;
@@ -67,21 +67,6 @@ div.inline { float:left; }
   white-space: pre-line;
 }
 
-#single_video{
-	margin: 6px;
-	width : 300px;
-	height: 150px;
-}
-
-#single_local_video{
-	margin: 6px;
-	width : 300px;
-	height: 150px;
-	object-fit: cover;
-	z-index: -100;
-	
-
-}
 
 .carousel-control-prev-icon{
   height: 100px;
@@ -101,6 +86,7 @@ div.inline { float:left; }
 }
 .carousel-inner {
    margin-bottom:50px;
+   /*border: 5px solid red;*/
 }
 .carousel-indicators {
   bottom:-50px;

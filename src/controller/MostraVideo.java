@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
@@ -51,7 +53,7 @@ public class MostraVideo extends HttpServlet{
 			
 			DBManager.getInstance().getUtenteCorrente().aggiornaRecenti(videoChiesto);
 			
-			videoChiesto.setVisualizzazioni(videoChiesto.getVisualizzazioni()+1); 
+			//videoChiesto.setVisualizzazioni(videoChiesto.getVisualizzazioni()+1); 
 			req.getSession().setAttribute("nome", videoChiesto.getNome());
 			req.getSession().setAttribute("descrizione", videoChiesto.getDescrizione());
 			req.getSession().setAttribute("categoria", videoChiesto.getCategoria().get(0).getNome()); //da correggere
@@ -92,19 +94,47 @@ public class MostraVideo extends HttpServlet{
 			jsonReceived.append(line);
 			line = reader.readLine();
 		}		
-		System.out.println(jsonReceived.toString());
+		//System.out.println(jsonReceived.toString());
 		try {
 			JSONObject json = new JSONObject(jsonReceived.toString());				
 			
-			//studente.setMatricola(json.getString("matricola"));
-		
-			//query al db
-			DBManager.getInstance().aggiungiCommento(json.getString("testo"),json.getString("url_video"));
-			req.getSession().setAttribute("lista_commenti", DBManager.getInstance().getCommenti(videoChiesto.getUrl()).getLista_commenti());
-			PrintWriter out = resp.getWriter(); //per mandare il data
-			out.println(json.toString()); //mando il data
+			if(json.getString("azione").equals("preferiti")) {
+				
+				
+				
+				DBManager.getInstance().aggiungiAiPreferiti(videoChiesto);
+				req.getSession().setAttribute("isPreferito", DBManager.getInstance().isPreferito(videoChiesto));
+				
+				json.append("isPreferito",DBManager.getInstance().isPreferito(videoChiesto));
+				
+				PrintWriter out = resp.getWriter(); //per mandare il data
+				out.println(json.toString()); //mando il data
+				out.flush();
+				
 			
-			System.out.println(json.toString());
+				
+			}else if(json.getString("azione").equals("commento")) {
+				
+				JSONObject jsonCompleto = new JSONObject();
+				String testo = new String(json.getString("testo").getBytes(), "UTF-8");
+				jsonCompleto.append("testo", testo);
+				jsonCompleto.append("url", json.get("url_video"));
+				jsonCompleto.append("nome", DBManager.getInstance().getUtenteCorrente().getNome());
+				jsonCompleto.append("cognome", DBManager.getInstance().getUtenteCorrente().getCognome());
+				jsonCompleto.append("data", new Date().toLocaleString());
+				
+				
+				DBManager.getInstance().aggiungiCommento(json.getString("testo"),json.getString("url_video"));
+				req.getSession().setAttribute("lista_commenti", DBManager.getInstance().getCommenti(videoChiesto.getUrl()).getLista_commenti());
+				PrintWriter out = resp.getWriter(); //per mandare il data
+				/*resp.setContentType("application/json");
+				resp.setCharacterEncoding("UTF-8");*/
+				out.println(jsonCompleto.toString()); //mando il data
+				out.flush();
+				//System.out.println(json.toString());
+				
+			}
+	
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

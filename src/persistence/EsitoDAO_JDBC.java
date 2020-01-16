@@ -25,7 +25,17 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 		Connection connection = null;
 	
 		try {
-			connection = DBManager.getInstance().getConnection();
+				connection = DBManager.getInstance().getConnection();
+				
+				
+				String maxID = "SELECT MAX(id) FROM esiti";
+				PreparedStatement statementMaxID = connection.prepareStatement(maxID);
+				ResultSet resMaxID = statementMaxID.executeQuery();
+				
+				if(resMaxID.next()) {
+					id = resMaxID.getInt(1);
+					id++;
+				}
 				
 				String insert = "INSERT INTO esiti(id, fk_video, data, risultato, fk_utente, risposta_utente) VALUES (?,?,?,?,?,?)";
 				PreparedStatement statement = connection.prepareStatement(insert);
@@ -90,7 +100,7 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString("nome"));
 				video.setDescrizione(result.getString("descrizione"));
-				video.setDifficolta(result.getString("difficolt‡"));
+				video.setDifficolta(result.getString("difficolt√†"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				video.setCategoria(new Categoria(result.getString("categoria")));
 				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));
@@ -180,7 +190,7 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString("nome"));
 				video.setDescrizione(result.getString("descrizione"));
-				video.setDifficolta(result.getString("difficolt‡"));
+				video.setDifficolta(result.getString("difficolt√†"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				video.setCategoria(new Categoria(result.getString("categoria")));
 				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));

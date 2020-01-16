@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -14,8 +15,50 @@
 	
 	<script src="https://www.youtube.com/iframe_api" ></script >
 	
+	<script>
+	
+		var player;
+	
+		function onYouTubeIframeAPIReady() {
+		    player = new YT.Player('video-placeholder', {
+		        width: 600,
+		        height: 400,
+		        videoId: '${id}',
+		        playerVars: {
+		            color: 'white'
+		        },
+		        events: {
+		            onReady: initialize
+		        }
+		    });
+		}
+
+		function initialize(){
+
+		    // Update the controls on load
+		    updateTimerDisplay();
+		    updateProgressBar();
+
+		    // Clear any old interval.
+		    clearInterval(time_update_interval);
+
+		    // Start interval to update elapsed time display and
+		    // the elapsed part of the progress bar every second.
+		    time_update_interval = setInterval(function () {
+		        updateTimerDisplay();
+		        updateProgressBar();
+		    }, 1000);
+
+
+		    $('#volume-input').val(Math.round(player.getVolume()));
+		}
+		
+	</script>
+	
 	<meta charset="UTF-8">
+	
 	<title>ALLENATI AL VAR - Pagina video</title>
+	
 </head>
 <body>
 	<%@include file="header_default.html" %>
@@ -34,32 +77,48 @@
 
 	 	<div  class="row">
 		 	<div id="colonnaSx" class="column col-sm-7">
-
-		 		<p id="categoria"> Categoria: ${categoria} </p>
-				<p id="difficolta"> ${difficolta} </p>
-				<c:if test="${amministratore == true}">
-					<div id="div_button_gestione" class="btn-group btn-group-toggle" data-toggle="buttons">
-					  <a class="btn btn-primary" id="button_modifica" type="submit" href="#">Modifica</a>
-					  <a class="btn btn-danger" id="button_elimina" href="#" data-toggle="modal" data-target="#Eliminazione">Rimuovi</a>
+				<div id= "rigaButton" class="row">
+					
+					<div align="right" class="column col-sm-12">
+						<div id="div_button_gestione" class="btn-group btn-group-toggle" data-toggle="buttons">
+							<c:set var = "isPreferito" scope = "session" value = "${isPreferito}"/>
+							<c:if test="${isPreferito == false}">
+								<a class="btn btn-success" id="addPreferiti" type="submit" onclick="inserisciPreferiti('${url}')">Preferiti</a>
+							</c:if>	
+							<c:if test="${isPreferito == true}">
+								<a class="btn btn-success" id="addPreferiti" type="submit" onclick="inserisciPreferiti('${url}')">Rimuovi</a>
+							</c:if>	
+							<c:if test="${amministratore == true}">
+								
+								  <a class="btn btn-primary" id="button_modifica" type="submit" href="#">Modifica</a>
+								  <a class="btn btn-danger" id="button_elimina" href="#" data-toggle="modal" data-target="#Eliminazione">Rimuovi</a>
+								
+							</c:if>
+						</div>
 					</div>
-				</c:if>
+					
+					
+				</div>
+		 		
 
-				<div  id="video-placeholder"></div>
+				<div id="video-placeholder"></div>
 				<div id="controls"> </div>
 				
 				<div id="dati_video">
-					<div id="nome_video"> ${nome} </div> 
-					<p> ${descrizione}</p>
-					<p> ${visualizzazioni} visualizzazioni</p>
+					<div id="primaRiga" class="row">
 					
-					<c:set var = "isPreferito" scope = "session" value = "${isPreferito}"/>
-					<c:if test="${isPreferito == false}">
-						<a class="badge badge-secondary" id="addPreferiti" href="pagina_video?url=${url}&&addPreferiti=${azione}">Preferiti</a>
-					</c:if>	
-					<c:if test="${isPreferito == true}">
-						<a class="badge badge-secondary" id="addPreferiti" href="pagina_video?url=${url}&&addPreferiti=${azione}">Rimuovi</a>
-					</c:if>	
-								
+						<p class="badge badge-dark column col-sm-7" id="nome_video"> ${nome}</p>
+						
+						<p class="badge badge-light column col-sm-5" id="visualizzazioni"> ${visualizzazioni} visualizzazioni</p>		
+					</div>
+					 
+					<p class="badge badge-light column col-sm-12" id="descrizione"> ${descrizione}</p>
+					<br>
+					<p class="badge badge-light column col-sm-12" id="categoria"> Categoria: ${categoria} </p>
+					<br>
+					<p class="badge badge-light column col-sm-12"id="difficolta"> ${difficolta} </p>
+					<br>
+							
 				</div>
 			</div>
 		
@@ -72,13 +131,11 @@
 				</div>
 			
 				<div  id="underPanel" class="down">
-				
-					<form id="form_commenti" action="pagina_video?url=${url}" method="GET" class="form-group">
+
 						<textarea class="form-control" id="textCommento"  name="commento" placeholder="Scrivi un commento..."></textarea>
-						<input class="form-control" type="submit" value="Invia"/>
-						<input value="ajaxButton" type="button" onclick="caricaConAjax()"> <!-- $url non funziona. chiedere al prof -->
-						<div id="output"></div>
-					 </form>
+						<input class="form-control" type="submit" value="Invia" onclick="inserisciCommento('${url}')"/>
+						
+						
 				</div>
 			
 				<div align="center" id="risposte" class="three"> 
@@ -124,44 +181,7 @@
   </div>
 
 <!-- FINE CUSTOM ALERT -->
-	<script>
-		var player;
 	
-		function onYouTubeIframeAPIReady() {
-		    player = new YT.Player('video-placeholder', {
-		        width: 600,
-		        height: 400,
-		        videoId: '${id}',
-		        playerVars: {
-		            color: 'white'
-		        },
-		        events: {
-		            onReady: initialize
-		        }
-		    });
-		}
-
-		function initialize(){
-
-		    // Update the controls on load
-		    updateTimerDisplay();
-		    updateProgressBar();
-
-		    // Clear any old interval.
-		    clearInterval(time_update_interval);
-
-		    // Start interval to update elapsed time display and
-		    // the elapsed part of the progress bar every second.
-		    time_update_interval = setInterval(function () {
-		        updateTimerDisplay();
-		        updateProgressBar();
-		    }, 1000);
-
-
-		    $('#volume-input').val(Math.round(player.getVolume()));
-		}
-		
-	</script>
 	
 	
 	

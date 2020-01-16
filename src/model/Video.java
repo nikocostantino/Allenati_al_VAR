@@ -73,9 +73,9 @@ public class Video {
 	public void setDifficolta(String difficolta) {
 		this.difficolta = difficolta;
 	}
-
+	
 	public int getVisualizzazioni() {
-		return visualizzazioni;
+		return DBManager.getInstance().getVideoDAO().updateVisualizzazioni(url);
 	}
 
 	public void setVisualizzazioni(int visualizzazioni) {

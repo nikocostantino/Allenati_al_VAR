@@ -26,7 +26,7 @@ public class Home extends HttpServlet {
 			List<Video> video = DBManager.getInstance().getVideo();
 			req.getSession().setAttribute("video", video);
 			List<Video> piu_visti = DBManager.getInstance().getPiuVisti();
-			req.getSession().setAttribute("video_piu_visti", piu_visti);
+			req.getSession().setAttribute("video_piu_visti",piu_visti);
 			List<Video> recenti = DBManager.getInstance().getUtenteCorrente().getRecenti();
 			req.getSession().setAttribute("video_recenti", recenti);
 			RequestDispatcher rd = req.getRequestDispatcher("home.jsp");

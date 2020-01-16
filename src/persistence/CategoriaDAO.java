@@ -13,5 +13,6 @@ public interface CategoriaDAO {
 	public ArrayList<Video> findAll();       
 	public void update(Categoria categoria); //Update
 	public void delete(Video video); //Delete	
+	public void deleteUrlCategoria(String url);
 
 }

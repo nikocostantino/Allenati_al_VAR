@@ -55,6 +55,7 @@
 					<option value="giallo">giallo</option>
 					<option value="fuorigioco">fuorigioco</option>					
 					<option value="fallo di mano">fallo di mano</option>
+					<option value="goal">goal</option>
 				
 				</select>
 			</div>	

@@ -1,17 +1,9 @@
-function clickOnRegistrati(){
-	window.location.href = "../html/registrati.html";
-}
-
-function clickOnLogin(){
-	window.location.href = "../html/home.jsp";
-}
-//NON FUNZIONA
 window.addEventListener("load", function() {
-reset();
+	clearForm();
 });
 
-function reset(){
-	document.getElementById("myForm").reset();
-	document.getElementById("username").setAttribute("autocomplete","off");
+function clearForm(){
+	setTimeout(function(){$('#username').val('');},50);
+	setTimeout(function(){$('#pwd').val('');},50);
 }
 

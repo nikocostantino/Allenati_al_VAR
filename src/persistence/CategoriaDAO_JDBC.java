@@ -88,7 +88,7 @@ public class CategoriaDAO_JDBC implements CategoriaDAO{
 			resMinData.next();
 			
 
-			if(resContatore.next() && resContatore.getInt(1) == 5) {
+			if(resContatore.next() && resContatore.getInt(1) == 15) {
 				String delete_recenti = "DELETE FROM categoria WHERE nome = ? AND data = ?";
 				PreparedStatement statementCancellaMenoRecente = connection.prepareStatement(delete_recenti);
 				statementCancellaMenoRecente.setString(1, "recenti");
@@ -136,6 +136,28 @@ public class CategoriaDAO_JDBC implements CategoriaDAO{
 				throw new RuntimeException(e.getMessage());
 			}
 		}
+	}
+	
+	@Override
+	public void deleteUrlCategoria(String url) {
+		
+		Connection connection = null;
+		
+		try {
+			connection = DBManager.getInstance().getConnection();
+			
+			PreparedStatement statement;
+			statement = connection.prepareStatement("DELETE FROM categoria WHERE fk_video=?");
+			statement.setString(1, url);
+
+			statement.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}			
+		
 	}
 
 }

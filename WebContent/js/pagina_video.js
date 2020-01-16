@@ -1,8 +1,6 @@
 window.addEventListener("load", function() {
     document.getElementById("rispostaErrata").addEventListener("click", checkButtonWrong);
-    document.getElementById("rispostaCorretta").addEventListener("click", checkButtonCorrect);
-    showNavBar();
-    
+    document.getElementById("rispostaCorretta").addEventListener("click", checkButtonCorrect);    
 
 	document.getElementById("rispostaErrata").addEventListener("mouseover", changeColor1);
 	document.getElementById("rispostaCorretta").addEventListener("mouseover", changeColor2);
@@ -17,14 +15,6 @@ window.addEventListener("load", function() {
     
 });
 
-// come faccio a richiamare una funzione presente in un altro file js
-function showNavBar(){
-	var dim = document.getElementsByClassName("nav-item").length;
-
-	for(i = 0; i < dim; i++) {
-		document.getElementsByClassName("nav-item")[i].style.visibility = "visible";
-	}
-}
 
 function checkButtonCorrect() {
     document.getElementById("rispostaCorretta").className = "btn btn-success";
@@ -49,31 +39,97 @@ function changeColor2(){
 
 	
 }
+////////////////////////////
+
+
+function inserisciPreferiti(url){
+	
+	
+
+	
+	var dati = {
+			
+			azione : "preferiti",
+			url_video : url
+	};
+	
+	
+	$.ajax({
+		type: "POST",
+		url: "pagina_video",		
+		datatype : "json",
+		data: JSON.stringify(dati),
+		success: function(data){
+			var c = JSON.parse(data);
+			if($('#addPreferiti').text() == "Preferiti")
+				$('#addPreferiti').text('Rimuovi');
+			else
+				$('#addPreferiti').text('Preferiti');
+			
+			
+			
+			tempAlert(2000,c.isPreferito);
+		}	
+	});
+}
+
+function tempAlert(duration,pref)
+{
+	
+     var el = document.createElement("div");
+    
+    
+     
+     if(pref == "true"){
+    	
+    	 el.className = "alert alert-success" ;
+         el.innerHTML ="Il video &egrave; stato aggiunto alla sezione Preferiti";
+     }
+     else if(pref == "false"){
+    	 
+    	 el.className = "alert alert-danger" ;
+         el.innerHTML = "Il video &egrave; stato rimosso dalla sezione Preferiti";
+     }
+    
+     setTimeout(function(){
+	      el.parentNode.removeChild(el);
+	     },duration);
+     
+     document.getElementById("colonnaSx").appendChild(el);
+     
+     
+}
+
+
+
 
 
 /////////////////////////////////////
 
-function caricaConAjax(url){
+function inserisciCommento(url){
 	
 	//problema prendere url del video
 	//problema aggiornamento live
 	
 	
 	var c = {
+			azione : "commento",
 			testo : $("#textCommento").val(),
-			//url_video : url
-			url_video : "https://www.youtube.com/embed/ODmuRSPTipI"
+			url_video : url
+			
 	};
 
 	$.ajax({
-		type: "POST",		
+		type: "POST",
+		//scriptCharset: "utf-8",
+		//contentType : 'application/json; charset=UTF-8',
 		url: "pagina_video",		
 		datatype : "json",
 		data: JSON.stringify(c),
 		success: function(data){
 			var c = JSON.parse(data);
-			$("#lista_commenti").append(c.testo); 
-			//$("#output").text(item.o1); 
+			$("#lista_commenti").append("<p class='' id='commento'> " + c.nome + " " + c.cognome + ": " + c.testo + "\n" + c.data + "</p>"); 
+			$("#textCommento").val("");
 		}	
 	});	
 }

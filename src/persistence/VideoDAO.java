@@ -14,4 +14,5 @@ public interface VideoDAO {
 	public boolean esisteVideo(String urlNuovo);
 	public boolean esisteNome(String nomeNuovo);
 	public String getRispostaCorretta(String url);
+	public int updateVisualizzazioni(String url);
 }

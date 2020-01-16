@@ -73,7 +73,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 		Connection connection = null;
 		try {
 			connection = DBManager.getInstance().getConnection();
-			String insert = "insert into video(id, url, nome, descrizione, difficolt‡, visualizzazioni,rispostaCorretta, rispostaErrata, categoria) values (?,?,?,?,?,?,?,?,?)";
+			String insert = "insert into video(id, url, nome, descrizione, difficolt√†, visualizzazioni,rispostaCorretta, rispostaErrata, categoria) values (?,?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, video.getId());
 			statement.setString(2, video.getUrl());
@@ -100,7 +100,6 @@ public class VideoDAO_JDBC implements VideoDAO{
 	
 	@Override
 	public void update(Video video) {
-		// TODO Auto-generated method stub
 		
 	}
 	
@@ -199,4 +198,37 @@ public class VideoDAO_JDBC implements VideoDAO{
 		return risposta_corretta;
 	}
 	
+	public int updateVisualizzazioni(String url) {
+		Connection connection = null;
+		int visualizzazioni = 0;
+		try {
+			connection = DBManager.getInstance().getConnection();
+			
+			String numeroVisualizzazioni = "SELECT visualizzazioni FROM video WHERE url = ?";
+			PreparedStatement statementNumeroVisualizzazioni = connection.prepareStatement(numeroVisualizzazioni);
+			statementNumeroVisualizzazioni.setString(1, url);
+			ResultSet resNumeroVisualizzazioni = statementNumeroVisualizzazioni.executeQuery();
+			if(resNumeroVisualizzazioni.next()) {
+				visualizzazioni = resNumeroVisualizzazioni.getInt(1);
+			}
+			
+			String update = "UPDATE video SET visualizzazioni = ? WHERE url=?";
+			PreparedStatement statement = connection.prepareStatement(update);
+			statement.setInt(1, ++visualizzazioni );
+			statement.setString(2, url);
+			
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+		
+		return visualizzazioni;
+	}
 }

@@ -1,5 +1,6 @@
 package persistence;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -110,7 +111,15 @@ public class DBManager {
 	}
 	
 	public void aggiungiCommento(String commento, String url) {
-		getCommentiDAO().save(commento, url);
+		//set utf8 alla stringa commento
+		try {
+			String comm = new String(commento.getBytes(), "UTF-8");
+			getCommentiDAO().save(comm, url);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void aggiungiAlloStorico(Esito esito) {
@@ -204,6 +213,10 @@ public class DBManager {
 	
 	public void eliminaVideoPreferito(String url) {
 		getPreferitiDAO().deleteUrlPreferiti(url);
+	}
+	
+	public void eliminaVideoCategoria(String url) {
+		getCategoriaDAO().deleteUrlCategoria(url);
 	}
 
 

@@ -7,20 +7,16 @@
 	max-width: 85%;
 }
 
-#categoria{
-	display: inline-block;
-	margin-left: 5%;
+#colonnaDx{
+	max-height: 700px;
 }
 
-#difficolta{
-	display: inline-block;
-}
-​
 .column {
 	 margin-top:3%;
 }
 .row{
-	 margin-top:3%
+	margin-right: 5%;
+	margin-bottom: 1%;
 }
 #cornice{
 	opacity: 0.9;
@@ -30,13 +26,32 @@
   	border-color: white;
 }
 
-#dati_video{
+#rigaButton{
 	margin-left: 5%; 
 }
+
+#dati_video{
+	margin-left: 5%;
+	font-size:25px;
+	
+}
+
+#nome_video{
+	font-size:40px;
+	text-align: left;
+}
+
+#descrizione,#categoria,#difficolta{
+	text-align: left;
+}
+
+#visualizzazioni{
+	text-align: right;
+}
+
 .up{
 	height: 33%;
   	overflow-y: scroll;	
-	margin-right: 20%;
 	word-break: break-all;
   	white-space: pre-line;
 }
@@ -83,7 +98,6 @@ iframe{
 
 
 #lista_commenti{
-	width: 90%;
 	text-align:left;
 }
 

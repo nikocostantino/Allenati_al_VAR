@@ -49,7 +49,6 @@
 							<p>${v.categoria[0].nome}</p>
 							<p>${v.difficolta}</p>
 							<p>${v.risposte.opzioneCorretta}</p>
-							<p>${v.risposte.rispostaUtente}</p>
 						</div>	
 					</div>
 				</li>
