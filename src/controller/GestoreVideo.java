@@ -20,6 +20,8 @@ public class GestoreVideo extends HttpServlet {
 		String nuovoVideo=req.getParameter("aggiungiVideo");
 		String urlNuovo = req.getParameter("urlNuovo");
 		String nomeNuovo = req.getParameter("nomeNuovo");
+		String modificaNome = req.getParameter("modificaNome");
+		String videoModificato = req.getParameter("videoModificato");
 		
 		if(url!=null)
 		{
@@ -42,7 +44,6 @@ public class GestoreVideo extends HttpServlet {
 		{	
 			String link = req.getParameter("link");
 			String nome = req.getParameter("nome");
-//<<<<<<< HEAD
 			String descrizione = req.getParameter("desc");
 			String difficolta = req.getParameter("diff");
 			String categoria = req.getParameter("cat");
@@ -50,14 +51,6 @@ public class GestoreVideo extends HttpServlet {
 			String opzioneErrata = req.getParameter("opE");
 			
 			Video V = new Video(link.substring(30), link, nome, descrizione, difficolta, new Categoria(categoria), new OpzioniRisposte(opzioneCorretta, opzioneErrata,false));
-/*=======
-			String categoria = req.getParameter("categoria");
-			String gradoDifficolta = req.getParameter("grado di difficolt�");
-			String rispostaCorretta = req.getParameter("opzioneRispostaCorretta");
-			String rispostaErrata = req.getParameter("opzioneRispostaErrata");
-			String descrizione = req.getParameter("descrizione");	
-			Video V = new Video(link.substring(30), link, nome, descrizione, gradoDifficolta, new Categoria(categoria), new OpzioniRisposte(rispostaCorretta, rispostaErrata,null));
->>>>>>> branch 'master' of https://github.com/nikocostantino/Allenati_al_VAR.git*/
 			DBManager.getInstance().aggiungiVideo(V);
 
 					
@@ -107,6 +100,41 @@ public class GestoreVideo extends HttpServlet {
 				resp.getOutputStream().println("tuttoAPosto");	
 			}
 
+		}
+		else if(modificaNome!=null && modificaNome!="")
+		{
+			if(DBManager.getInstance().getVideoDAO().esisteNomeModifica(modificaNome,req.getParameter("link")))
+			{
+				resp.getOutputStream().println(
+						"<div id='formatErrato' class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Nome gi&agrave; utilizzato!</strong></div>"
+						);
+			}
+			else
+			{
+				resp.getOutputStream().println("tuttoAPosto");	
+			}
+		}
+		else if(videoModificato!=null && videoModificato.equals("true"))
+		{	
+			String link = req.getParameter("link");
+			String nome = req.getParameter("nome");
+			String descrizione = req.getParameter("desc");
+			String difficolta = req.getParameter("diff");
+			String categoria = req.getParameter("cat");
+			String opzioneCorretta = req.getParameter("opC");
+			String opzioneErrata = req.getParameter("opE");
+			
+			Video V = new Video(link.substring(30), link, nome, descrizione, difficolta, new Categoria(categoria), new OpzioniRisposte(opzioneCorretta, opzioneErrata,false));
+			DBManager.getInstance().modificaVideo(V);
+
+					
+			req.getSession().setAttribute("modificato", V);
+			
+			RequestDispatcher rd = req.getRequestDispatcher("/html/pagina_video?url="+link);
+			rd.forward(req, resp);
+			
+			req.getSession().removeAttribute("modificato");
+			
 		}
 	}
 	

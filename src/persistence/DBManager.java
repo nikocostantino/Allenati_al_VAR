@@ -207,6 +207,11 @@ public class DBManager {
 	}
 
 
+	public void modificaVideo(Video v) {
+		getVideoDAO().update(v);
+	}
+
+
 	
 	
 }
