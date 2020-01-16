@@ -24,9 +24,13 @@ public class GestorePagine extends HttpServlet {
 			if(pagina.equals("preferiti")) {
 				ArrayList<Video> preferiti = DBManager.getInstance().getPreferiti();
 				req.getSession().setAttribute("video_preferiti",preferiti);
+				RequestDispatcher rd = req.getRequestDispatcher(pagina+".jsp");
+				rd.forward(req, resp);
 			}
 			else if(pagina.contentEquals("storico")) {
 				req.getSession().setAttribute("storico",DBManager.getInstance().getStorico());
+				RequestDispatcher rd = req.getRequestDispatcher(pagina+".jsp");
+				rd.forward(req, resp);
 			}
 			else if(pagina.contentEquals("registrati")){
 				//operzioni per la pagina di registrazione
