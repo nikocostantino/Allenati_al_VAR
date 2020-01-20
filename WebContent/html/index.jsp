@@ -16,7 +16,46 @@
 </head>
 
 <body>
-<%@include file="login.html" %>
+
+<div class="wrapper fadeInDown">
+	  	<div id="formContent">
+
+		 	<div class="fadeIn first">
+	      		<img src="../img/referee.png" id="icon" alt="User Icon" />
+	    	</div>
+	    	
+
+	    	<form method="POST" action="login?login=true">
+	      	
+		      	<c:if test="${registrazioneEffettuata != null}">
+		      		<div class="alert alert-success alert-dismissible fade show" id="formatRegistrazione" role="alert">
+						  <strong>Registrazione avvenuta con successo!</strong>
+						</div>
+		      	</c:if>
+	      	
+	      		<input type="email" id="email" class="fadeIn second" name="email" placeholder="email" required/>
+	      		
+	      		<input type="password" id="password" class="fadeIn second" name="password" placeholder="password" required/>
+	      	<c:if test="${loginSbagliato != null}">
+	      		<div id="loginErrato" class="inactive">
+	      			<div id="formatErrato" class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Email e/o password errati!</strong></div>
+	      		</div>
+	      	</c:if>
+	      	
+	      	
+	      		<button class="btn btn-primary" id="loginBTN" type="submit">Login</button>
+	    	</form>
+	
+	    	<div id="formFooter">
+				<div class="d-flex justify-content-center links">
+					Non hai un account?<a id="buttonRegistrati" class="btn btn-secondary" type="submit" href="gestorePagine?pagina=registrati">Registrati</a>
+				</div>
+			</div>
+	
+		</div>
+	</div>
+
+
 
 </body>
 </html>

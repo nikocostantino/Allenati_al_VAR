@@ -30,7 +30,7 @@ public class CategoriaDAO_JDBC implements CategoriaDAO{
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString(7)); // come passare la stringa e farsi capire
 				video.setDescrizione(result.getString("descrizione"));
-				video.setDifficolta(result.getString("difficolt√†"));
+				video.setDifficolta(result.getString("difficolt‡"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));
 				

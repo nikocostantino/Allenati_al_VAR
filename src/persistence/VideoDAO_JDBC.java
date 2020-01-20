@@ -48,7 +48,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString("nomeVideo"));
 				video.setDescrizione(result.getString("descrizione"));
-				video.setDifficolta(result.getString("difficolt√†"));
+				video.setDifficolta(result.getString("difficolt‡"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				
 				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));
@@ -112,6 +112,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 	
 	@Override
 	public void update(Video video) {
+
 		Connection connection = null;
 		try {
 			connection = DBManager.getInstance().getConnection();
@@ -144,7 +145,6 @@ public class VideoDAO_JDBC implements VideoDAO{
 				throw new RuntimeException(e.getMessage());
 			}
 		}
-
 	}
 	
 	@Override

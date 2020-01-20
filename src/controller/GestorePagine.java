@@ -34,7 +34,17 @@ public class GestorePagine extends HttpServlet {
 			}
 			else if(pagina.contentEquals("registrati")){
 				//operzioni per la pagina di registrazione
-				RequestDispatcher rd = req.getRequestDispatcher(pagina+".html");
+				req.getSession().removeAttribute("nome");
+				req.getSession().removeAttribute("cognome");
+				req.getSession().removeAttribute("email");
+				req.getSession().removeAttribute("password");
+				req.getSession().removeAttribute("confPassword");
+				req.getSession().removeAttribute("amministratoreSi");
+				
+				
+				req.getSession().removeAttribute("passwordSbagliata");
+				req.getSession().removeAttribute("emailSbagliato");
+				RequestDispatcher rd = req.getRequestDispatcher(pagina+".jsp");
 				rd.forward(req, resp);
 				return;
 			}

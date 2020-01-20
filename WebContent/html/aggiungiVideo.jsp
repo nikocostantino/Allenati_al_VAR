@@ -136,7 +136,7 @@
 									$temp.find("#link").addClass("inactive");
 									$temp.find("#formatoErrato").addClass("inactive");
 									$("div#anteprimaVideo").removeClass("inactive");
-									var frame = "<iframe width='448' id='video' src='' height='252' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
+									var frame = "<iframe width='90%' id='video' src='' height='56%' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
 									document.getElementById("anteprimaVideo").innerHTML=frame;
 									document.getElementById("video").setAttribute("src", url);	
 						})
