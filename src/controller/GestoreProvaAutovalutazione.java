@@ -32,13 +32,13 @@ public class GestoreProvaAutovalutazione extends HttpServlet {
 			lista_video_con_risposta_utente.clear();
 			risposteErrate = 0;
 			video_nel_db = DBManager.getInstance().getVideo();
-			/*
+			
 			if(video_nel_db.size()<1) {
 				rd = req.getRequestDispatcher("error_page.html");
 				rd.forward(req, resp);
 				return;
 			}
-			*/
+			
 			while (videoProva.size() <= 1) {
 				int indice = random.nextInt(video_nel_db.size());
 				while (videoProva.contains(video_nel_db.get(indice))) {

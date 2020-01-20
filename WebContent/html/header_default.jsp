@@ -4,8 +4,6 @@
 
 <div id="headerHome" class="container" >
 	<header>
-		<h1>ALLENATI AL VAR</h1>
- 			<p>Il sito per gli arbitri</p>
 	
 	<img id="img_header" src="../img/header1.png">
 		<!-- <h1>ALLENATI AL VAR</h1>

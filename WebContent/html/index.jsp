@@ -16,8 +16,12 @@
 </head>
 
 <body>
+<div class="row">
+	<div class="column col-sm-4">
+		<img id="imgIndex" src="../img/logo.png">
+	</div>
 
-<div class="wrapper fadeInDown">
+<div class="column col-sm-8 wrapper fadeInDown">
 	  	<div id="formContent">
 
 		 	<div class="fadeIn first">
@@ -42,7 +46,7 @@
 	      		</div>
 	      	</c:if>
 	      	
-	      	
+	      	<br>
 	      		<button class="btn btn-primary" id="loginBTN" type="submit">Login</button>
 	    	</form>
 	
@@ -54,7 +58,7 @@
 	
 		</div>
 	</div>
-
+</div>
 
 
 </body>
