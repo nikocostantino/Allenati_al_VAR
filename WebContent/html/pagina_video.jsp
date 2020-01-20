@@ -87,7 +87,7 @@
 
 	 	<div  class="row">
 		 	<div id="colonnaSx" class="column col-sm-7">
-<<<<<<< HEAD
+
 				<div id= "rigaButton" class="row">
 					
 					<div align="right" class="column col-sm-12">
@@ -101,20 +101,12 @@
 							</c:if>	
 							<c:if test="${amministratore == true}">
 								
-								  <a class="btn btn-primary" id="button_modifica" type="submit" href="#">Modifica</a>
+								  <a class="btn btn-primary" id="button_modifica" type="submit" href="gestorePagine?pagina=modificaVideo&&url=${url}">Modifica</a>
 								  <a class="btn btn-danger" id="button_elimina" href="#" data-toggle="modal" data-target="#Eliminazione">Rimuovi</a>
 								
 							</c:if>
 						</div>
-=======
 
-		 		<p id="categoria"> Categoria: ${categoria} </p>
-				<p id="difficolta"> ${difficolta} </p>
-				<c:if test="${amministratore == true}">
-					<div id="div_button_gestione" class="btn-group btn-group-toggle" data-toggle="buttons">
-					  <a class="btn btn-primary" id="button_modifica" href="gestorePagine?pagina=modificaVideo&&url=${url}" type="submit" href="#">Modifica</a>
-					  <a class="btn btn-danger" id="button_elimina" href="#" data-toggle="modal" data-target="#Eliminazione">Rimuovi</a>
->>>>>>> branch 'master' of https://github.com/nikocostantino/Allenati_al_VAR
 					</div>
 					
 					
@@ -127,9 +119,9 @@
 				<div id="dati_video">
 					<div id="primaRiga" class="row">
 					
-						<p class="badge badge-dark column col-sm-7" id="nome_video"> ${nome}</p>
+						<p class="badge badge-dark column col-sm-9" id="nome_video"> ${nome}</p>
 						
-						<p class="badge badge-light column col-sm-5" id="visualizzazioni"> ${visualizzazioni} visualizzazioni</p>		
+						<p class="badge badge-light column col-sm-3" id="visualizzazioni"> ${visualizzazioni} visualizzazioni</p>		
 					</div>
 					 
 					<p class="badge badge-light column col-sm-12" id="descrizione"> ${descrizione}</p>
@@ -140,13 +132,27 @@
 					<br>
 							
 				</div>
+				
+				
+				
 			</div>
 		
 			<div align="right" id="colonnaDx" class="column col-sm-5">
-			
+				
 				<div  id="lista_commenti" class="up" >
-					<c:forEach items="${lista_commenti}" var="c">                 	                            	
-						<p class="" id="commento"> ${c} </p>				
+					<c:forEach items="${lista_commenti}" var="c">   
+						      	                            	
+						<div class="container mt-3">
+							 <div class="media border p-3">
+						  		<img src="../img/referee.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">       
+						    	<div class="media-body">
+						      		<h4>${c.autore.nome} ${c.autore.cognome}</h4>
+						      		<small><i>Posted on ${c.data}</i></small>
+						      		<p id="commento"> ${c.testo} </p>      
+						    	</div>
+						  	</div>
+						</div>	
+								
 					</c:forEach>
 				</div>
 			

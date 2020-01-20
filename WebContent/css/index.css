@@ -1,22 +1,21 @@
 body {
-	background-image:url(../img/background.jpg);
-  	font-family: "Poppins", sans-serif;
-  	background-size: cover;
-  	height: 100%;
-  	overflow: hidden;
+	/*background-image:url(../img/background.jpg);*/
+	background-color: #1e1a55;
+  	font-family: "Poppins", sans-serif;	
 }
 
+#imgIndex{
+	width: 80%;
+	margin: auto;    
+    display: block;
+}
 
 .wrapper{
 	position:relative;
-	margin-left:15%;
-	margin-top:5%;
   	display: flex;
   	align-items: center;
   	flex-direction: column; 
   	justify-content: center;
-  	width: 100%;
-  	min-height: 100%;
   	padding: 20px;
   	opacity: 0.9;
 }
@@ -24,10 +23,9 @@ body {
 #formContent {
   	
   	border-radius: 10px 10px 10px 10px;
-  	background: #fff;
+  	background: #FFFFFF;
   	padding: 30px;
-  	width: 90%;
-  	max-width: 500px;
+  	width: 60%;
   	position: relative;
   	padding: 0px;
   	text-align: center;

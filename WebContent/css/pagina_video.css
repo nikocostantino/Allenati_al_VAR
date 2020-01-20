@@ -1,6 +1,11 @@
 #body{
 	font-family: "Garamond";
-	
+}
+
+#headerHome{
+	opacity: 0.9;
+	background-color: #FFFFFF;
+	max-width: 100%;
 }
 
 .container{
@@ -30,14 +35,19 @@
 	margin-left: 5%; 
 }
 
+#addPreferiti{
+	color: white;
+}
+
+
 #dati_video{
 	margin-left: 5%;
-	font-size:25px;
+	font-size:20px;
 	
 }
 
 #nome_video{
-	font-size:40px;
+	font-size:25px;
 	text-align: left;
 }
 
@@ -52,8 +62,8 @@
 .up{
 	height: 33%;
   	overflow-y: scroll;	
-	word-break: break-all;
-  	white-space: pre-line;
+	
+  	text-overflow: ellipsis
 }
 .down{
 	height: 33%;
@@ -66,7 +76,6 @@
 iframe{
 	width: 90%;
 	margin-left: 5%;
-
     object-fit: cover;
     z-index: -100;
 }

@@ -1,5 +1,6 @@
 body {
-	background-image:url(../img/background.jpg);
+	/*background-image:url(../img/background.jpg);*/
+	background-color: #1e1a55;
   	font-family: "Poppins", sans-serif;
 }
 
@@ -61,13 +62,13 @@ a{
 #rispostaCorretta{
 	width: 90%;
 	height: 35%;
-	font-size:20px;
+	font-size:18px;
 	font-weight: 900;
 	}
 	
 #rispostaErrata{
 	width: 90%;
 	height: 35%;
-	font-size:20px;
+	font-size:18px;
 	font-weight: 900;
 }

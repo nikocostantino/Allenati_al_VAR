@@ -8,18 +8,18 @@ import persistence.DBManager;
 public class Commenti {
 
 	private Long id;
-	private ArrayList<String> lista_commenti;
+	private ArrayList<Commento> lista_commenti;
 	
 	public Commenti() {
-		lista_commenti = new ArrayList<String>();
+		lista_commenti = new ArrayList<Commento>();
 	}
 	
-	public ArrayList<String> getLista_commenti() {
+	public ArrayList<Commento> getLista_commenti() {
 		return lista_commenti;
 	}
 	
-	public void aggiungiCommento(String nome, String cognome, String testo, String data) {
-		lista_commenti.add(nome + " " + cognome + ": " + testo + "\n" + data);
+	public void aggiungiCommento(Commento c) {
+		lista_commenti.add(c);
 	}
 
 	public Long getId() {

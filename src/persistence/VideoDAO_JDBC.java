@@ -45,7 +45,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString("nome"));
 				video.setDescrizione(result.getString("descrizione"));
-				video.setDifficolta(result.getString("difficolt‡"));
+				video.setDifficolta(result.getString("difficolt√†"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				
 				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));
@@ -100,13 +100,10 @@ public class VideoDAO_JDBC implements VideoDAO{
 	
 	@Override
 	public void update(Video video) {
-<<<<<<< HEAD
-		
-=======
 		Connection connection = null;
 		try {
 			connection = DBManager.getInstance().getConnection();
-			String insert = "UPDATE video SET nome=?, descrizione=?, difficolt‡=?, rispostacorretta=?, rispostaerrata=?, categoria=? WHERE url=?";
+			String insert = "UPDATE video SET nome=?, descrizione=?, difficolt√†=?, rispostacorretta=?, rispostaerrata=?, categoria=? WHERE url=?";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			
 			statement.setString(1, video.getNome());
@@ -127,7 +124,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 				throw new RuntimeException(e.getMessage());
 			}
 		}
->>>>>>> branch 'master' of https://github.com/nikocostantino/Allenati_al_VAR
+
 	}
 	
 	@Override
