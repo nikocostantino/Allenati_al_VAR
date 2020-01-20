@@ -130,7 +130,7 @@ function inserisciCommento(url){
 			var c = JSON.parse(data);
 			$("#lista_commenti").append("<div class='container mt-3'>" +
 										"<div class='media border p-3'>" +
-											"<img src='../img/referee.png' alt='referee' class='mr-3 mt-3 rounded-circle' style='width:60px;'> " +      
+											"<img src='../img/referee.png' alt='referee' class='mr-3 mt-3 rounded-circle'> " +      
 											"<div class='media-body'>" +
 												"<h4>" + c.nome + " " + c.cognome + "</h4>" +
 												"<small><i>Posted on " + c.data + "</i></small>" +

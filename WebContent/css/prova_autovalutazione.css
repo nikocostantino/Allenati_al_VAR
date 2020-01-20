@@ -14,14 +14,6 @@ body {
 
 #timer{
 	font-size:42px;
-	width: 30%;
-	height: 25%;
-	text-align : center;
-}
-	
-#tempo{	
-	font-size:42px;
-	width: 30%;
 	height: 25%;
 	text-align : center;
 }
@@ -61,14 +53,14 @@ a{
 
 #rispostaCorretta{
 	width: 90%;
-	height: 35%;
+	height: 40%;
 	font-size:18px;
 	font-weight: 900;
 	}
 	
 #rispostaErrata{
 	width: 90%;
-	height: 35%;
+	height: 40%;
 	font-size:18px;
 	font-weight: 900;
 }

@@ -16,4 +16,7 @@ public interface VideoDAO {
 	public boolean esisteNomeModifica(String modificaNome, String url);
 	public String getRispostaCorretta(String url);
 	public int updateVisualizzazioni(String url);
+	
+	public ArrayList<Video> getRicercaPerFiltri(String categoria, int durataMinima, int durataMassima, String dataMinima, String dataMassima, String difficoltà);
+	
 }

@@ -42,7 +42,7 @@ public class PreferitiDAO_JDBC implements PreferitiDAO{
 		try {
 			connection = DBManager.getInstance().getConnection();
 			PreparedStatement statement;
-			String query = "select * from preferiti p LEFT OUTER JOIN video v ON p.fk_video=v.url where fk_utente = ?";
+			String query = "SELECT id, url, v.nome as nomeVideo, descrizione, difficoltà, visualizzazioni, rispostaCorretta, rispostaErrata, c.nome AS nomeCategoria FROM preferiti p JOIN video v ON p.fk_video=v.url JOIN categoria c ON v.url=c.fk_video WHERE p.fk_utente = ?";
 			statement = connection.prepareStatement(query);
 			statement.setString(1, email);
 			ResultSet result = statement.executeQuery();
@@ -50,12 +50,12 @@ public class PreferitiDAO_JDBC implements PreferitiDAO{
 				Video video = new Video();
 				video.setId(result.getString("id"));				
 				video.setUrl(result.getString("url"));
-				video.setNome(result.getString("nome"));
+				video.setNome(result.getString("nomeVideo"));
 				video.setDescrizione(result.getString("descrizione"));
 				video.setDifficolta(result.getString("difficoltà"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));
-				video.setCategoria(new Categoria(result.getString("categoria")));
+				video.setCategoria(new Categoria(result.getString("nomeCategoria")));
 				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));
 				
 				lista_video.add(video);
@@ -112,7 +112,7 @@ public class PreferitiDAO_JDBC implements PreferitiDAO{
 		try {
 			connection = DBManager.getInstance().getConnection();
 			PreparedStatement statement;
-			String query = "select * from preferiti p LEFT OUTER JOIN video v ON p.fk_video=v.url where fk_utente = ? AND fk_video = ?";
+			String query = "SELECT * FROM preferiti p JOIN video v ON p.fk_video=v.url JOIN categoria c ON c.fk_video=v.url WHERE p.fk_utente = ? AND p.fk_video = ?";
 			statement = connection.prepareStatement(query);
 			statement.setString(1, email);
 			statement.setString(2, url);
@@ -126,7 +126,7 @@ public class PreferitiDAO_JDBC implements PreferitiDAO{
 				video.setDifficolta(result.getString("difficoltà"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));
-				video.setCategoria(new Categoria(result.getString("categoria")));
+				video.setCategoria(new Categoria(result.getString("nome")));
 				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));
 				
 			}

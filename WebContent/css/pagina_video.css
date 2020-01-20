@@ -47,8 +47,10 @@
 }
 
 #nome_video{
-	font-size:25px;
+	font-size:21px;
 	text-align: left;
+	word-break: break-all;
+	white-space: pre-line;
 }
 
 #descrizione,#categoria,#difficolta{
@@ -62,15 +64,17 @@
 .up{
 	height: 33%;
   	overflow-y: scroll;	
-	
-  	text-overflow: ellipsis
+  	margin-top: 20%;
+  	font-size: 0;
 }
+
 .down{
-	height: 33%;
+	width: 80%;
+	height: 18%;
 }
+
 .three{
-	height: 33%;
-	
+	height: 33%;	
 }
 
 iframe{
@@ -80,36 +84,47 @@ iframe{
     z-index: -100;
 }
 	
-#form_commenti{
-	
-	width: 90%;
-	height: 10%;
-	padding-top: 5%;
-	margin-right: 20%;
-	
-}
 #rispostaCorretta{
-	width:40%;
+	width:45%;
 	height:70%;
 	font-family: "Garamond";
 	font-size:20px;
-	margin-top: 1%;
+	margin-top: 10%;
 	font-weight: 900;
 }
 #rispostaErrata{
-	width:40%;
+	width:45%;
 	height:70%;
 	font-family: "Garamond";
 	font-size:20px;
-	margin-top: 1%;
+	margin-top: 10%;
 	font-weight: 900;
 }
 
+#underPanel{
+	margin-top: 10%;
+	margin-right: 7%;
+}
 
 #lista_commenti{
 	text-align:left;
+	word-break: break-all;
+	white-space: pre-line;
 }
 
 #commento{
 	font-size: 25px;
+}
+
+#data{
+	font-size: 12px;
+}
+
+#buttonInvia{
+	color: white;
+	background-color: #343a40; 
+}
+
+#img_referee{
+	width: 60px;	
 }

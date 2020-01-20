@@ -144,10 +144,10 @@
 						      	                            	
 						<div class="container mt-3">
 							 <div class="media border p-3">
-						  		<img src="../img/referee.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">       
+						  		<img src="../img/referee.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" id="img_referee">       
 						    	<div class="media-body">
 						      		<h4>${c.autore.nome} ${c.autore.cognome}</h4>
-						      		<small><i>Posted on ${c.data}</i></small>
+						      		<small><i id="data">Posted on ${c.data}</i></small>
 						      		<p id="commento"> ${c.testo} </p>      
 						    	</div>
 						  	</div>
@@ -159,7 +159,7 @@
 				<div  id="underPanel" class="down">
 
 						<textarea class="form-control" id="textCommento"  name="commento" placeholder="Scrivi un commento..."></textarea>
-						<input class="form-control" type="submit" value="Invia" onclick="inserisciCommento('${url}')"/>
+						<input class="form-control" id="buttonInvia" type="submit" value="Invia" onclick="inserisciCommento('${url}')"/>
 						
 						
 				</div>

@@ -33,7 +33,7 @@ public class CategoriaDAO_JDBC implements CategoriaDAO{
 				video.setDifficolta(result.getString("difficoltà"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));
-				video.setCategoria(new Categoria(result.getString("categoria")));
+				
 				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));
 				
 				lista_video.add(video);

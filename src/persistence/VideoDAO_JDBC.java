@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import model.Video;
 public class VideoDAO_JDBC implements VideoDAO{
 
 	
-	public final String query_findAll = "SELECT * FROM video";
+	public final String query_findAll = "SELECT id, url, v.nome as nomeVideo, descrizione, difficoltà, visualizzazioni, rispostaCorretta, rispostaErrata, c.nome AS nomeCategoria FROM video v JOIN categoria c ON v.url=c.fk_video";
 	public final String query_risposta_corretta = "SELECT * FROM video WHERE url=?";
 	
 	
@@ -39,18 +40,20 @@ public class VideoDAO_JDBC implements VideoDAO{
 			
 			statement = connection.prepareStatement(query_findAll);
 			ResultSet result = statement.executeQuery();
+			
 			while (result.next()) {
+		
 				video = new Video();
 				video.setId(result.getString("id"));				
 				video.setUrl(result.getString("url"));
-				video.setNome(result.getString("nome"));
+				video.setNome(result.getString("nomeVideo"));
 				video.setDescrizione(result.getString("descrizione"));
 				video.setDifficolta(result.getString("difficoltà"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				
 				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));
 				
-				video.setCategoria(new Categoria(result.getString("categoria")));
+				video.setCategoria(new Categoria(result.getString("nomeCategoria")));
 				
 				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));
 				
@@ -65,6 +68,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 				throw new RuntimeException(e.getMessage());
 			}
 		}
+		
 		return lista_video;
 	}
 	
@@ -73,7 +77,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 		Connection connection = null;
 		try {
 			connection = DBManager.getInstance().getConnection();
-			String insert = "insert into video(id, url, nome, descrizione, difficoltà, visualizzazioni,rispostaCorretta, rispostaErrata, categoria) values (?,?,?,?,?,?,?,?,?)";
+			String insert = "insert into video(id, url, nome, descrizione, difficoltà, visualizzazioni,rispostaCorretta, rispostaErrata) values (?,?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, video.getId());
 			statement.setString(2, video.getUrl());
@@ -84,8 +88,16 @@ public class VideoDAO_JDBC implements VideoDAO{
 			statement.setString(7, video.getRisposte().getOpzioneCorretta());
 			statement.setString(8, video.getRisposte().getOpzioneErrata());
 			statement.setString(9, video.getCategoria().get(0).getNome());
-			
 			statement.executeUpdate();
+			
+			String insertCategoria = "insert into categoria(nome,fk_video,fk_utente,data) values (?,?,?,?)";
+			PreparedStatement statementCategoria = connection.prepareStatement(insertCategoria);
+			statementCategoria.setString(1, video.getCategoria().get(0).getNome());
+			statementCategoria.setString(2, video.getUrl());
+			statementCategoria.setString(3, DBManager.getInstance().getUtenteCorrente().getEmail());
+			statementCategoria.setString(4, new Date().toLocaleString());
+			
+			statementCategoria.executeUpdate();
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
 		} finally {
@@ -103,8 +115,8 @@ public class VideoDAO_JDBC implements VideoDAO{
 		Connection connection = null;
 		try {
 			connection = DBManager.getInstance().getConnection();
-			String insert = "UPDATE video SET nome=?, descrizione=?, difficoltà=?, rispostacorretta=?, rispostaerrata=?, categoria=? WHERE url=?";
-			PreparedStatement statement = connection.prepareStatement(insert);
+			String update = "UPDATE video SET nome=?, descrizione=?, difficoltà=?, rispostacorretta=?, rispostaerrata=? WHERE url=?";
+			PreparedStatement statement = connection.prepareStatement(update);
 			
 			statement.setString(1, video.getNome());
 			statement.setString(2, video.getDescrizione());
@@ -115,6 +127,14 @@ public class VideoDAO_JDBC implements VideoDAO{
 			statement.setString(7, video.getUrl());
 			
 			statement.executeUpdate();
+			
+			String updateCategoria = "UPDATE categoria SET nome=? WHERE fk_video=?";
+			PreparedStatement statementCategoria = connection.prepareStatement(updateCategoria);
+			statementCategoria.setString(1, video.getCategoria().get(0).getNome());
+			statementCategoria.setString(2, video.getUrl());
+			
+			statementCategoria.executeUpdate();
+			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
 		} finally {
@@ -280,5 +300,47 @@ public class VideoDAO_JDBC implements VideoDAO{
 		}
 		
 		return visualizzazioni;
+	}
+	
+	@Override
+	public ArrayList<Video> getRicercaPerFiltri(String categoria, int durataMinima, int durataMassima, String dataMinima, String dataMassima, String difficoltà) {
+		
+		Connection connection = null;
+		ArrayList<Video> lista_video = new ArrayList<Video>();
+		try {
+			connection = DBManager.getInstance().getConnection();
+			
+			Video video = null;
+			String query_filtri = "SELECT * FROM video v JOIN categoria c ON v.url=c.fk_video WHERE c.nome=? AND v.difficoltà=?";
+			PreparedStatement statement = connection.prepareStatement(query_filtri);
+			statement.setString(1, categoria);
+			statement.setString(2, difficoltà);
+			
+			ResultSet result = statement.executeQuery();
+			
+			while (result.next()) {
+				video = new Video();
+				video.setId(result.getString("id"));				
+				video.setUrl(result.getString("url"));
+				video.setNome(result.getString("nome"));
+				video.setDescrizione(result.getString("descrizione"));
+				video.setDifficolta(result.getString("difficoltà"));
+				video.setVisualizzazioni(result.getInt("visualizzazioni"));
+				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));
+				video.setCategoria(new Categoria(result.getString("nome")));
+				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));
+				
+				lista_video.add(video);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}	 finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+		return lista_video;
 	}
 }
