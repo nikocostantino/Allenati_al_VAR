@@ -95,7 +95,6 @@
 
 			</div>
 			</div>		
-	      	
 	    	</form>
 	    </div>
 	    <div id="anteprimaVideo" class="column right">
