@@ -225,6 +225,11 @@ public class DBManager {
 	}
 
 
+	public boolean esisteEmail(String email) {
+		return getUtenteDAO().cercaPerEmail(email);
+	}
+
+
 	
 	
 }

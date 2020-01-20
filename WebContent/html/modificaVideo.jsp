@@ -99,7 +99,7 @@
 	    	</form>
 	    </div>
 	    <div id="anteprimaVideo" class="column right">
-				<iframe width='448' id='video' src='${url}' height='252'></iframe>			
+				<iframe width='90%' id='video' src='${url}' height='56%'></iframe>			
 	    	</div>
 			</div> 
 	    	

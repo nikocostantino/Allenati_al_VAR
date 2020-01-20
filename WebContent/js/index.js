@@ -7,3 +7,5 @@ function clearForm(){
 	setTimeout(function(){$('#pwd').val('');},50);
 }
 
+
+

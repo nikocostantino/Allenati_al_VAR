@@ -88,4 +88,29 @@ public class UtenteDAO_JDBC implements UtenteDAO{
 		
 	}
 
+	@Override
+	public boolean cercaPerEmail(String email) {
+		Connection connection = null;
+		try {
+			connection = DBManager.getInstance().getConnection();
+			PreparedStatement statement;
+			String query = "select email from utenti where email = ?";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, email);
+			ResultSet result = statement.executeQuery();
+			if (result.next()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}	
+		return false;
+	}
+
 }

@@ -35,53 +35,85 @@ public class Login extends HttpServlet{
 			Utente utente = DBManager.getInstance().login(email,password);
 
 			if (utente != null) {
-				
+				req.getSession().removeAttribute("loginSbagliato");
 				DBManager.getInstance().setUtenteCorrente(utente);
 				req.getSession().setAttribute("utente", utente);
 						
 				DBManager.getInstance().setUtenteCorrente(utente);
 				
 				req.getSession().setAttribute("amministratore", DBManager.getInstance().getUtenteCorrente().getAmministratore());
-
+				req.getSession().setAttribute("nome", "Benvenuto/a " + utente.getNome() + " " + utente.getCognome());
 				RequestDispatcher rd = req.getRequestDispatcher("/html/home");
 				rd.forward(req, resp);
 			}
 			else {
-				RequestDispatcher rd = req.getRequestDispatcher("/html/error_page.html");
+				req.getSession().setAttribute("loginSbagliato", "si");
+				RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
 				rd.forward(req, resp);
 			}
 		}
 		else if (req.getParameter("registrazione")!= null && req.getParameter("registrazione").equals("true")){
-			
+			req.getSession().removeAttribute("loginSbagliato");
+
 			String nome = req.getParameter("nome");
 			String cognome = req.getParameter("cognome");
 			String email = req.getParameter("email");
 			String password = req.getParameter("password");
 			String confPassword = req.getParameter("conferma_password");
 			String amministratore = req.getParameter("amministratore");
+			if(amministratore==null)
+				amministratore="off";
 			
-			
-			if(password.equals(confPassword))
+			boolean esisteEmail=DBManager.getInstance().esisteEmail(email);
+						
+			if(password.equals(confPassword) && !esisteEmail) 
 			{
+				req.getSession().setAttribute("registrazioneEffettuata", "corretto");
 				Utente user = new Utente(nome,cognome,email,password,amministratore);
-				user.setNome(nome);
-				user.setCognome(cognome);
-				user.setPassword(password);
-				user.setEmail(email);
-				user.setAmministratore(amministratore);
 				DBManager.getInstance().inserisciUtente(user);
 				
 				req.setAttribute("utenteRegistrato", user);
 				
+				req.getSession().removeAttribute("passwordSbagliata");
+				req.getSession().removeAttribute("emailSbagliata");
+
 				RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
 				rd.forward(req, resp);
+				req.getSession().removeAttribute("registrazioneEffettuata");
 				
 			}
-			else
+			else if(!password.equals(confPassword) || esisteEmail)
 			{
-				RequestDispatcher rd = req.getRequestDispatcher("error_page.html");
-				rd.forward(req, resp);
+				req.getSession().setAttribute("nome", nome);
+				req.getSession().setAttribute("cognome", cognome);
+				req.getSession().setAttribute("email", email);
+				req.getSession().setAttribute("password", password);
+				req.getSession().setAttribute("confPassword", confPassword);
+				req.getSession().setAttribute("amministratoreSi", amministratore);
+
+				if(!password.equals(confPassword) && !esisteEmail)
+				{
+					req.getSession().removeAttribute("emailSbagliata");
+					req.getSession().setAttribute("passwordSbagliata", "si");
+				}
+				if(esisteEmail && password.contentEquals(confPassword))
+				{
+					req.getSession().removeAttribute("passwordSbagliata");
+					req.getSession().setAttribute("emailSbagliato", "si");
+				}
+				if(!password.equals(confPassword) && esisteEmail)
+				{
+					req.getSession().setAttribute("passwordSbagliata", "si");
+					req.getSession().setAttribute("emailSbagliato", "si");
+				}
+					RequestDispatcher rd = req.getRequestDispatcher("registrati.jsp");
+					rd.forward(req, resp);
 			}
+
+			
+			
+			req.getSession().removeAttribute("emailSbagliato");
+
 			
 		}
 	}

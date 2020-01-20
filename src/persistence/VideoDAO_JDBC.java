@@ -100,9 +100,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 	
 	@Override
 	public void update(Video video) {
-<<<<<<< HEAD
-		
-=======
+
 		Connection connection = null;
 		try {
 			connection = DBManager.getInstance().getConnection();
@@ -127,7 +125,6 @@ public class VideoDAO_JDBC implements VideoDAO{
 				throw new RuntimeException(e.getMessage());
 			}
 		}
->>>>>>> branch 'master' of https://github.com/nikocostantino/Allenati_al_VAR
 	}
 	
 	@Override
