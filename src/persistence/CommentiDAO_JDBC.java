@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import model.Commenti;
+import model.Commento;
+import model.Utente;
 import model.Commenti;
 import model.Video;
 
@@ -49,7 +51,8 @@ public class CommentiDAO_JDBC implements CommentiDAO {
 			statement.setString(1, id);
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
-				commenti.aggiungiCommento(result.getString("nome"),result.getString("cognome"),result.getString("commento"),result.getString("data"));
+				Commento c = new Commento(result.getString("commento"),result.getString("data"),new Utente(result.getString("nome"),result.getString("cognome")));
+				commenti.aggiungiCommento(c);
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());

@@ -1,22 +1,13 @@
 body {
-	background-image:url(../img/background.jpg);
-  	
-  	/*font-family: "Poppins", sans-serif;*/
-  	
+	/*background-image:url(../img/background.jpg);*/
+	background-color: #1e1a55;
 }
 
-#titolo{
-	font-family: 'Anton', sans-serif;
-	font-size: 60px;
-	font-weight: bold;
+#headerHome{
+	opacity: 0.9;
+	background-color: #FFFFFF;
+	max-width: 100%;
 }
-#sottoTitolo{
-	font-family: 'Anton', sans-serif;
-	font-size: 20px;
-	font-style: oblique;
-	
-}
-
 
 .jumbotron{
 	opacity: 0.9;

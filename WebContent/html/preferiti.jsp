@@ -18,9 +18,9 @@
 <body>
 	<%@include file="header_default.jsp" %>
 	
-	<div class="jumbotron">
+	<div class="jumbotron container">
 	
-		<div class="container">
+		
   			<h1><span class="badge badge-light">PREFERITI</span></h1>	
   				<div class="list-group">
     				
@@ -48,6 +48,5 @@
   				</div>
 		</div>
 		
-	</div>
 </body>
 </html>

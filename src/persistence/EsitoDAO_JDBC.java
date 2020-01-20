@@ -100,7 +100,7 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString("nome"));
 				video.setDescrizione(result.getString("descrizione"));
-				video.setDifficolta(result.getString("difficolt√†"));
+				video.setDifficolta(result.getString("difficolt‡"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				video.setCategoria(new Categoria(result.getString("categoria")));
 				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));
@@ -190,7 +190,7 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString("nome"));
 				video.setDescrizione(result.getString("descrizione"));
-				video.setDifficolta(result.getString("difficolt√†"));
+				video.setDifficolta(result.getString("difficolt‡"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				video.setCategoria(new Categoria(result.getString("categoria")));
 				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));

@@ -128,7 +128,17 @@ function inserisciCommento(url){
 		data: JSON.stringify(c),
 		success: function(data){
 			var c = JSON.parse(data);
-			$("#lista_commenti").append("<p class='' id='commento'> " + c.nome + " " + c.cognome + ": " + c.testo + "\n" + c.data + "</p>"); 
+			$("#lista_commenti").append("<div class='container mt-3'>" +
+										"<div class='media border p-3'>" +
+											"<img src='../img/referee.png' alt='referee' class='mr-3 mt-3 rounded-circle' style='width:60px;'> " +      
+											"<div class='media-body'>" +
+												"<h4>" + c.nome + " " + c.cognome + "</h4>" +
+												"<small><i>Posted on " + c.data + "</i></small>" +
+												"<p id='commento'>" + c.testo + "</p>" +   
+											"</div>" +
+										"</div>" +
+										"</div>");
+			 
 			$("#textCommento").val("");
 		}	
 	});	

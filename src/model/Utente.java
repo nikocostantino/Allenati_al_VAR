@@ -20,6 +20,14 @@ public class Utente {
 		this.video_recenti = new ArrayList<Video>();
 	}
 	
+	public Utente(String nome, String cognome) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.video_preferiti = new ArrayList<Video>();
+		this.storico = new ArrayList<Esito>();
+		this.video_recenti = new ArrayList<Video>();
+	}
+	
 	public Utente(String nome, String cognome, String email, String password, String amministratore) {
 		this.nome = nome;
 		this.cognome = cognome;

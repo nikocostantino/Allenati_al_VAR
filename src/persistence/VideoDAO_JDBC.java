@@ -104,7 +104,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 		Connection connection = null;
 		try {
 			connection = DBManager.getInstance().getConnection();
-			String insert = "UPDATE video SET nome=?, descrizione=?, difficolt‡=?, rispostacorretta=?, rispostaerrata=?, categoria=? WHERE url=?";
+			String insert = "UPDATE video SET nome=?, descrizione=?, difficolt√†=?, rispostacorretta=?, rispostaerrata=?, categoria=? WHERE url=?";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			
 			statement.setString(1, video.getNome());
