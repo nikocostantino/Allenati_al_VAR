@@ -11,6 +11,7 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	
 	<link rel="stylesheet" href="../css/aggiungi_video.css" type="text/css">
+	<link rel="stylesheet" href="../css/home.css" type="text/css">	
 	<script type="text/javascript" src="../js/home.js"></script>
 	<meta charset="UTF-8">
 	<title>ALLENATI AL VAR - Aggiungi Video</title>
