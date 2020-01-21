@@ -186,6 +186,7 @@
 			</div>	
 		</div>	
 	</div>
+	</div>
 	
 	<!-- INIZIO CUSTOM ALERT -->
 <div class="modal fade" id="Eliminazione">

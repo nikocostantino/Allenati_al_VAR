@@ -19,7 +19,7 @@ import model.Video;
 public class VideoDAO_JDBC implements VideoDAO{
 
 	
-	public final String query_findAll = "SELECT id, url, v.nome as nomeVideo, descrizione, difficolt√†, visualizzazioni, rispostaCorretta, rispostaErrata, c.nome AS nomeCategoria FROM video v JOIN categoria c ON v.url=c.fk_video";
+	public final String query_findAll = "SELECT id, url, v.nome as nomeVideo, descrizione, difficolt‡, visualizzazioni, rispostaCorretta, rispostaErrata, c.nome AS nomeCategoria FROM video v JOIN categoria c ON v.url=c.fk_video";
 	public final String query_risposta_corretta = "SELECT * FROM video WHERE url=?";
 	
 	
@@ -77,7 +77,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 		Connection connection = null;
 		try {
 			connection = DBManager.getInstance().getConnection();
-			String insert = "insert into video(id, url, nome, descrizione, difficolt√†, visualizzazioni,rispostaCorretta, rispostaErrata) values (?,?,?,?,?,?,?,?,?)";
+			String insert = "insert into video(id, url, nome, descrizione, difficolt‡, visualizzazioni,rispostaCorretta, rispostaErrata) values (?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, video.getId());
 			statement.setString(2, video.getUrl());
@@ -87,7 +87,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 			statement.setInt(6, 0);
 			statement.setString(7, video.getRisposte().getOpzioneCorretta());
 			statement.setString(8, video.getRisposte().getOpzioneErrata());
-			statement.setString(9, video.getCategoria().get(0).getNome());
+			//statement.setString(9, video.getCategoria().get(0).getNome());
 			statement.executeUpdate();
 			
 			String insertCategoria = "insert into categoria(nome,fk_video,fk_utente,data) values (?,?,?,?)";
@@ -116,7 +116,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 		Connection connection = null;
 		try {
 			connection = DBManager.getInstance().getConnection();
-			String update = "UPDATE video SET nome=?, descrizione=?, difficolt√†=?, rispostacorretta=?, rispostaerrata=? WHERE url=?";
+			String update = "UPDATE video SET nome=?, descrizione=?, difficolt‡=?, rispostacorretta=?, rispostaerrata=? WHERE url=?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			
 			statement.setString(1, video.getNome());
@@ -124,7 +124,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 			statement.setString(3, video.getDifficolta());
 			statement.setString(4, video.getRisposte().getOpzioneCorretta());
 			statement.setString(5, video.getRisposte().getOpzioneErrata());
-			statement.setString(6, video.getCategoria().get(0).getNome());
+			//statement.setString(6, video.getCategoria().get(0).getNome());
 			statement.setString(7, video.getUrl());
 			
 			statement.executeUpdate();
@@ -303,7 +303,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 	}
 	
 	@Override
-	public ArrayList<Video> getRicercaPerFiltri(String categoria, int durataMinima, int durataMassima, String dataMinima, String dataMassima, String difficolt√†) {
+	public ArrayList<Video> getRicercaPerFiltri(String categoria, int durataMinima, int durataMassima, String dataMinima, String dataMassima, String difficolt‡) {
 		
 		Connection connection = null;
 		ArrayList<Video> lista_video = new ArrayList<Video>();
@@ -314,7 +314,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 			String query_filtri = "SELECT * FROM video v JOIN categoria c ON v.url=c.fk_video WHERE c.nome=? AND v.difficolt√†=?";
 			PreparedStatement statement = connection.prepareStatement(query_filtri);
 			statement.setString(1, categoria);
-			statement.setString(2, difficolt√†);
+			statement.setString(2, difficolt‡);
 			
 			ResultSet result = statement.executeQuery();
 			
@@ -324,7 +324,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString("nome"));
 				video.setDescrizione(result.getString("descrizione"));
-				video.setDifficolta(result.getString("difficolt√†"));
+				video.setDifficolta(result.getString("difficolt‡"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));
 				video.setCategoria(new Categoria(result.getString("nome")));

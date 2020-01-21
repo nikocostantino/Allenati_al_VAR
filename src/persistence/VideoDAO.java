@@ -17,6 +17,6 @@ public interface VideoDAO {
 	public String getRispostaCorretta(String url);
 	public int updateVisualizzazioni(String url);
 	
-	public ArrayList<Video> getRicercaPerFiltri(String categoria, int durataMinima, int durataMassima, String dataMinima, String dataMassima, String difficolt√†);
+	public ArrayList<Video> getRicercaPerFiltri(String categoria, int durataMinima, int durataMassima, String dataMinima, String dataMassima, String difficolt‡);
 	
 }

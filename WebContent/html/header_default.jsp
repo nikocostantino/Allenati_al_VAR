@@ -52,7 +52,7 @@
     </ul>
     <form class="form-inline my-2 my-lg-0" method="GET" action="risultatoRicerca">
     <div class="alert my-2 my-sm-0" id="benvenuto">
-			<font color="white"><strong>${nome}</strong></font>
+			<font color="white"><strong>${datiUtente}</strong></font>
 		</div>
       <input class="form-control mr-sm-2" name="textRicerca" type="search" placeholder="Cerca un video..." aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>

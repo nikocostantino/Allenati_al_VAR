@@ -73,7 +73,7 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 		try {
 			connection = DBManager.getInstance().getConnection();
 			PreparedStatement statement;
-			String query = "SELECT e.id as idEsito, risultato, url, v.nome as nomeVideo, descrizione, difficolt√†, visualizzazioni, rispostaCorretta, rispostaErrata, risposta_utente, c.nome as nomeCategoria, e.data as dataEsito FROM esiti e JOIN video v ON e.fk_video=v.url JOIN categoria c ON c.fk_video=v.url WHERE e.fk_utente = ? ORDER BY e.id";
+			String query = "SELECT e.id as idEsito, risultato, url, v.nome as nomeVideo, descrizione, difficolt‡, visualizzazioni, rispostaCorretta, rispostaErrata, risposta_utente, c.nome as nomeCategoria, e.data as dataEsito FROM esiti e JOIN video v ON e.fk_video=v.url JOIN categoria c ON c.fk_video=v.url WHERE e.fk_utente = ? ORDER BY e.id";
 			
 			statement = connection.prepareStatement(query);
 			statement.setString(1, email);
@@ -171,7 +171,7 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 		try {
 			connection = DBManager.getInstance().getConnection();
 			PreparedStatement statement;
-			String query = "SELECT e.id as idEsito, risultato, url, v.nome as nomeVideo, descrizione, difficolt√†, visualizzazioni, rispostaCorretta, rispostaErrata, risposta_utente, c.nome as nomeCategoria, e.data as dataEsito FROM esiti e JOIN video v ON e.fk_video=v.url JOIN categoria c ON c.fk_video=v.url WHERE e.fk_utente = ? AND e.id = ? ORDER BY e.id";
+			String query = "SELECT e.id as idEsito, risultato, url, v.nome as nomeVideo, descrizione, difficolt‡, visualizzazioni, rispostaCorretta, rispostaErrata, risposta_utente, c.nome as nomeCategoria, e.data as dataEsito FROM esiti e JOIN video v ON e.fk_video=v.url JOIN categoria c ON c.fk_video=v.url WHERE e.fk_utente = ? AND e.id = ? ORDER BY e.id";
 			
 			statement = connection.prepareStatement(query);
 			statement.setString(1, email);

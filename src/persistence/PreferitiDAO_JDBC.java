@@ -42,7 +42,7 @@ public class PreferitiDAO_JDBC implements PreferitiDAO{
 		try {
 			connection = DBManager.getInstance().getConnection();
 			PreparedStatement statement;
-			String query = "SELECT id, url, v.nome as nomeVideo, descrizione, difficolt√†, visualizzazioni, rispostaCorretta, rispostaErrata, c.nome AS nomeCategoria FROM preferiti p JOIN video v ON p.fk_video=v.url JOIN categoria c ON v.url=c.fk_video WHERE p.fk_utente = ?";
+			String query = "SELECT id, url, v.nome as nomeVideo, descrizione, difficolt‡, visualizzazioni, rispostaCorretta, rispostaErrata, c.nome AS nomeCategoria FROM preferiti p JOIN video v ON p.fk_video=v.url JOIN categoria c ON v.url=c.fk_video WHERE p.fk_utente = ?";
 			statement = connection.prepareStatement(query);
 			statement.setString(1, email);
 			ResultSet result = statement.executeQuery();
