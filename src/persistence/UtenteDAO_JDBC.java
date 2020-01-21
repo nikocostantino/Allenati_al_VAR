@@ -87,7 +87,7 @@ public class UtenteDAO_JDBC implements UtenteDAO{
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
 	public boolean cercaPerEmail(String email) {
 		Connection connection = null;

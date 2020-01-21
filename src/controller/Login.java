@@ -42,7 +42,7 @@ public class Login extends HttpServlet{
 				DBManager.getInstance().setUtenteCorrente(utente);
 				
 				req.getSession().setAttribute("amministratore", DBManager.getInstance().getUtenteCorrente().getAmministratore());
-				req.getSession().setAttribute("nome", "Benvenuto/a " + utente.getNome() + " " + utente.getCognome());
+				req.getSession().setAttribute("datiUtente", "Benvenuto/a " + utente.getNome() + " " + utente.getCognome());
 				RequestDispatcher rd = req.getRequestDispatcher("/html/home");
 				rd.forward(req, resp);
 			}

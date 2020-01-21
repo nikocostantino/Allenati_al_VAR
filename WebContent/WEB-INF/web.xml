@@ -42,16 +42,6 @@
  	<url-pattern>/html/risultatoRicerca</url-pattern>
 </servlet-mapping>
 
-
-<servlet>
-  	<servlet-name>Index</servlet-name>
-  	<servlet-class>controller.Index</servlet-class>
-</servlet>
-  
-<servlet-mapping>
-	<servlet-name>Index</servlet-name>
-	<url-pattern>/index</url-pattern>
-</servlet-mapping>
  
 <servlet>
   	<servlet-name>MostraVideo</servlet-name>

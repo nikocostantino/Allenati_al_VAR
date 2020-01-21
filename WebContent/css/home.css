@@ -9,6 +9,11 @@ body {
 	max-width: 100%;
 }
 
+#img_header{
+	width:30%;
+
+}
+
 .jumbotron{
 	opacity: 0.9;
 }
@@ -85,4 +90,12 @@ div.inline { float:left; }
 
 span{
 	margin-bottom: 5%;
+}
+
+#info{
+	margin-left:35%;
+}
+
+footer{
+	margin-top: 5%;
 }

@@ -73,7 +73,7 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 		try {
 			connection = DBManager.getInstance().getConnection();
 			PreparedStatement statement;
-			String query = "SELECT e.id as idEsito, risultato, url, v.nome as nomeVideo, descrizione, difficolt√†, visualizzazioni, rispostaCorretta, rispostaErrata, risposta_utente, c.nome as nomeCategoria, e.data as dataEsito FROM esiti e JOIN video v ON e.fk_video=v.url JOIN categoria c ON c.fk_video=v.url WHERE e.fk_utente = ? ORDER BY e.id";
+			String query = "SELECT * FROM esiti e JOIN video v ON e.fk_video=v.url WHERE fk_utente = ? ORDER BY e.id";
 			
 			statement = connection.prepareStatement(query);
 			statement.setString(1, email);
@@ -85,24 +85,24 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 	
 				boolean esiste = false;
 				for (Esito e : storico) {
-					if(e.getId()==result.getInt("idEsito")) {
+					if(e.getId()==result.getInt("id")) {
 						esiste = true;
 					}
 						
 				}
 				if(!esiste) {
 					esito = new Esito();
-					esito.setId(result.getInt("idEsito"));
-					esito.setData(result.getDate("dataEsito"));
+					esito.setId(result.getInt("id"));
+					esito.setData(result.getDate("data"));
 					esito.setRisultato(result.getBoolean("risultato"));
 				}
 				Video video = new Video();
 				video.setUrl(result.getString("url"));
-				video.setNome(result.getString("nomeVideo"));
+				video.setNome(result.getString("nome"));
 				video.setDescrizione(result.getString("descrizione"));
-				video.setDifficolta(result.getString("difficolt‡"));
+				video.setDifficolta(result.getString("difficolta"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
-				video.setCategoria(new Categoria(result.getString("nomeCategoria")));
+				video.setCategoria(new Categoria(result.getString("categoria")));
 				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));
 				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), result.getBoolean("risposta_utente")));
 				
@@ -171,7 +171,7 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 		try {
 			connection = DBManager.getInstance().getConnection();
 			PreparedStatement statement;
-			String query = "SELECT e.id as idEsito, risultato, url, v.nome as nomeVideo, descrizione, difficolt√†, visualizzazioni, rispostaCorretta, rispostaErrata, risposta_utente, c.nome as nomeCategoria, e.data as dataEsito FROM esiti e JOIN video v ON e.fk_video=v.url JOIN categoria c ON c.fk_video=v.url WHERE e.fk_utente = ? AND e.id = ? ORDER BY e.id";
+			String query = "SELECT * FROM esiti e JOIN video v ON e.fk_video=v.url WHERE fk_utente = ? AND e.id = ? ORDER BY e.id";
 			
 			statement = connection.prepareStatement(query);
 			statement.setString(1, email);
@@ -182,17 +182,17 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 			
 			while(result.next()) {
 				
-				esito.setId(result.getInt("idEsito"));
-				esito.setData(result.getDate("dataEsito"));
+				esito.setId(result.getInt("id"));
+				esito.setData(result.getDate("data"));
 				esito.setRisultato(result.getBoolean("risultato"));
 
 				Video video = new Video();
 				video.setUrl(result.getString("url"));
-				video.setNome(result.getString("nomeVideo"));
+				video.setNome(result.getString("nome"));
 				video.setDescrizione(result.getString("descrizione"));
-				video.setDifficolta(result.getString("difficolt‡"));
+				video.setDifficolta(result.getString("difficolta"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
-				video.setCategoria(new Categoria(result.getString("nomeCategoria")));
+				video.setCategoria(new Categoria(result.getString("categoria")));
 				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));
 				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), result.getBoolean("risposta_utente")));
 				

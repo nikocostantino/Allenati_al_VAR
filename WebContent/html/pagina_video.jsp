@@ -107,15 +107,8 @@
 							</c:if>
 						</div>
 
-		 		<p id="categoria"> Categoria: ${categoria} </p>
-				<p id="difficolta"> ${difficolta} </p>
-				<c:if test="${amministratore == true}">
-					<div id="div_button_gestione" class="btn-group btn-group-toggle" data-toggle="buttons">
-					  <a class="btn btn-primary" id="button_modifica" href="gestorePagine?pagina=modificaVideo&&url=${url}" type="submit" href="#">Modifica</a>
-					  <a class="btn btn-danger" id="button_elimina" href="#" data-toggle="modal" data-target="#Eliminazione">Rimuovi</a>
-
 					</div>
-				</c:if>	
+					
 					
 				</div>
 		 		
@@ -151,7 +144,7 @@
 						      	                            	
 						<div class="container mt-3">
 							 <div class="media border p-3">
-						  		<img src="../img/referee.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" id="img_referee">       
+						  		<img id="img_referee" src="../img/referee.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" >       
 						    	<div class="media-body">
 						      		<h4>${c.autore.nome} ${c.autore.cognome}</h4>
 						      		<small><i id="data">Posted on ${c.data}</i></small>
@@ -166,7 +159,7 @@
 				<div  id="underPanel" class="down">
 
 						<textarea class="form-control" id="textCommento"  name="commento" placeholder="Scrivi un commento..."></textarea>
-						<input class="form-control" id="buttonInvia" type="submit" value="Invia" onclick="inserisciCommento('${url}')"/>
+						<input  id="button_invia" class="form-control" type="submit" value="Invia" onclick="inserisciCommento('${url}')"/>
 						
 						
 				</div>
@@ -194,7 +187,7 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Sei Sicuro?</h4>
+          <h4 class="modal-title">Sei sicuro?</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         

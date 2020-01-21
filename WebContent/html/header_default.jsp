@@ -24,7 +24,6 @@
       <li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Profilo<span class="caret"></span></a>
 				<div class="dropdown-menu">
-					<a  class="dropdown-item" href="#">Impostazioni</a>
 					<a  class="dropdown-item" href="gestorePagine?pagina=preferiti">Preferiti</a>
 					<a  class="dropdown-item" href="gestorePagine?pagina=storico">Storico</a>		
 					<div class="dropdown-divider"></div>		
@@ -47,12 +46,12 @@
     
     
     <li class="nav-item">
-      <a class="nav-link disabled" href="#">Info</a>
+      <a class="nav-link" href="gestorePagine?pagina=info">Info</a>
 
     </ul>
     <form class="form-inline my-2 my-lg-0" method="GET" action="risultatoRicerca">
     <div class="alert my-2 my-sm-0" id="benvenuto">
-			<font color="white"><strong>${nome}</strong></font>
+			<font color="white"><strong>${datiUtente}</strong></font>
 		</div>
       <input class="form-control mr-sm-2" name="textRicerca" type="search" placeholder="Cerca un video..." aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
@@ -69,7 +68,7 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Sei Sicuro?</h4>
+          <h4 class="modal-title">Sei sicuro?</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         

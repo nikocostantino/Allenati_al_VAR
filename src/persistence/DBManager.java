@@ -224,12 +224,9 @@ public class DBManager {
 		getVideoDAO().update(v);
 	}
 
-
 	public boolean esisteEmail(String email) {
 		return getUtenteDAO().cercaPerEmail(email);
 	}
-
-
 	
 	
 }

@@ -14,15 +14,16 @@ import model.Video;
 public class CategoriaDAO_JDBC implements CategoriaDAO{
 	
 	@Override
-	public  ArrayList<Video> findByPrimaryKey(String nomeCategoria, String utente) {
+	public  ArrayList<Video> findByPrimaryKey(String nomeCategoria, String email) {
 		Connection connection = null;
 		ArrayList<Video> lista_video = new ArrayList<Video>();
 		try {
 			connection = DBManager.getInstance().getConnection();
 			PreparedStatement statement;
-			String query = "SELECT * FROM categoria c JOIN video v ON c.fk_video=v.url JOIN utenti u ON c.fk_utente=u.email WHERE c.nome = ?";
+			String query = "SELECT * FROM categoria c JOIN video v ON c.fk_video=v.url JOIN utenti u ON c.fk_utente=u.email WHERE c.nome = ? AND c.fk_utente=?";
 			statement = connection.prepareStatement(query);
 			statement.setString(1, nomeCategoria);
+			statement.setString(2, email);
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
 				Video video = new Video();
@@ -30,10 +31,10 @@ public class CategoriaDAO_JDBC implements CategoriaDAO{
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString(7)); // come passare la stringa e farsi capire
 				video.setDescrizione(result.getString("descrizione"));
-				video.setDifficolta(result.getString("difficoltà"));
+				video.setDifficolta(result.getString("difficolta"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));
-				
+				video.setCategoria(new Categoria(result.getString("categoria")));
 				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));
 				
 				lista_video.add(video);

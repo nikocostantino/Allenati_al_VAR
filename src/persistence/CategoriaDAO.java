@@ -9,7 +9,7 @@ public interface CategoriaDAO {
 	
 
 	public void save(Video video);  // Create
-	public ArrayList<Video> findByPrimaryKey(String nome,String utente);    // Retrieve
+	public ArrayList<Video> findByPrimaryKey(String nome,String email);    // Retrieve
 	public ArrayList<Video> findAll();       
 	public void update(Categoria categoria); //Update
 	public void delete(Video video); //Delete	

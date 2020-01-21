@@ -91,14 +91,15 @@
 				<a class="btn btn-secondary" id="Indietro" href="pagina_video?url=${url}" type="submit">Indietro</a>
 	      		<a class="btn btn-primary" id="Aggiungi" onclick="javascript:controllaCaratteristiche('<c:out value="${url}"/>')" href="javascript:void(0)" type="submit">Salva</a>
 	      		
-	       			      		
+	      			      		
 
 			</div>
 			</div>		
+	      	
 	    	</form>
 	    </div>
 	    <div id="anteprimaVideo" class="column right">
-				<iframe width='90%' id='video' src='${url}' height='56%'></iframe>			
+				<iframe width='90%' id='video' src='${url}' height='56%'></iframe>	
 	    	</div>
 			</div> 
 	    	

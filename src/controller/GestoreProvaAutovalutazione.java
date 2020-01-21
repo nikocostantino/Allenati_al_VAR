@@ -22,24 +22,24 @@ public class GestoreProvaAutovalutazione extends HttpServlet {
 	private ArrayList<Video> lista_video_con_risposta_utente = new ArrayList<Video>();
 	private Random random = new Random();
 	private int risposteErrate;
-	private ArrayList<Video> video_nel_db = new ArrayList<Video>();
+	private ArrayList<Video> video_nel_db = new ArrayList<Video>();;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("prova_autovalutazione.jsp");
-		
+
 		if (req.getParameter("risposta") == null) {
 			lista_video_con_risposta_utente.clear();
 			risposteErrate = 0;
 			video_nel_db = DBManager.getInstance().getVideo();
 			
-			if(video_nel_db.size()<1) {
+			if(video_nel_db.size()<15) {
 				rd = req.getRequestDispatcher("error_page.html");
 				rd.forward(req, resp);
 				return;
 			}
 			
-			while (videoProva.size() <= 1) {
+			while (videoProva.size() <= 9) {
 				int indice = random.nextInt(video_nel_db.size());
 				while (videoProva.contains(video_nel_db.get(indice))) {
 					indice = random.nextInt(video_nel_db.size());
