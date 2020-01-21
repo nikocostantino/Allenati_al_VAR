@@ -73,7 +73,9 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 		try {
 			connection = DBManager.getInstance().getConnection();
 			PreparedStatement statement;
-			String query = "SELECT * FROM esiti e JOIN video v ON e.fk_video=v.url WHERE fk_utente = ? ORDER BY e.id";
+
+			String query = "SELECT * FROM esiti e JOIN video v ON e.fk_video=v.url WHERE e.fk_utente = ? ORDER BY e.id";
+
 			
 			statement = connection.prepareStatement(query);
 			statement.setString(1, email);
@@ -171,7 +173,9 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 		try {
 			connection = DBManager.getInstance().getConnection();
 			PreparedStatement statement;
-			String query = "SELECT * FROM esiti e JOIN video v ON e.fk_video=v.url WHERE fk_utente = ? AND e.id = ? ORDER BY e.id";
+
+			String query = "SELECT * FROM esiti e JOIN video v ON e.fk_video=v.url WHERE e.fk_utente = ? AND e.id = ? ORDER BY e.id";
+
 			
 			statement = connection.prepareStatement(query);
 			statement.setString(1, email);

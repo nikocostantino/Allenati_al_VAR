@@ -108,9 +108,7 @@ function tempAlert(duration,pref)
 
 function inserisciCommento(url){
 	
-	//problema prendere url del video
-	//problema aggiornamento live
-	
+
 	
 	var c = {
 			azione : "commento",
@@ -143,4 +141,3 @@ function inserisciCommento(url){
 		}	
 	});	
 }
-

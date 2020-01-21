@@ -18,7 +18,9 @@ import model.Video;
 public class VideoDAO_JDBC implements VideoDAO{
 
 	
-	public final String query_findAll = "SELECT * FROM video";
+
+	public final String query_findAll = "SELECT * FROM video v";
+
 	public final String query_risposta_corretta = "SELECT * FROM video WHERE url=?";
 	
 	
@@ -73,7 +75,9 @@ public class VideoDAO_JDBC implements VideoDAO{
 		Connection connection = null;
 		try {
 			connection = DBManager.getInstance().getConnection();
+
 			String insert = "insert into video(id, url, nome, descrizione, difficolta, visualizzazioni,rispostaCorretta, rispostaErrata, categoria) values (?,?,?,?,?,?,?,?,?)";
+
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, video.getId());
 			statement.setString(2, video.getUrl());
@@ -83,6 +87,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 			statement.setInt(6, 0);
 			statement.setString(7, video.getRisposte().getOpzioneCorretta());
 			statement.setString(8, video.getRisposte().getOpzioneErrata());
+
 			statement.setString(9, video.getCategoria().get(0).getNome());
 			
 			statement.executeUpdate();
@@ -103,8 +108,10 @@ public class VideoDAO_JDBC implements VideoDAO{
 		Connection connection = null;
 		try {
 			connection = DBManager.getInstance().getConnection();
+
 			String insert = "UPDATE video SET nome=?, descrizione=?, difficolta=?, rispostacorretta=?, rispostaerrata=?, categoria=? WHERE url=?";
 			PreparedStatement statement = connection.prepareStatement(insert);
+
 			
 			statement.setString(1, video.getNome());
 			statement.setString(2, video.getDescrizione());
@@ -281,4 +288,6 @@ public class VideoDAO_JDBC implements VideoDAO{
 		
 		return visualizzazioni;
 	}
+
+
 }

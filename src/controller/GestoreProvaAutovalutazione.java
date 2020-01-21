@@ -33,7 +33,7 @@ public class GestoreProvaAutovalutazione extends HttpServlet {
 			risposteErrate = 0;
 			video_nel_db = DBManager.getInstance().getVideo();
 			
-			if(video_nel_db.size()<15) {
+			if(video_nel_db.size()<10) {
 				rd = req.getRequestDispatcher("error_page.html");
 				rd.forward(req, resp);
 				return;

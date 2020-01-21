@@ -42,7 +42,9 @@ public class PreferitiDAO_JDBC implements PreferitiDAO{
 		try {
 			connection = DBManager.getInstance().getConnection();
 			PreparedStatement statement;
-			String query = "select * from preferiti p LEFT OUTER JOIN video v ON p.fk_video=v.url where fk_utente = ?";
+
+			String query = "SELECT * FROM preferiti p JOIN video v ON p.fk_video=v.url WHERE p.fk_utente = ?";
+
 			statement = connection.prepareStatement(query);
 			statement.setString(1, email);
 			ResultSet result = statement.executeQuery();
@@ -88,7 +90,7 @@ public class PreferitiDAO_JDBC implements PreferitiDAO{
 		Connection connection = null;
 		try {
 			connection = DBManager.getInstance().getConnection();
-			String delete = "delete FROM preferiti WHERE fk_video = ? ";
+			String delete = "DELETE FROM preferiti WHERE fk_video = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.setString(1, video.getUrl());
 
