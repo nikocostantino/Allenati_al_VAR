@@ -86,6 +86,9 @@
 			<div id="controlloOpzioneDue" class="inactive">
 	      			<div id="formatErrato" class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Inserisci l'opzione di risposta errata!</strong></div>	
 	      	</div>
+	      	<div id="controlloOpzioniUguali" class="inactive">
+	      			<div id="formatErrato" class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Le opzioni di risposta sono uguali!</strong></div>	
+	      	</div>
 			
 			<textarea class="fadeIn second" id="descrizione"  name="descrizione" placeholder="descrizione" required></textarea>
 			<div id="controlloDescrizione" class="inactive">
@@ -240,6 +243,18 @@
 			else
 			{
 				$temp.find("#controlloOpzioneDue").addClass("inactive");
+			}
+			if(opzioneUno!="" && opzioneDue!="")
+			{
+				if(opzioneUno == opzioneDue)
+				{
+					$temp.find("#controlloOpzioniUguali").removeClass("inactive");
+					bool=false;
+				}
+				else
+				{
+					$temp.find("#controlloOpzioniUguali").addClass("inactive");
+				}
 			}
 
 			if(bool==true){
