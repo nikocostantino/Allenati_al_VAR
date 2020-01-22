@@ -17,37 +17,33 @@
 	<title>ALLENATI AL VAR - Preferiti</title>
 </head>
 <body>
+
 	<%@include file="header_default.jsp" %>
 	
 	<div class="jumbotron container">
-	
-		
-  			<h1><span class="badge badge-light">PREFERITI</span></h1>	
-  				<div class="list-group">
-    				
-    				
-    			    	
-    			    	<div class="row">
-	    			    	<c:forEach items="${video_preferiti}" var="v">
-	    			    		<a href="pagina_video?url=${v.url}" class="list-group-item list-group-item-action">
-		    			    	<div class="column left">
-		                            	
-										<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
-									
-										
-								</div>
-								<div class="column right">
-		    			    		<p>${v.nome}</p>
-		    			    		<p>${v.categoria[0].nome}</p>
-		    			    		<p>${v.difficolta}</p>
-								</div>
-								</a>
-							</c:forEach>
-						</div>
 
-  				
-  				</div>
+ 		<h1><span class="badge badge-light">PREFERITI</span></h1>	
+ 		
+ 		<div class="list-group">
+
+    		<div class="row">
+		    	<c:forEach items="${video_preferiti}" var="v">
+		    		
+		    		<a href="pagina_video?url=${v.url}" class="list-group-item list-group-item-action">
+  			    		<div class="column left">  	
+							<iframe class="embed-responsive-item" src="${v.url}" allowfullscreen></iframe>
+						</div>
+				
+						<div class="column right">
+  			    			<p>${v.nome}</p>
+  			    			<p>${v.categoria[0].nome}</p>
+  			    			<p>${v.difficolta}</p>
+						</div>
+					</a>
+				</c:forEach>
+			</div>
 		</div>
+	</div>
 		
 </body>
 </html>

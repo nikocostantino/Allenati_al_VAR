@@ -14,9 +14,7 @@
 	
 	<script src="https://www.youtube.com/iframe_api" ></script >
 	
-	
 	<meta charset="UTF-8">
-	<!-- REFRESH PAGINA OGNI 3 SECONDI <meta http-equiv="refresh" content="3"/> -->
 	<title>ALLENATI AL VAR - Prova Autovalutazione</title>
 
 </head>
@@ -105,44 +103,6 @@
 	    $('#volume-input').val(Math.round(player.getVolume()));
 	}
 	
-	var video = document.getElementById("video");
-	video.oncanplay = function(){
-		getTempo();
-	};
-	
-	function getTempo(){
-		
-		var tempo = document.getElementById("tempo");
-		tempo.innerHTML = video.duration | 0;
-		
-		var countDownDate = (video.duration | 0) * 2 + 5;
-		
-		// Update the count down every 1 second
-		var x = setInterval(function() {
-		
-		  countDownDate = countDownDate - 1;
-		    
-		  // Output the result in an element with id="demo"
-		  document.getElementById("tempo").innerHTML = countDownDate;
-		  if (countDownDate >=4 && countDownDate <= 7) {
-			  document.getElementById("tempo").className = "badge badge-warning";
-		  }
-		  
-		  if (countDownDate <= 3) {
-			  document.getElementById("tempo").className = "badge badge-danger";
-		  }
-		  
-		  
-		  
-		  // If the count down is over, write some text 
-		  if (countDownDate <= 0) {
-		    clearInterval(x);
-		    location.href="prova_autovalutazione?risposta=${videoProva[0].risposte.opzioneErrata}";
-		  }
-		}, 1000);
-		
-	}
-
 	
 	// Set the date we're counting down to
 	function timer(){
@@ -154,7 +114,7 @@
 		
 		  countDownDate = countDownDate - 1;
 		    
-		  // Output the result in an element with id="demo"
+		  // Output the result in an element with id="timer"
 		  document.getElementById("timer").innerHTML = countDownDate;
 		  if (countDownDate >=4 && countDownDate <= 7) {
 			  document.getElementById("timer").className = "badge badge-warning";

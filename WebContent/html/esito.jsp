@@ -24,8 +24,7 @@
 	<div class="jumbotron container" id="risposte">
 	
 		<h1 style="text-align: center;" ><span class="badge badge-dark">ESITO PROVA AUTOVALUTAZIONE</span></h1>
-		<br>
-		<br>
+
 		<ul class="list-group">
 		
 			<c:forEach items="${esito}" var="v">
@@ -51,7 +50,6 @@
 							<p>${v.risposte.opzioneCorretta}</p>
 						</div>	
 					</div>
-				</li>
 			</c:forEach>
 		</ul>
 	</div>

@@ -65,7 +65,6 @@ public class GestoreVideo extends HttpServlet {
 		}
 		else if(urlNuovo!=null)
 		{
-			System.out.println(urlNuovo);
 			if(urlNuovo.matches("https://www.youtube.com/embed/(.*)") == false)
 			{
 				

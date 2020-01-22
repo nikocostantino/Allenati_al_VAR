@@ -19,20 +19,16 @@
 <!-- RISULTATO RICERCA -->
 <div id="jumbo1" class="jumbotron">
 
-		
-
-
-
 	<h1><span class="badge badge-light">RISULTATO RICERCA</span></h1>
 	
 	<!--Carousel Wrapper-->
-	<div id="video-carousel-piu_visti" class="carousel slide carousel-fade" data-ride="carousel">
+	<div id="video-carousel-risultato_ricerca" class="carousel slide carousel-fade" data-ride="carousel">
 	  
 	  <!--Indicators-->
 	  <ol class="carousel-indicators">
-	    <li data-target="#video-carousel-piu_visti" data-slide-to="0" class="active"></li>
-	    <li data-target="#video-carousel-piu_visti" data-slide-to="1"></li>
-	    <li data-target="#video-carousel-piu_visti" data-slide-to="2"></li>
+	    <li data-target="#video-carousel-risultato_ricerca" data-slide-to="0" class="active"></li>
+	    <li data-target="#video-carousel-risultato_ricerca" data-slide-to="1"></li>
+	    <li data-target="#video-carousel-risultato_ricerca" data-slide-to="2"></li>
 	  </ol>
 	  <!--/.Indicators-->
 	  
@@ -70,12 +66,12 @@
 	  
 	  <!--Controls-->
 	  
-	  <a id="freccia" class="carousel-control-prev" href="#video-carousel-piu_visti" role="button" data-slide="prev">
+	  <a id="freccia" class="carousel-control-prev" href="#video-carousel-risultato_ricerca" role="button" data-slide="prev">
 	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 	    <span class="sr-only">Previous</span>
 	  </a>
 	 
-	  <a id="freccia" class="carousel-control-next" href="#video-carousel-piu_visti" role="button" data-slide="next">
+	  <a id="freccia" class="carousel-control-next" href="#video-carousel-risultato_ricerca" role="button" data-slide="next">
 	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 	    <span class="sr-only">Next</span>
 	  </a>
