@@ -13,14 +13,16 @@
 }
 
 #formatErrato{
-
+  	
+  	
   	padding: 5px 32px;
   	text-align: center;
   	text-decoration: none;
   	display: inline-block;
   	font-size: 16px;
   	width: 85%;
-
+	
+	
 }
 
 #formContent {
@@ -35,24 +37,6 @@
 }
 
 
-
-button[type=button]{
-	background-color: #56baed;
-  	border: none;
-  	color: white;
-  	padding: 15px 80px;
-  	text-align: center;
-  	text-decoration: none;
-  	display: inline-block;
-  	text-transform: uppercase;
-  	font-size: 13px;
-  	border-radius: 5px 5px 5px 5px;
-  	margin: 25px 20px 40px 20px;
-}
-#loginBTN {
-	margin-top:2%;
-	margin-bottom:4%;
-}
 
 input, textarea {
   	background-color: #f6f6f6;
