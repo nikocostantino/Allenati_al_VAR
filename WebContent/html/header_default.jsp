@@ -37,7 +37,7 @@
     
     <c:if test="${amministratore == true}">
 				<li class="nav-item">
-			    <a class="nav-link" href="gestorePagine?pagina=aggiungiVideo">Aggiungi Video</a>
+			    	<a class="nav-link" href="gestorePagine?pagina=aggiungiVideo">Aggiungi Video</a>
   				</li>
 	</c:if>
     
@@ -80,7 +80,7 @@
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
-          <a class="btn btn-secondary" href="prova_autovalutazione">Inizia</a>
+          <a class="btn btn-secondary" href="prova_autovalutazione?inizia=true">Inizia</a>
         </div>
         
       </div>
